@@ -1,0 +1,183 @@
+{
+    "android_gradle_plugin_version": "2.3.0",
+    "apk_path": "/Users/tianshutong/Desktop/FreeChat/app/build/outputs/apk/app-debug.apk",
+    "apt": {
+        "app": {
+            "aptArgs": [
+                
+            ],
+            "aptOutput": "/Users/tianshutong/Desktop/FreeChat/app/build/generated/source/apt/debug",
+            "disableDiscovery": false,
+            "enabled": true,
+            "processor": null,
+            "processorPath": "/Users/tianshutong/Desktop/FreeChat/app/libs/databaseorm.jar:/Users/tianshutong/Desktop/FreeChat/common-lib/libs/niftynotification-1.2.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-compiler/8.4.0/22f40cd3f01849c6deeab0a755d2082b2624581/butterknife-compiler-8.4.0.jar:/Users/tianshutong/Desktop/FreeChat/common-lib/build/outputs/aar/common-lib-release.aar:/Users/tianshutong/Desktop/FreeChat/recyclerview-swipe/build/outputs/aar/recyclerview-swipe-release.aar:/Users/tianshutong/Desktop/android_develop/sdk/extras/android/m2repository/com/android/support/appcompat-v7/25.0.1/appcompat-v7-25.0.1.aar:/Users/tianshutong/Desktop/android_develop/sdk/extras/android/m2repository/com/android/support/design/25.0.1/design-25.0.1.aar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/com.yalantis/phoenix/1.2.3/be44a959286bf32526b4b42b485b8ed3818db637/phoenix-1.2.3.aar:/Users/tianshutong/Desktop/android_develop/sdk/extras/android/m2repository/com/android/support/cardview-v7/25.0.1/cardview-v7-25.0.1.aar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/de.hdodenhof/circleimageview/2.1.0/c0fcd515432ccb654bc5b44af60320703880a0f6/circleimageview-2.1.0.aar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/8.4.0/6c39334929311ff90a06c67ca310db1342fe2b6a/butterknife-8.4.0.aar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.7.0/9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4/glide-3.7.0.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/com.jaeger.statusbaruitl/library/1.3.1/be109d7d1459119ea5dd50ca457b9c4317dbee4/library-1.3.1.aar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/am.widget/shapeimageview/2.0.0/7ce544b5e220bb79d8a928dfc1aeeb72b91a97ed/shapeimageview-2.0.0.aar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/org.igniterealtime.smack/smack-android-extensions/4.1.2/c4e61497f6dc2104f2a40db329a32ff70997629a/smack-android-extensions-4.1.2.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/org.igniterealtime.smack/smack-android/4.1.2/164d2e5515ce2d5d2a3c29528867225f44505d26/smack-android-4.1.2.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/org.igniterealtime.smack/smack-tcp/4.1.2/ba84aa4a1dc631939145747c3219728d7df0517c/smack-tcp-4.1.2.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/konifar/fab-transformation/1.0.0/9031cb6901e76fcfbf51dd84d785bd894b0bee74/fab-transformation-1.0.0.aar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.4.0/ea392375cf9ff59234a82e7928a204215ccc98cd/butterknife-annotations-8.4.0.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/com.google.auto/auto-common/0.6/cf7212b0f8bfef12657b942df8f4f2cf032d3f41/auto-common-0.6.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/com.google.auto.service/auto-service/1.0-rc2/51033a5b8fcf7039159e35b6878f106ccd5fb35f/auto-service-1.0-rc2.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/com.squareup/javapoet/1.7.0/4fdcf1fc27c1a8f55d1109df986c923152f07759/javapoet-1.7.0.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/com.github.chrisbanes/PhotoView/1.3.1/772f0a1ad3802aec61d8786f4c136b14b97e1d4e/PhotoView-1.3.1.aar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/com.zhy/flowlayout-lib/1.0.3/5e1f9a7d376a7d3111d3cf3c81389abd2b8aee5d/flowlayout-lib-1.0.3.aar:/Users/tianshutong/Desktop/android_develop/sdk/extras/android/m2repository/com/android/support/recyclerview-v7/25.0.1/recyclerview-v7-25.0.1.aar:/Users/tianshutong/Desktop/android_develop/sdk/extras/android/m2repository/com/android/support/support-v4/25.0.1/support-v4-25.0.1.aar:/Users/tianshutong/Desktop/android_develop/sdk/extras/android/m2repository/com/android/support/support-vector-drawable/25.0.1/support-vector-drawable-25.0.1.aar:/Users/tianshutong/Desktop/android_develop/sdk/extras/android/m2repository/com/android/support/animated-vector-drawable/25.0.1/animated-vector-drawable-25.0.1.aar:/Users/tianshutong/Desktop/android_develop/sdk/extras/android/m2repository/com/android/support/transition/25.0.1/transition-25.0.1.aar:/Users/tianshutong/Desktop/android_develop/sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.1/support-annotations-25.0.1.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/org.igniterealtime.smack/smack-extensions/4.1.2/60c4da6943317d81892a4acf60619d7ede323879/smack-extensions-4.1.2.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/org.igniterealtime.smack/smack-im/4.1.2/38d957ced117f0e993f778810fcbccd9e44d458f/smack-im-4.1.2.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/org.igniterealtime.smack/smack-sasl-provided/4.1.2/46c3b978a0efa9178facaebb08721deda805228c/smack-sasl-provided-4.1.2.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/org.igniterealtime.smack/smack-resolver-minidns/4.1.2/54b14019146d5512b349614fb74c189df4bb4dae/smack-resolver-minidns-4.1.2.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/org.igniterealtime.smack/smack-core/4.1.2/42b48d8ff50657a63f0701d41380d608249c4b3e/smack-core-4.1.2.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/18.0/cce0823396aa693798f8882e64213b1772032b09/guava-18.0.jar:/Users/tianshutong/Desktop/android_develop/sdk/extras/android/m2repository/com/android/support/support-compat/25.0.1/support-compat-25.0.1.aar:/Users/tianshutong/Desktop/android_develop/sdk/extras/android/m2repository/com/android/support/support-core-ui/25.0.1/support-core-ui-25.0.1.aar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/de.measite.minidns/minidns/0.1.7/993582d1455b93a5723d2af4b39d8679735b3550/minidns-0.1.7.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/org.jxmpp/jxmpp-util-cache/0.4.2-beta1/43e2a81f52600639daeb02ede60cc498a13614a5/jxmpp-util-cache-0.4.2-beta1.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/org.jxmpp/jxmpp-core/0.4.2-beta1/14ade1a89b0f6db4fa481f9f8a721cdec69374de/jxmpp-core-0.4.2-beta1.jar:/Users/tianshutong/.gradle/caches/modules-2/files-2.1/xpp3/xpp3/1.1.4c/9b988ea84b9e4e9f1874e390ce099b8ac12cfff5/xpp3-1.1.4c.jar:/Users/tianshutong/Desktop/android_develop/sdk/extras/android/m2repository/com/android/support/support-media-compat/25.0.1/support-media-compat-25.0.1.aar:/Users/tianshutong/Desktop/android_develop/sdk/extras/android/m2repository/com/android/support/support-fragment/25.0.1/support-fragment-25.0.1.aar:/Users/tianshutong/Desktop/android_develop/sdk/extras/android/m2repository/com/android/support/support-core-utils/25.0.1/support-core-utils-25.0.1.aar:/Users/tianshutong/Desktop/FreeChat/common-lib/build/intermediates/bundles/default/classes.jar:/Users/tianshutong/Desktop/FreeChat/common-lib/build/intermediates/bundles/default/libs/niftynotification-1.2.jar:/Users/tianshutong/.android/build-cache/0fb22512ef4d28a166fd52b1bcd9eeabdabe1825/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/779a1b050106e1679859cd4c332e924b51ec38d6/output/jars/classes.jar:/Users/tianshutong/Desktop/FreeChat/recyclerview-swipe/build/intermediates/bundles/default/classes.jar:/Users/tianshutong/.android/build-cache/996727a2eecbb677842aeae19a0ac27b6867af35/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/d5ba58f8a63b11a97b8dbf11d77aae236bd18a19/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/d837d4f05cc91f0c459f60effa8de9ab47ddddfe/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/e3c9fb3e3c47850546ba5f74f1e0d45bf2a6652b/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/9ad7d66d8c1a60a8fec5dddd90d34a15f04b81a4/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/7cd0500ecc881f9a1ff4adca5107db8bd9cf56cf/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/b6c8937f8672d523f6e7d76bf654f59c5c3a3d94/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/6ff7162004bdc15f7f8d6f9e7c89d610f2bbd504/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/f80faa8ce48c49491c8ceb239c62dd1606f8500c/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/868867cd7af921fe0c48b3a4d6816a7d616c8e2b/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/aed35958cf8e4eaeec77de21e63d7a5befd61aef/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/aed35958cf8e4eaeec77de21e63d7a5befd61aef/output/jars/libs/internal_impl-25.0.1.jar:/Users/tianshutong/.android/build-cache/740c2c056937901cebcfbff2ba7a3b03b568afff/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/740c2c056937901cebcfbff2ba7a3b03b568afff/output/jars/libs/internal_impl-25.0.1.jar:/Users/tianshutong/.android/build-cache/969b03a910acdde33fbccf5ad7f6bcfa731f869b/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/969b03a910acdde33fbccf5ad7f6bcfa731f869b/output/jars/libs/internal_impl-25.0.1.jar:/Users/tianshutong/.android/build-cache/6e9c7a51940fd2659ca6906683df50c158b5328f/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/6e9c7a51940fd2659ca6906683df50c158b5328f/output/jars/libs/internal_impl-25.0.1.jar:/Users/tianshutong/.android/build-cache/a64fa91646d62d81fd464d04eae47c1f60fbf440/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/2997af2b478848c36c6608aee7b44178289183f9/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/009b88e474d2c3743577c8296b952d61543c4644/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/009b88e474d2c3743577c8296b952d61543c4644/output/jars/libs/internal_impl-25.0.1.jar:/Users/tianshutong/.android/build-cache/5367daf12d28829df123a1811ab8873f6a080124/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/185a84095ccf7e3404dd6dbfd931857acf100076/output/jars/classes.jar:/Users/tianshutong/.android/build-cache/81f5bbe423835396d2f806b6e30853f05aac9eb7/output/jars/classes.jar"
+        }
+    },
+    "apt_libraries": {
+        "dagger": false,
+        "butterknife": true
+    },
+    "auto_dependency": true,
+    "build_cache_dir": "/Users/tianshutong/Desktop/FreeChat/app/build/freeline",
+    "build_directory": "/Users/tianshutong/Desktop/FreeChat/app/build",
+    "build_script": "./gradlew :app:assembleDebug",
+    "build_script_work_directory": "",
+    "build_tools_directory": "/Users/tianshutong/Desktop/android_develop/sdk/build-tools/25.0.0",
+    "build_tools_version": "25.0.0",
+    "compile_sdk_directory": "/Users/tianshutong/Desktop/android_develop/sdk/platforms/android-25",
+    "compile_sdk_version": "android-25",
+    "databinding": [
+        
+    ],
+    "databinding_compiler_jar": "",
+    "databinding_modules": [
+        
+    ],
+    "debug_package": "com.storn.freechat",
+    "exclude_dep_res_paths": [
+        
+    ],
+    "extra_dep_res_paths": [
+        
+    ],
+    "freeline_cache_dir": "/Users/tianshutong/Desktop/FreeChat",
+    "freeline_gradle_plugin_version": "0.8.3",
+    "java_home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home",
+    "launcher": "com.storn.freechat.LoginActivity",
+    "main_assets_directory": [
+        "/Users/tianshutong/Desktop/FreeChat/app/src/debug/assets",
+        "/Users/tianshutong/Desktop/FreeChat/app/src/main/assets"
+    ],
+    "main_jniLibs_directory": [
+        "/Users/tianshutong/Desktop/FreeChat/app/src/debug/jniLibs",
+        "/Users/tianshutong/Desktop/FreeChat/app/src/main/jniLibs"
+    ],
+    "main_jni_directory": [
+        "/Users/tianshutong/Desktop/FreeChat/app/src/debug/jni",
+        "/Users/tianshutong/Desktop/FreeChat/app/src/main/jni"
+    ],
+    "main_manifest_path": "/Users/tianshutong/Desktop/FreeChat/app/src/main/AndroidManifest.xml",
+    "main_project_dir": "app",
+    "main_project_name": "app",
+    "main_r_path": "/Users/tianshutong/Desktop/FreeChat/app/build/generated/source/r/debug/R.java",
+    "main_res_directory": [
+        "/Users/tianshutong/Desktop/FreeChat/app/src/debug/res",
+        "/Users/tianshutong/Desktop/FreeChat/app/src/main/res"
+    ],
+    "main_src_directory": [
+        "/Users/tianshutong/Desktop/FreeChat/app/src/debug/java",
+        "/Users/tianshutong/Desktop/FreeChat/app/src/main/java"
+    ],
+    "module_dependencies": {
+        "app": [
+            "common-lib",
+            "recyclerview-swipe"
+        ],
+        "common-lib": [
+            
+        ],
+        "recyclerview-swipe": [
+            
+        ]
+    },
+    "modules": [
+        {
+            "name": "app",
+            "path": "/Users/tianshutong/Desktop/FreeChat/app"
+        },
+        {
+            "name": "common-lib",
+            "path": "/Users/tianshutong/Desktop/FreeChat/common-lib"
+        },
+        {
+            "name": "recyclerview-swipe",
+            "path": "/Users/tianshutong/Desktop/FreeChat/recyclerview-swipe"
+        }
+    ],
+    "package": "com.storn.freechat",
+    "product_flavor": "",
+    "project_source_sets": {
+        "app": {
+            "main_assets_directory": [
+                "/Users/tianshutong/Desktop/FreeChat/app/src/debug/assets",
+                "/Users/tianshutong/Desktop/FreeChat/app/src/main/assets"
+            ],
+            "main_jniLibs_directory": [
+                "/Users/tianshutong/Desktop/FreeChat/app/src/debug/jniLibs",
+                "/Users/tianshutong/Desktop/FreeChat/app/src/main/jniLibs"
+            ],
+            "main_jni_directory": [
+                "/Users/tianshutong/Desktop/FreeChat/app/src/debug/jni",
+                "/Users/tianshutong/Desktop/FreeChat/app/src/main/jni"
+            ],
+            "main_manifest_path": "/Users/tianshutong/Desktop/FreeChat/app/src/main/AndroidManifest.xml",
+            "main_res_directory": [
+                "/Users/tianshutong/Desktop/FreeChat/app/src/debug/res",
+                "/Users/tianshutong/Desktop/FreeChat/app/src/main/res"
+            ],
+            "main_src_directory": [
+                "/Users/tianshutong/Desktop/FreeChat/app/src/debug/java",
+                "/Users/tianshutong/Desktop/FreeChat/app/src/main/java"
+            ]
+        },
+        "common-lib": {
+            "main_assets_directory": [
+                "/Users/tianshutong/Desktop/FreeChat/common-lib/src/release/assets",
+                "/Users/tianshutong/Desktop/FreeChat/common-lib/src/main/assets"
+            ],
+            "main_jniLibs_directory": [
+                "/Users/tianshutong/Desktop/FreeChat/common-lib/src/release/jniLibs",
+                "/Users/tianshutong/Desktop/FreeChat/common-lib/src/main/jniLibs"
+            ],
+            "main_jni_directory": [
+                "/Users/tianshutong/Desktop/FreeChat/common-lib/src/release/jni",
+                "/Users/tianshutong/Desktop/FreeChat/common-lib/src/main/jni"
+            ],
+            "main_manifest_path": "/Users/tianshutong/Desktop/FreeChat/common-lib/src/main/AndroidManifest.xml",
+            "main_res_directory": [
+                "/Users/tianshutong/Desktop/FreeChat/common-lib/src/release/res",
+                "/Users/tianshutong/Desktop/FreeChat/common-lib/src/main/res"
+            ],
+            "main_src_directory": [
+                "/Users/tianshutong/Desktop/FreeChat/common-lib/src/release/java",
+                "/Users/tianshutong/Desktop/FreeChat/common-lib/src/main/java"
+            ]
+        },
+        "recyclerview-swipe": {
+            "main_assets_directory": [
+                "/Users/tianshutong/Desktop/FreeChat/recyclerview-swipe/src/release/assets",
+                "/Users/tianshutong/Desktop/FreeChat/recyclerview-swipe/src/main/assets"
+            ],
+            "main_jniLibs_directory": [
+                "/Users/tianshutong/Desktop/FreeChat/recyclerview-swipe/src/release/jniLibs",
+                "/Users/tianshutong/Desktop/FreeChat/recyclerview-swipe/src/main/jniLibs"
+            ],
+            "main_jni_directory": [
+                "/Users/tianshutong/Desktop/FreeChat/recyclerview-swipe/src/release/jni",
+                "/Users/tianshutong/Desktop/FreeChat/recyclerview-swipe/src/main/jni"
+            ],
+            "main_manifest_path": "/Users/tianshutong/Desktop/FreeChat/recyclerview-swipe/src/main/AndroidManifest.xml",
+            "main_res_directory": [
+                "/Users/tianshutong/Desktop/FreeChat/recyclerview-swipe/src/release/res",
+                "/Users/tianshutong/Desktop/FreeChat/recyclerview-swipe/src/main/res"
+            ],
+            "main_src_directory": [
+                "/Users/tianshutong/Desktop/FreeChat/recyclerview-swipe/src/release/java",
+                "/Users/tianshutong/Desktop/FreeChat/recyclerview-swipe/src/main/java"
+            ]
+        }
+    },
+    "project_type": "gradle",
+    "retrolambda": {
+        "app": {
+            "enabled": true,
+            "mainClass": "net.orfjackal.retrolambda.Main",
+            "rtJar": "/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/rt.jar",
+            "supportIncludeFiles": true,
+            "targetJar": "/Users/tianshutong/.gradle/caches/modules-2/files-2.1/net.orfjackal.retrolambda/retrolambda/2.3.0/f35f58f7946d2f8be3dcff78aa3114f60aa40051/retrolambda-2.3.0.jar"
+        }
+    },
+    "root_dir": "/Users/tianshutong/Desktop/FreeChat",
+    "sdk_directory": "/Users/tianshutong/Desktop/android_develop/sdk",
+    "use_jdk8": true
+}

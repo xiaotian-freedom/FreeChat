@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--text_size-->
+    <dimen name="text_size_1">24sp</dimen>
+    <dimen name="text_size_2">20sp</dimen>
+    <dimen name="text_size_3">18sp</dimen>
+    <dimen name="text_size_4">17sp</dimen>
+    <dimen name="text_size_5">16sp</dimen>
+    <dimen name="text_size_6">15sp</dimen>
+    <dimen name="text_size_7">14sp</dimen>
+    <dimen name="text_size_8">12sp</dimen>
+    <dimen name="text_size_9">10sp</dimen>
+    <dimen name="text_size_10">8sp</dimen>
+
+    <!--space-->
+    <dimen name="space_a_1">12dip</dimen>
+    <dimen name="space_a_2">14dip</dimen>
+    <dimen name="space_a_3">16dip</dimen>
+    <dimen name="space_b_1">4dip</dimen>
+    <dimen name="space_b_2">6dip</dimen>
+    <dimen name="space_b_3">8dip</dimen>
+    <dimen name="space_b_4">10dip</dimen>
+    <dimen name="space_c_1">20dip</dimen>
+    <dimen name="space_c_2">24dip</dimen>
+    <dimen name="space_c_3">30dip</dimen>
+    <dimen name="space_d_1">30dip</dimen>
+    <dimen name="space_d_4">32dip</dimen>
+    <dimen name="space_d_5">40dip</dimen>
+    <dimen name="space_e_1">84dip</dimen>
+    <dimen name="space_e_2">64dip</dimen>
+    <dimen name="space_e_3">674dip</dimen>
+    <dimen name="space_e_4">96dip</dimen>
+
+    <!--space_half-->
+    <dimen name="space_b_1_half">2dip</dimen>
+    <dimen name="space_b_2_half">3dip</dimen>
+    <dimen name="space_b_3_half">4dip</dimen>
+    <dimen name="space_b_4_half">6dip</dimen>
+    <dimen name="space_round_corner_1.5">1.5dp</dimen>
+
+    <!--icon-->
+    <dimen name="space_i_1">8dip</dimen>
+    <dimen name="space_i_2">12dip</dimen>
+    <dimen name="space_i_3">16dip</dimen>
+    <dimen name="space_i_4">20dip</dimen>
+    <dimen name="space_i_5">24dip</dimen>
+    <dimen name="space_i_6">28dip</dimen>
+    <dimen name="space_i_7">32dip</dimen>
+    <dimen name="space_i_8">36dip</dimen>
+    <dimen name="space_i_9">48dip</dimen>
+    <dimen name="space_i_10">56dip</dimen>
+    <dimen name="space_i_11">18dip</dimen>
+    <dimen name="space_i_12">40dip</dimen>
+    <dimen name="space_i_14">44dip</dimen>
+    <dimen name="space_i_15">69dip</dimen>
+    <dimen name="space_i_16">64dip</dimen>
+
+    <!--common-->
+    <dimen name="divider_size_half">0.5dp</dimen>
+    <dimen name="divider_size_1dp">1.0dp</dimen>
+    <dimen name="MaxDialogHeight">450.0dp</dimen>
+    <dimen name="content_panel_height">128.0dp</dimen>
+    <dimen name="image_height">250dp</dimen>
+    <dimen name="image_wall_height_150">150dp</dimen>
+
+    <!-- MMProgressDialog -->
+    <dimen name="mm_progress_dialog_padding">12.0dp</dimen>
+    <dimen name="mm_progress_dialog_text_size">14.0sp</dimen>
+    <dimen name="mm_progress_dialog_min_height">54.0dp</dimen>
+    <dimen name="mm_progress_dialog_textview_min_width">150.0dp</dimen>
+    <dimen name="mm_progress_dialog_textview_max_width">200.0dp</dimen>
+
+</resources>

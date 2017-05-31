@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_selector"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingEnd="0dp"
+        android:paddingLeft="@dimen/space_11"
+        android:paddingRight="0dp"
+        android:paddingStart="@dimen/space_11">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/space_6"
+            android:paddingTop="@dimen/space_6">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/main_expandable_child_head_view"
+                android:layout_width="@dimen/img_size_50"
+                android:layout_height="@dimen/img_size_50"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:src="@mipmap/default_head" />
+
+            <TextView
+                android:id="@+id/main_expandable_child_head_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/color_w"
+                android:textSize="@dimen/text_size_15" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/space_11"
+            android:layout_marginStart="@dimen/space_11"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/main_expandable_child_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/temp_name"
+                android:textColor="@color/text_b11_w_selector"
+                android:textSize="@dimen/text_size_15" />
+
+            <TextView
+                android:id="@+id/main_expandable_child_presence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_8"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/temp_message_request"
+                android:textColor="@color/text_b51_w_selector"
+                android:textSize="@dimen/text_size_10" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height_size"
+        android:layout_marginLeft="72dp"
+        android:layout_marginStart="72dp"
+        android:background="@color/color_y_ec_a0" />
+
+</LinearLayout>

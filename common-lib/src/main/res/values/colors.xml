@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--  规范中的颜色 -->
+    <color name="color_1">#111111</color>
+    <color name="color_1_80">#80111111</color>
+    <color name="color_3">#333333</color>
+    <color name="color_5">#555555</color>
+    <color name="color_6">#666666</color>
+    <color name="color_b_6">#666666</color>
+    <color name="color_8">#888888</color>
+    <color name="color_8a">#8A7659</color>
+    <color name="color_9">#999999</color>
+    <color name="color_ad">#ADB7BF</color>
+    <color name="color_b_3">#374E85</color>
+    <color name="color_b_3_80">#80374E85</color>
+    <color name="color_b_5">#5B7EC5</color>
+    <color name="color_b_5_80">#805B7EC5</color>
+    <color name="color_c0">#C0C0C0</color>
+    <color name="color_e0">#E0E0E0</color>
+    <color name="color_f">#FFFFFF</color>
+    <color name="color_f_80">#80FFFFFF</color>
+    <color name="color_f3">#F3F3F3</color>
+    <color name="color_f3_80">#80F3F3F3</color>
+    <color name="color_r">#FB4748</color>
+    <color name="color_r_80">#80FB4748</color>
+    <color name="color_r_e">#EB413C</color>
+    <color name="color_r_e_80">#80EB413C</color>
+    <color name="color_th">#FFA500</color>
+    <color name="color_th_80">#80FFA500</color>
+    <color name="color_y_f">#FF8200</color>
+    <color name="color_y_f_80">#80FF8200</color>
+    <color name="color_y_ff">#FFF9D8</color>
+    <color name="color_g_2e">#2ea67f</color>
+
+    <!-- freechat 特有颜色 -->
+    <color name="color_r_ff_00">#FF0000</color>
+    <color name="color_r_ff_66">#FF6666</color>
+    <color name="color_w">#fff</color>
+    <color name="color_w_d6">#d6d6d6</color>
+    <color name="color_w_fb">#fbf7ee</color>
+    <color name="color_w_ff">#FFFBF7FF</color>
+    <color name="color_b">#000</color>
+    <color name="color_b_38">#383838</color>
+    <color name="color_b_60">#606060</color>
+    <color name="color_b_11">#111111</color>
+    <color name="color_b_51">#51514b</color>
+    <color name="color_b_c0">#c0c0c0</color>
+    <color name="color_y_e2">#e25c27</color>
+    <color name="color_y_e2_pressed">#FFB6471B</color>
+    <color name="color_y_ec">#ec794b</color>
+    <color name="color_y_ec_a0">#eca07b</color>
+    <color name="translucent">#e0000000</color>
+
+    <!-- android 特有颜色 -->
+    <color name="transparent">#00000000</color>
+    <color name="translucent_background">#80000000</color>
+    <color name="translucent_background_30">#30000000</color>
+    <color name="circle_red_bg">#FF3E32</color>
+    <color name="msg_unread_bg">#FFFDF2</color>
+    <color name="brown_8a">#8a7659</color>
+    <color name="brown_8a_80">#808a7659</color>
+
+    <!--榜单序号数-->
+    <color name="roll_index_01">#FA4B4C</color>
+    <color name="roll_index_02">#FE9205</color>
+    <color name="roll_index_03">#FEAA10</color>
+
+    <!-- TitleBar -->
+    <color name="title_bar_bg">@color/color_f</color>
+    <color name="title_bar_line">#C0C0C0</color>
+
+    <!--Main Tab-->
+    <color name="main_tab_bg">#FFFFFF</color>
+    <color name="main_tab_text_normal">@color/color_9</color>
+    <color name="main_tab_text_pressed">@color/color_th</color>
+
+    <!--Confirm Dialog-->
+    <!-- cancel -->
+    <color name="confirm_dialog_btn_cancel_txt">@color/color_th</color>
+    <color name="confirm_dialog_btn_cancel_bg_normal">@color/color_f3</color>
+    <color name="confirm_dialog_btn_cancel_bg_pressed">@color/color_e0</color>
+    <!-- netrual -->
+    <color name="confirm_dialog_btn_netrual_txt">@color/color_f</color>
+    <color name="confirm_dialog_btn_netrual_bg_normal">@color/color_th</color>
+    <color name="confirm_dialog_btn_netrual_bg_pressed">@color/color_th_80</color>
+    <!-- ok-->
+    <color name="confirm_dialog_btn_ok_txt">@color/color_f</color>
+    <color name="confirm_dialog_btn_ok_bg_normal">@color/color_th</color>
+    <color name="confirm_dialog_btn_ok_bg_pressed">@color/color_th_80</color>
+</resources>

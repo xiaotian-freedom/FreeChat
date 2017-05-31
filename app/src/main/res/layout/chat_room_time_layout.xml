@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chat_room_time_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/space_8"
+    android:paddingTop="@dimen/space_8"
+    android:visibility="gone">
+
+    <TextView
+        android:id="@+id/chat_room_tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_3"
+        android:textSize="@dimen/text_size_10" />
+
+</LinearLayout>

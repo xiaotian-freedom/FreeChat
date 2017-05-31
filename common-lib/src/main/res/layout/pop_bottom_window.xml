@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/space_c_2"
+    android:paddingRight="@dimen/space_c_2">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/transparent" />
+
+    <LinearLayout
+        android:id="@+id/linear_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/space_c_2">
+
+        <LinearLayout
+            android:id="@+id/linear_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_a_3"
+            android:background="@drawable/holder_item_round_selector"
+            android:gravity="center_horizontal"
+            android:paddingBottom="@dimen/space_a_3"
+            android:paddingTop="@dimen/space_a_3"
+            android:text="@string/cancel"
+            android:textColor="@color/color_b_5"
+            android:textSize="@dimen/text_size_5" />
+    </LinearLayout>
+
+</RelativeLayout>

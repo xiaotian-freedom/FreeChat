@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@null"
+    android:paddingBottom="2.0dp">
+
+    <com.common.widget.CheckedImageView
+        android:id="@+id/tab_item_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="6.0dp" />
+
+    <ImageView
+        android:id="@+id/unchecked_msg_icon"
+        android:layout_width="10.0dp"
+        android:layout_height="10.0dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="6.0dp"
+        android:layout_toRightOf="@id/tab_item_image"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/tab_newmsg"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/unchecked_msg_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="4.0dp"
+        android:layout_toRightOf="@id/tab_item_image"
+        android:background="@drawable/msg_unread_red_bg"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:padding="1.5dp"
+        android:text=""
+        android:textColor="@color/color_f"
+        android:textSize="@dimen/text_size_9"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/unchecked_msg_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="1.0dp"
+        android:layout_marginTop="4.0dp"
+        android:layout_toRightOf="@id/tab_item_image"
+        android:background="@drawable/tab_hasnew"
+        android:contentDescription="@null"
+        android:visibility="gone" />
+
+    <com.common.widget.CustomCheckedTextView
+        android:id="@+id/tab_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tab_item_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4.0dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/tab_main_txt_selector"
+        android:textSize="@dimen/text_size_9" />
+
+</RelativeLayout>

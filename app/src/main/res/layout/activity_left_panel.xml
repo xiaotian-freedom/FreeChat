@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.common.widget.BounceScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_b_38"
+        android:layoutAnimation="@anim/list_layout_controller"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_42"
+            android:paddingEnd="@dimen/space_6"
+            android:paddingLeft="@dimen/space_6"
+            android:paddingRight="@dimen/space_6"
+            android:paddingStart="@dimen/space_6">
+
+            <ImageView
+                android:id="@+id/slide_menu_left_head_view"
+                android:layout_width="@dimen/img_size_46"
+                android:layout_height="@dimen/img_size_46"
+                android:contentDescription="@string/slide_menu_left_head_des"
+                android:src="@mipmap/default_head_2" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space_6"
+                android:layout_marginStart="@dimen/space_6"
+                android:layout_toEndOf="@+id/slide_menu_left_head_view"
+                android:layout_toRightOf="@+id/slide_menu_left_head_view"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/slide_menu_left_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/temp_name"
+                    android:textColor="@color/color_w"
+                    android:textSize="@dimen/text_size_15"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/slide_menu_left_position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:text="@string/temp_position"
+                    android:textColor="@color/color_w_d6"
+                    android:textSize="@dimen/text_size_13"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_51"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/slide_menu_left_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@null"
+                android:src="@mipmap/radio_cursor" />
+
+            <RadioGroup
+                android:id="@+id/slide_menu_left_rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_11"
+                android:layout_marginStart="@dimen/space_11"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/slide_menu_left_rb_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableLeft="@mipmap/slide_message"
+                    android:drawablePadding="@dimen/space_8"
+                    android:drawableStart="@mipmap/slide_message"
+                    android:gravity="center_vertical"
+                    android:text="@string/slide_menu_left_message"
+                    android:textColor="@color/color_w"
+                    android:textSize="@dimen/text_size_15" />
+
+                <RadioButton
+                    android:id="@+id/slide_menu_left_rb_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_33"
+                    android:button="@null"
+                    android:drawableLeft="@mipmap/slide_group"
+                    android:drawablePadding="@dimen/space_8"
+                    android:drawableStart="@mipmap/slide_group"
+                    android:gravity="center_vertical"
+                    android:text="@string/slide_menu_left_group"
+                    android:textColor="@color/color_w"
+                    android:textSize="@dimen/text_size_15" />
+
+                <RadioButton
+                    android:id="@+id/slide_menu_left_rb_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_33"
+                    android:button="@null"
+                    android:drawableLeft="@mipmap/slide_contact"
+                    android:drawablePadding="@dimen/space_8"
+                    android:drawableStart="@mipmap/slide_contact"
+                    android:gravity="center_vertical"
+                    android:text="@string/slide_menu_left_contact"
+                    android:textColor="@color/color_w"
+                    android:textSize="@dimen/text_size_15" />
+
+                <RadioButton
+                    android:id="@+id/slide_menu_left_rb_service"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_33"
+                    android:button="@null"
+                    android:drawableLeft="@mipmap/slide_contact"
+                    android:drawablePadding="@dimen/space_8"
+                    android:drawableStart="@mipmap/slide_service"
+                    android:gravity="center_vertical"
+                    android:text="@string/slide_menu_left_service"
+                    android:textColor="@color/color_w"
+                    android:textSize="@dimen/text_size_15" />
+
+                <RadioButton
+                    android:id="@+id/slide_menu_left_rb_settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_33"
+                    android:button="@null"
+                    android:drawableLeft="@mipmap/slide_settings"
+                    android:drawablePadding="@dimen/space_8"
+                    android:drawableStart="@mipmap/slide_settings"
+                    android:gravity="center_vertical"
+                    android:text="@string/slide_menu_left_settings"
+                    android:textColor="@color/color_w"
+                    android:textSize="@dimen/text_size_15" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.common.widget.BounceScrollView>

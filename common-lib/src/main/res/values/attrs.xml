@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ClearableEditText -->
+    <declare-styleable name="ClearableEditText">
+        <attr name="clearBtnDrawable" format="reference" />
+        <attr name="clearBtnDrawableWidth" format="dimension" />
+        <attr name="clearBtnDrawableHeight" format="dimension" />
+    </declare-styleable>
+
+    <!-- TabRadioButton -->
+    <declare-styleable name="TabRadioButton">
+        <attr name="trbChecked" format="boolean" />
+        <attr name="trbButton" format="reference" />
+        <attr name="trbText" format="reference|string" />
+    </declare-styleable>
+
+    <!-- TabRadioGroup -->
+    <declare-styleable name="TabRadioGroup">
+        <attr name="trgCheckedButton" format="integer" />
+        <attr name="trgOrientation">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <!-- ripple background -->
+    <declare-styleable name="RippleBackground">
+        <attr name="rb_color" format="color" />
+        <attr name="rb_strokeWidth" format="dimension" />
+        <attr name="rb_radius" format="dimension" />
+        <attr name="rb_duration" format="integer" />
+        <attr name="rb_rippleAmount" format="integer" />
+        <attr name="rb_scale" format="float" />
+        <attr name="rb_margin_bottom" format="dimension" />
+        <attr name="rb_type" format="enum">
+            <enum name="fillRipple" value="0" />
+            <enum name="strokeRipple" value="1" />
+        </attr>
+        <attr name="rb_location" format="enum">
+            <enum name="center_in_parent" value="0" />
+            <enum name="bottom_in_parent" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <!-- UISwitchButton -->
+    <declare-styleable name="UISwitchButton">
+        <attr name="bmWidth" format="dimension" />
+        <attr name="bmHeight" format="dimension" />
+    </declare-styleable>
+
+    <!-- seek bar -->
+    <declare-styleable name="DoubleSeekBar">
+        <attr name="minValue" format="float" />
+        <attr name="maxValue" format="float" />
+        <attr name="duration" format="float" />
+        <attr name="width" format="dimension">
+            <enum name="fill_parent" value="-1" />
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+        <attr name="height" format="dimension">
+            <enum name="fill_parent" value="-1" />
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+    </declare-styleable>
+
+    <!-- calendar -->
+    <declare-styleable name="CompactCalendarView">
+        <attr name="compactCalendarTextSize" format="dimension" />
+        <attr name="compactCalendarBackgroundColor" format="color" />
+        <attr name="compactCalendarCurrentDayBackgroundColor" format="color" />
+        <attr name="compactCalendarCurrentSelectedDayBackgroundColor" format="color" />
+        <attr name="compactCalendarNormalTextColor" format="color" />
+        <attr name="compactCalendarUnNormalTextColor" format="color" />
+        <attr name="compactCalendarMultiEventIndicatorColor" format="color" />
+        <attr name="compactCalendarTargetHeight" format="dimension" />
+    </declare-styleable>
+
+    <!-- SurroundImageView -->
+    <declare-styleable name="SurroundImageView">
+        <attr name="borderThickness" format="dimension" />
+        <attr name="borderColor" format="reference|color" />
+    </declare-styleable>
+
+    <!-- LoadingView -->
+    <declare-styleable name="LoadingView">
+        <attr name="loading_circle_color" format="color" />
+        <attr name="loading_success_color" format="color" />
+        <attr name="loading_fail_color" format="color" />
+        <attr name="loading_size" format="dimension" />
+        <attr name="loading_stroke_width" format="dimension" />
+        <attr name="loading_duration" format="integer" />
+        <attr name="loading_style" format="enum">
+            <enum name="fill_loading" value="0" />
+            <enum name="stroke_loading" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>

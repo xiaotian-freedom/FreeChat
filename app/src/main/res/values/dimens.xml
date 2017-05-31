@@ -1,0 +1,38 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="space_4">4dp</dimen>
+    <dimen name="space_6">6dp</dimen>
+    <dimen name="space_8">8dp</dimen>
+    <dimen name="space_11">11dp</dimen>
+    <dimen name="space_20">20dp</dimen>
+    <dimen name="space_29">29dp</dimen>
+    <dimen name="space_33">33dp</dimen>
+    <dimen name="space_42">42dp</dimen>
+    <dimen name="space_47">47dp</dimen>
+    <dimen name="space_51">51dp</dimen>
+
+    <dimen name="img_size_46">46dp</dimen>
+    <dimen name="img_size_50">50dp</dimen>
+    <dimen name="img_size_70">70dp</dimen>
+
+    <dimen name="text_size_10">10sp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_13">13sp</dimen>
+    <dimen name="text_size_15">15sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+
+    <dimen name="tool_bar_size">56dp</dimen>
+    <dimen name="slide_menu_left">200dp</dimen>
+    <dimen name="slide_menu_right">280dp</dimen>
+    <dimen name="divider_height_size">0.5dp</dimen>
+
+    <dimen name="chat_emotion_size">20dp</dimen>
+    <dimen name="chat_content_max_width">200dp</dimen>
+    <dimen name="item_menu_size">60dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+</resources>

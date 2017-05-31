@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 消息列表 -->
+    <com.yalantis.phoenix.PullToRefreshView
+        android:id="@+id/swipe_recycler_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:requiresFadingEdge="none">
+
+        <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+            android:id="@+id/main_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_w"
+            android:requiresFadingEdge="none" />
+
+    </com.yalantis.phoenix.PullToRefreshView>
+
+    <!-- 分组列表 -->
+    <com.yalantis.phoenix.PullToRefreshView
+        android:id="@+id/swipe_expandable_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:requiresFadingEdge="none">
+
+        <com.common.widget.PinnedHeaderExpandableListView
+            android:id="@+id/main_expandable_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:groupIndicator="@null"
+            android:requiresFadingEdge="none"
+            android:visibility="gone" />
+
+    </com.yalantis.phoenix.PullToRefreshView>
+
+</LinearLayout>

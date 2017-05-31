@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_solid_with_8dp_corners"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text=""
+            android:textColor="@color/color_3"
+            android:textSize="@dimen/text_size_4" />
+
+        <ImageButton
+            android:id="@+id/ibRight"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:contentDescription="@null"
+            android:paddingLeft="@dimen/space_a_3"
+            android:paddingRight="@dimen/space_a_3"
+            android:scaleType="fitCenter"
+            android:src="@drawable/close_selector" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/space_c_2"
+        android:paddingLeft="@dimen/space_c_2"
+        android:paddingRight="@dimen/space_c_2"
+        android:paddingTop="@dimen/space_a_3" />
+</LinearLayout>

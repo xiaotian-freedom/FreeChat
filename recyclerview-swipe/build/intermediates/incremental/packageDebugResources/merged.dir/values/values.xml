@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00000000</color>
+    <declare-styleable name="SwipeMenuLayout"><attr format="reference" name="leftViewId"/><attr format="reference" name="rightViewId"/><attr format="reference" name="contentViewId"/></declare-styleable>
+</resources>

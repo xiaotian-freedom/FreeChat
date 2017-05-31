@@ -1,0 +1,37 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.1.2-4'
+    repositories {
+        jcenter()
+        maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots'
+        }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0-alpha1'
+        classpath 'com.antfortune.freeline:gradle:0.8.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+        classpath 'me.tatarka:gradle-retrolambda:3.3.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+//        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    tasks.withType(Javadoc).all { enabled = false }
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

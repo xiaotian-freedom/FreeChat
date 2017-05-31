@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include layout="@layout/chat_room_time_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/space_8"
+        android:layout_marginRight="@dimen/space_8"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/space_8"
+        android:paddingTop="@dimen/space_8">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/bg_chat_item_right_blue"
+            android:gravity="center"
+            android:minHeight="@dimen/img_size_50"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/chat_room_tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_8"
+                android:layout_marginRight="@dimen/space_8"
+                android:maxWidth="@dimen/chat_content_max_width"
+                android:text="@string/temp_chat_right"
+                android:textColor="@color/color_f"
+                android:textSize="@dimen/text_size_13"
+                android:visibility="visible" />
+
+            <am.widget.shapeimageview.ShapeImageView
+                android:id="@+id/chat_room_shape_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:clickable="true"
+                android:maxWidth="@dimen/chat_content_max_width"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/bg_shapeimageview"
+                android:visibility="gone"
+                custom:sivBorderColor="@color/colorAccent"
+                custom:sivBorderWidth="2dp"
+                custom:sivForeground="@drawable/bg_common_press_dark"
+                custom:sivHeightScale="1"
+                custom:sivScaleTarget="height"
+                custom:sivShape="Circle"
+                custom:sivWidthScale="1" />
+
+        </LinearLayout>
+
+        <com.common.widget.SurroundImageView
+            android:id="@+id/chat_room_head_view"
+            android:layout_width="@dimen/img_size_50"
+            android:layout_height="@dimen/img_size_50"
+            android:layout_marginLeft="@dimen/space_8"
+            android:layout_marginStart="@dimen/space_8"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/default_head" />
+
+    </LinearLayout>
+
+</LinearLayout>

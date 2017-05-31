@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_solid_round_corner_2dp"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/space_c_1">
+
+    <ImageButton
+        android:id="@+id/map_detail_ib_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@null"
+        android:contentDescription="@null"
+        android:paddingBottom="@dimen/space_b_3"
+        android:paddingLeft="@dimen/space_a_3"
+        android:paddingRight="@dimen/space_a_3"
+        android:paddingTop="@dimen/space_a_3"
+        android:src="@drawable/close_selector" />
+
+    <TextView
+        android:id="@+id/map_detail_com_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:paddingLeft="@dimen/space_c_2"
+        android:paddingRight="@dimen/space_c_2"
+        android:textColor="@color/color_3"
+        android:textSize="@dimen/text_size_2" />
+
+    <TextView
+        android:id="@+id/map_detail_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_c_2"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:paddingLeft="@dimen/space_c_2"
+        android:paddingRight="@dimen/space_c_2"
+        android:textColor="@color/color_5"
+        android:textSize="@dimen/text_size_5" />
+
+    <TextView
+        android:id="@+id/map_detail_go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_c_1"
+        android:layout_marginTop="@dimen/space_b_2"
+        android:drawableEnd="@drawable/map_go"
+        android:drawablePadding="@dimen/space_b_3"
+        android:drawableRight="@drawable/map_go"
+        android:paddingLeft="@dimen/space_c_2"
+        android:paddingRight="@dimen/space_c_2"
+        android:text="@string/map_go_here"
+        android:textColor="@color/color_b_5_selector" />
+
+    <!-- 电话 -->
+    <ListView
+        android:id="@+id/map_detail_tel"
+        android:divider="@color/color_e0"
+        android:dividerHeight="@dimen/divider_size_half"
+        android:paddingLeft="@dimen/space_c_2"
+        android:paddingRight="@dimen/space_c_2"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/map_detail_rl_tel_one"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingBottom="@dimen/space_a_2"-->
+        <!--android:paddingLeft="@dimen/space_c_2"-->
+        <!--android:paddingRight="@dimen/space_c_2"-->
+        <!--android:visibility="gone">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/map_detail_tv_tel_one"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text=""-->
+            <!--android:textColor="@color/color_5"-->
+            <!--android:textSize="@dimen/text_size_5" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/map_detail_tv_tel_one_dial"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:text="@string/click_to_dial"-->
+            <!--android:textColor="@color/color_b_5"-->
+            <!--android:textSize="@dimen/text_size_5"-->
+            <!--tools:ignore="RelativeOverlap,RtlHardcoded" />-->
+
+    <!--</RelativeLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/map_detail_ll_tel_two"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical"-->
+        <!--android:paddingLeft="@dimen/space_c_2"-->
+        <!--android:paddingRight="@dimen/space_c_2"-->
+        <!--android:visibility="gone">-->
+
+        <!--<View-->
+            <!--android:id="@+id/map_detail_tel_line"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/divider_size_half"-->
+            <!--android:background="@color/color_e0" />-->
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:paddingBottom="@dimen/space_a_2"-->
+            <!--android:paddingTop="@dimen/space_a_2">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/map_detail_tv_tel_two"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/color_5"-->
+                <!--android:textSize="@dimen/text_size_5" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/map_detail_tv_tel_two_dial"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:text="@string/click_to_dial"-->
+                <!--android:textColor="@color/color_b_5"-->
+                <!--android:textSize="@dimen/text_size_5"-->
+                <!--tools:ignore="RelativeOverlap,RtlHardcoded" />-->
+
+        <!--</RelativeLayout>-->
+    <!--</LinearLayout>-->
+
+    <TextView
+        android:id="@+id/map_detail_tv_business"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_c_2"
+        android:layout_marginRight="@dimen/space_c_2"
+        android:background="@drawable/yellow_solid_round_corner"
+        android:gravity="center"
+        android:paddingBottom="@dimen/space_a_2"
+        android:paddingTop="@dimen/space_a_2"
+        android:text="@string/map_go_business"
+        android:textColor="@color/color_f"
+        android:textSize="@dimen/text_size_5"
+        android:visibility="visible" />
+
+</LinearLayout>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.common.widget.BounceScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_b_38"
+        android:layoutAnimation="@anim/list_layout_controller"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/slide_menu_right_head_view"
+                android:layout_width="@dimen/img_size_70"
+                android:layout_height="@dimen/img_size_70"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/space_42"
+                android:contentDescription="@null"
+                android:src="@mipmap/default_head_2" />
+
+            <ImageView
+                android:id="@+id/slide_menu_right_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/slide_menu_right_head_view"
+                android:layout_marginEnd="@dimen/space_6"
+                android:layout_marginRight="@dimen/space_6"
+                android:contentDescription="@null"
+                android:src="@mipmap/edit" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/slide_menu_right_tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_29"
+            android:gravity="center_horizontal"
+            android:text="@string/temp_name"
+            android:textColor="@color/color_w"
+            android:textSize="@dimen/text_size_20"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/slide_menu_right_tv_position"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8"
+            android:gravity="center_horizontal"
+            android:text="@string/temp_position"
+            android:textColor="@color/color_w_d6"
+            android:textSize="@dimen/text_size_15" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_47"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:gravity="end"
+                android:text="@string/slide_menu_right_account"
+                android:textColor="@color/color_w"
+                android:textSize="@dimen/text_size_15" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:paddingEnd="@dimen/space_11"
+                android:paddingLeft="@dimen/space_6"
+                android:paddingRight="@dimen/space_11"
+                android:paddingStart="@dimen/space_6"
+                android:text="@string/temp_account"
+                android:textColor="@color/color_w_d6"
+                android:textSize="@dimen/text_size_12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_20"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:gravity="end"
+                android:text="@string/slide_menu_right_sign"
+                android:textColor="@color/color_w"
+                android:textSize="@dimen/text_size_15" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:drawableEnd="@mipmap/arrow_grey_right"
+                android:drawablePadding="@dimen/space_8"
+                android:drawableRight="@mipmap/arrow_grey_right"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="@dimen/space_8"
+                android:maxLines="5"
+                android:paddingEnd="@dimen/space_11"
+                android:paddingLeft="@dimen/space_6"
+                android:paddingRight="@dimen/space_11"
+                android:paddingStart="@dimen/space_6"
+                android:text="@string/temp_sign"
+                android:textColor="@color/color_w_d6"
+                android:textSize="@dimen/text_size_12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_20"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:gravity="end"
+                android:text="@string/slide_menu_right_telephone"
+                android:textColor="@color/color_w"
+                android:textSize="@dimen/text_size_15" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:paddingEnd="@dimen/space_11"
+                android:paddingLeft="@dimen/space_6"
+                android:paddingRight="@dimen/space_11"
+                android:paddingStart="@dimen/space_6"
+                android:text="@string/temp_telephone"
+                android:textColor="@color/color_w_d6"
+                android:textSize="@dimen/text_size_12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_20"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:gravity="end"
+                android:text="@string/slide_menu_right_QQ"
+                android:textColor="@color/color_w"
+                android:textSize="@dimen/text_size_15" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:paddingEnd="@dimen/space_11"
+                android:paddingLeft="@dimen/space_6"
+                android:paddingRight="@dimen/space_11"
+                android:paddingStart="@dimen/space_6"
+                android:text="@string/temp_qq"
+                android:textColor="@color/color_w_d6"
+                android:textSize="@dimen/text_size_12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_20"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:gravity="end"
+                android:text="@string/slide_menu_right_email"
+                android:textColor="@color/color_w"
+                android:textSize="@dimen/text_size_15" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:paddingEnd="@dimen/space_11"
+                android:paddingLeft="@dimen/space_6"
+                android:paddingRight="@dimen/space_11"
+                android:paddingStart="@dimen/space_6"
+                android:text="@string/temp_email"
+                android:textColor="@color/color_w_d6"
+                android:textSize="@dimen/text_size_12" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.common.widget.BounceScrollView>

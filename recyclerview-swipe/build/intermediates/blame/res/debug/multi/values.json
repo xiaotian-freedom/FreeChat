@@ -1,0 +1,102 @@
+[
+    {
+        "outputFile": "/Users/tianshutong/Desktop/FreeChat/recyclerview-swipe/build/intermediates/res/merged/debug/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 47,
+                    "endOffset": 98
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/recyclerview-swipe/src/main/res/values/colors.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 47,
+                        "endOffset": 98
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 623,
+                    "endColumn": 74,
+                    "endOffset": 693
+                },
+                "from": {
+                    "file": "/Users/tianshutong/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/99c48c13d7ab7ab0ab12af81bcf87979/res/values/values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 372,
+                        "endColumn": 74,
+                        "endOffset": 442
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 698,
+                    "endColumn": 75,
+                    "endOffset": 769
+                },
+                "from": {
+                    "file": "/Users/tianshutong/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/99c48c13d7ab7ab0ab12af81bcf87979/res/values/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 447,
+                        "endColumn": 75,
+                        "endOffset": 518
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 774,
+                    "endColumn": 71,
+                    "endOffset": 841
+                },
+                "from": {
+                    "file": "/Users/tianshutong/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/99c48c13d7ab7ab0ab12af81bcf87979/res/values/values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 523,
+                        "endColumn": 71,
+                        "endOffset": 590
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 846,
+                    "endColumn": 65,
+                    "endOffset": 907
+                },
+                "from": {
+                    "file": "/Users/tianshutong/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/99c48c13d7ab7ab0ab12af81bcf87979/res/values/values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 595,
+                        "endColumn": 65,
+                        "endOffset": 656
+                    }
+                }
+            }
+        ]
+    }
+]
