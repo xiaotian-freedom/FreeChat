@@ -1,7 +1,6 @@
 package com.storn.freechat.login.model;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.storn.freechat.common.DBHelper;
 import com.storn.freechat.login.presenter.LoginContract;
@@ -27,11 +26,6 @@ public class LoginRepository implements LoginContract.ILoginRepo {
             }
         }
         return Instance;
-    }
-
-    @Override
-    public void getTask(@NonNull String uName, @NonNull String uPwd, @NonNull LoginTaskCallback callback) {
-
     }
 
     @Override

@@ -31,6 +31,10 @@ public class Constants {
     public static final String TRANS_PROPERTY = "translationY";
     //渐变属性
     public static final String ALPHA_PROPERTY = "alpha";
+    //旋转
+    public static final String ROTATION_X = "rotationX";
+    public static final String ROTATION_Y = "rotationY";
+    public static final String ROTATION = "rotation";
     //缩放属性
     public static final String SCALE_X_PROPERTY = "scaleX";
     public static final String SCALE_Y_PROPERTY = "scaleY";

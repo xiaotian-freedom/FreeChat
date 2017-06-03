@@ -16,13 +16,14 @@
     <string name="error_incorrect_password">用户名或密码不正确</string>
     <string name="error_field_required">请求失败</string>
     <string name="permission_rationale">木有权限</string>
-    <!-- slide menu left -->
+    <!-- nav menu left -->
     <string name="slide_menu_left_head_des">我的头像</string>
     <string name="slide_menu_left_message">我的消息</string>
     <string name="slide_menu_left_group">我的群</string>
     <string name="slide_menu_left_contact">联系人</string>
     <string name="slide_menu_left_service">我的服务</string>
     <string name="slide_menu_left_settings">系统设置</string>
+    <string name="nav_service">服务</string>
     <!-- slide menu right -->
     <string name="slide_menu_right_account">账号:</string>
     <string name="slide_menu_right_sign">个性签名:</string>
@@ -56,7 +57,7 @@
     <string name="create_room_fail">创建失败</string>
 
     <!-- temp strings -->
-    <string name="temp_name">小天一郎君</string>
+    <string name="temp_name">小田一郎君</string>
     <string name="temp_position">移动研发部 android开发攻城狮</string>
     <string name="temp_account">xiaotianyilang</string>
     <string name="temp_sign">人并不是因为美丽才可爱\n而是因为可爱才美丽！</string>
@@ -73,4 +74,5 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="empty_view_tip">暂无内容</string>
 </resources>

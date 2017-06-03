@@ -11,7 +11,7 @@
         android:paddingTop="50dp">
 
         <android.support.v7.widget.CardView
-            android:id="@+id/cv_add"
+            android:id="@+id/cvAdd"
             android:layout_width="match_parent"
             android:layout_height="320dp"
             android:layout_gravity="center_horizontal"
@@ -50,7 +50,7 @@
                         android:theme="@style/TextLabel">
 
                         <EditText
-                            android:id="@+id/et_username"
+                            android:id="@+id/etUsername"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/selector_bg_edit_2"
@@ -79,7 +79,7 @@
                         android:theme="@style/TextLabel">
 
                         <EditText
-                            android:id="@+id/et_password"
+                            android:id="@+id/etPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/selector_bg_edit_2"
@@ -108,7 +108,7 @@
                         android:theme="@style/TextLabel">
 
                         <EditText
-                            android:id="@+id/et_repeatpassword"
+                            android:id="@+id/etRepeatPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/selector_bg_edit_2"
@@ -123,7 +123,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/bt_go"
+                    android:id="@+id/btGo"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center_horizontal"

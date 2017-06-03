@@ -2,10 +2,42 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_w"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.storn.freechat.HomeActivity"
     tools:showIn="@layout/app_bar_home">
+
+    <!-- 消息列表 -->
+    <com.yalantis.phoenix.PullToRefreshView
+        android:id="@+id/swipeMessageRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+            android:id="@+id/mainMessageRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.yalantis.phoenix.PullToRefreshView>
+
+    <!-- 分组列表 -->
+    <com.yalantis.phoenix.PullToRefreshView
+        android:id="@+id/swipeExpandableRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.common.widget.PinnedHeaderExpandableListView
+            android:id="@+id/mainExpandableListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:groupIndicator="@null"
+            android:visibility="gone" />
+
+    </com.yalantis.phoenix.PullToRefreshView>
 
 </android.support.constraint.ConstraintLayout>

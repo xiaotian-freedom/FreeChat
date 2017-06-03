@@ -108,4 +108,28 @@ public class AnimationUtil {
         animatorSet.playTogether(scaleXAnim, scaleYAnim);
         animatorSet.start();
     }
+
+    /**
+     * 顺时针旋转
+     * @param view
+     */
+    public static void rotationAnim(View view) {
+        view.clearAnimation();
+        ObjectAnimator rotation = ObjectAnimator.ofFloat(view, Constants.ROTATION, 0, 135);
+        rotation.setDuration(Constants.ANIM_300);
+        rotation.setInterpolator(new DecelerateInterpolator());
+        rotation.start();
+    }
+
+    /**
+     * 逆时针旋转
+     * @param view
+     */
+    public static void reverseRotation(View view) {
+        view.clearAnimation();
+        ObjectAnimator rotation = ObjectAnimator.ofFloat(view, Constants.ROTATION, 135, 0);
+        rotation.setDuration(Constants.ANIM_300);
+        rotation.setInterpolator(new DecelerateInterpolator());
+        rotation.start();
+    }
 }

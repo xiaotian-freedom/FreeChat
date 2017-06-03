@@ -352,7 +352,6 @@ public class ConfirmDialog extends Dialog {
 
             LinearLayout llContent = (LinearLayout) layout.findViewById(R.id.llContent);
             if (customView != null) {
-                llContent.removeAllViews();
                 llContent.addView(customView);
             } else {
                 TextView tvMessage = (TextView) layout.findViewById(R.id.tvMessage);

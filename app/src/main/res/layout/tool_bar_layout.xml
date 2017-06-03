@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/appbar_layout"
+    android:fitsSystemWindows="true"
+    android:theme="@style/AppTheme.AppBarOverlay">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ProgressBar
+                android:id="@+id/progressView"
+                style="@android:style/Widget.Holo.ProgressBar"
+                android:layout_width="@dimen/progress_maxWidth"
+                android:layout_height="@dimen/progress_maxHeight"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/mainToolBarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_w"
+                android:textSize="@dimen/text_size_20" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/mainToolBarRight"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/space_8"
+            android:contentDescription="@null"
+            android:padding="@dimen/space_6"
+            android:src="@mipmap/slide_user" />
+
+    </android.support.v7.widget.Toolbar>
+
+</android.support.design.widget.AppBarLayout>

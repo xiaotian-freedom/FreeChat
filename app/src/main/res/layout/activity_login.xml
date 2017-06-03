@@ -7,7 +7,7 @@
     tools:context="com.storn.freechat.login.ui.LoginActivity">
 
     <ImageView
-        android:id="@+id/blur_background"
+        android:id="@+id/blurBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contentDescription="@null"
@@ -64,7 +64,7 @@
                     android:textColorHint="#c5c5c5">
 
                     <AutoCompleteTextView
-                        android:id="@+id/account"
+                        android:id="@+id/mAccountView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/selector_bg_edit"
@@ -91,7 +91,7 @@
                     android:textColorHint="#c5c5c5">
 
                     <EditText
-                        android:id="@+id/password"
+                        android:id="@+id/mPasswordView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/selector_bg_edit"
@@ -113,7 +113,7 @@
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/login_sign_in_button"
+                    android:id="@+id/mLoginFormView"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:background="@drawable/bt_shape"
@@ -130,7 +130,7 @@
                 <!--android:visibility="gone" />-->
 
                 <storn.github.io.loadingview.CircleLoadingView
-                    android:id="@+id/login_progress"
+                    android:id="@+id/mProgressView"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:visibility="gone"
@@ -155,7 +155,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/login_fab"
+        android:id="@+id/loginFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@id/login_card_view"

@@ -68,9 +68,52 @@ public class SwipeMenuRecyclerView extends RecyclerView {
 
     private boolean isInterceptTouchEvent = true;
 
+    private View mEmptyView;
+
     private SwipeMenuCreator mSwipeMenuCreator;
     private OnSwipeMenuItemClickListener mSwipeMenuItemClickListener;
     private DefaultItemTouchHelper mDefaultItemTouchHelper;
+
+    private AdapterDataObserver emptyObserver = new AdapterDataObserver() {
+        @Override
+        public void onChanged() {
+            Adapter<?> adapter = getAdapter();
+            if (adapter != null && mEmptyView != null) {
+                if (adapter.getItemCount() == 0) {
+                    mEmptyView.setVisibility(VISIBLE);
+                    SwipeMenuRecyclerView.this.setVisibility(GONE);
+                } else {
+                    mEmptyView.setVisibility(GONE);
+                    SwipeMenuRecyclerView.this.setVisibility(VISIBLE);
+                }
+            }
+        }
+
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount) {
+            onChanged();
+        }
+
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount, Object payload) {
+            onChanged();
+        }
+
+        @Override
+        public void onItemRangeInserted(int positionStart, int itemCount) {
+            onChanged();
+        }
+
+        @Override
+        public void onItemRangeRemoved(int positionStart, int itemCount) {
+            onChanged();
+        }
+
+        @Override
+        public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
+            onChanged();
+        }
+    };
 
     public SwipeMenuRecyclerView(Context context) {
         this(context, null);
@@ -90,6 +133,15 @@ public class SwipeMenuRecyclerView extends RecyclerView {
             mDefaultItemTouchHelper = new DefaultItemTouchHelper();
             mDefaultItemTouchHelper.attachToRecyclerView(this);
         }
+    }
+
+    /**
+     * set emptyView
+     *
+     * @param emptyView
+     */
+    public void setEmptyView(View emptyView) {
+        mEmptyView = emptyView;
     }
 
     /**
@@ -237,12 +289,17 @@ public class SwipeMenuRecyclerView extends RecyclerView {
 
     @Override
     public void setAdapter(Adapter adapter) {
+        super.setAdapter(adapter);
+
         if (adapter instanceof SwipeMenuAdapter) {
             SwipeMenuAdapter menuAdapter = (SwipeMenuAdapter) adapter;
             menuAdapter.setSwipeMenuCreator(mDefaultMenuCreator);
             menuAdapter.setSwipeMenuItemClickListener(mDefaultMenuItemClickListener);
         }
-        super.setAdapter(adapter);
+        if (adapter != null) {
+            adapter.registerAdapterDataObserver(emptyObserver);
+        }
+        emptyObserver.onChanged();
     }
 
     /**

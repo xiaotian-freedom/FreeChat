@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
     android:background="@drawable/side_nav_bar"
@@ -13,23 +12,31 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/nav_head_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/slide_menu_left_head_des"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:src="@mipmap/default_head" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Android Studio"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-    <TextView
-        android:id="@+id/textView"
+        android:id="@+id/nav_txt_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="android.studio@android.com" />
+        android:layout_marginTop="@dimen/space_a_1"
+        android:text="@string/temp_name"
+        android:textColor="@color/color_w"
+        android:textSize="@dimen/text_size_15"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nav_txt_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8"
+        android:text="@string/temp_position"
+        android:textColor="@color/color_w_d6"
+        android:textSize="@dimen/text_size_13"
+        android:textStyle="normal" />
 
 </LinearLayout>
