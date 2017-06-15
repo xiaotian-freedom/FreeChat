@@ -4,6 +4,8 @@ import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.support.v4.app.ActivityOptionsCompat
 import android.text.TextUtils
 import android.transition.Explode
@@ -34,6 +36,7 @@ class LoginPresenter : BeamBasePresenter<LoginActivity>(), LoginContract.Present
 
     private var loginRepository: LoginRepository? = null
     private val mAccountList = ArrayList<UserVo>()
+    private val mHandler = Handler(Looper.getMainLooper())
 
     override fun onCreateView(view: LoginActivity) {
         super.onCreateView(view)
@@ -47,7 +50,7 @@ class LoginPresenter : BeamBasePresenter<LoginActivity>(), LoginContract.Present
     }
 
     private fun initData() {
-        if ( mAccountList.size == 0) {
+        if (mAccountList.size == 0) {
             return
         }
         val userVo = mAccountList[mAccountList.size - 1]
@@ -192,6 +195,7 @@ class LoginPresenter : BeamBasePresenter<LoginActivity>(), LoginContract.Present
             saveAccount(userName, password)
             val userVo = UserVo()
             userVo.name = userName
+            userVo.password = password
             try {
                 val vCardManager = VCardManager.getInstanceFor(conn)
                 val vCard = vCardManager.loadVCard()
@@ -199,7 +203,14 @@ class LoginPresenter : BeamBasePresenter<LoginActivity>(), LoginContract.Present
                 if (TextUtils.isEmpty(jid)) {
                     jid = vCard.to
                 }
+                if (!TextUtils.isEmpty(vCard.nickName)) {
+                    userVo.nickName = vCard.nickName
+                } else if (!TextUtils.isEmpty(vCard.firstName)) {
+                    userVo.nickName = vCard.firstName
+                }
                 userVo.jid = jid
+                PreferenceTool.putString(Constants.LOGIN_JID, jid)
+                PreferenceTool.commit()
             } catch (e: SmackException.NoResponseException) {
                 e.printStackTrace()
             } catch (e: XMPPException.XMPPErrorException) {
@@ -214,8 +225,8 @@ class LoginPresenter : BeamBasePresenter<LoginActivity>(), LoginContract.Present
             PreferenceTool.putString(Constants.LOGIN_UNAME, userName)
             PreferenceTool.putString(Constants.LOGIN_UPASS, password)
             PreferenceTool.commit()
-            view.runOnUiThread { goToMainAct() }
 
+            mHandler.postDelayed({ goToMainAct() }, Constants.DELAY_1000.toLong())
         } else {
             view.runOnUiThread { view.loadFailed() }
         }

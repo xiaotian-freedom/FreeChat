@@ -33,9 +33,7 @@ class SplashActivity : BaseActivity() {
 
     private fun setupWindowTransition() {
         val fadeIn = Fade(Fade.IN)
-        val fadeOut = Fade(Fade.OUT)
         window.enterTransition = fadeIn
-        window.exitTransition = fadeOut
     }
 
     private inner class SplashRunnable : Runnable {

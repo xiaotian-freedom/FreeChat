@@ -11,23 +11,49 @@
     tools:showIn="@layout/app_bar_home">
 
     <!-- 消息列表 -->
-    <com.yalantis.phoenix.PullToRefreshView
-        android:id="@+id/swipeMessageRefreshLayout"
+    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+        android:id="@+id/messageRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:soundEffectsEnabled="true"
+        app:tr_enable_loadmore="false"
+        app:tr_enable_refresh="true">
 
         <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
             android:id="@+id/mainMessageRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
 
-    </com.yalantis.phoenix.PullToRefreshView>
+    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+
+    <!-- 群列表 -->
+    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+        android:id="@+id/groupRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:soundEffectsEnabled="true"
+        android:visibility="gone"
+        app:tr_enable_loadmore="false"
+        app:tr_enable_refresh="true">
+
+        <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+            android:id="@+id/mainGroupRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+
+    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
 
     <!-- 分组列表 -->
-    <com.yalantis.phoenix.PullToRefreshView
-        android:id="@+id/swipeExpandableRefreshLayout"
+    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+        android:id="@+id/expandableRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:soundEffectsEnabled="true"
+        android:visibility="gone"
+        app:tr_enable_loadmore="false"
+        app:tr_enable_refresh="true">
 
         <com.common.widget.PinnedHeaderExpandableListView
             android:id="@+id/mainExpandableListView"
@@ -36,8 +62,8 @@
             android:divider="@null"
             android:dividerHeight="0dp"
             android:groupIndicator="@null"
-            android:visibility="gone" />
+            android:overScrollMode="never" />
 
-    </com.yalantis.phoenix.PullToRefreshView>
+    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
 
 </android.support.constraint.ConstraintLayout>

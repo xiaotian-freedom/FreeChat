@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/chat_room_root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -33,22 +34,30 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <com.storn.freechat.widget.KeySoftListView
-        android:id="@+id/refreshableView"
+    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+        android:id="@+id/over_scroll_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/chat_bottom_layout"
         android:layout_below="@+id/main_tool_bar"
         android:background="@mipmap/bg_chat_list_pink"
-        android:cacheColorHint="@color/transparent"
-        android:divider="@null"
-        android:drawSelectorOnTop="false"
-        android:fadingEdge="none"
-        android:focusable="true"
-        android:transcriptMode="normal"
-        android:footerDividersEnabled="true"
-        android:headerDividersEnabled="true"
-        android:listSelector="@color/transparent" />
+        app:tr_pureScrollMode_on="true">
+
+        <com.common.widget.TopAutoRefreshListView
+            android:id="@+id/refreshableView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@color/transparent"
+            android:divider="@null"
+            android:drawSelectorOnTop="false"
+            android:focusable="true"
+            android:footerDividersEnabled="true"
+            android:headerDividersEnabled="true"
+            android:listSelector="@color/transparent"
+            android:overScrollMode="never"
+            android:transcriptMode="normal" />
+
+    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
 
     <!-- bottom -->
     <LinearLayout
@@ -75,8 +84,8 @@
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="3dp"
             android:layout_marginRight="3dp"
-            android:background="@drawable/chat_edit_normal"
             android:layout_weight="1"
+            android:background="@drawable/chat_edit_normal"
             android:inputType="textMultiLine"
             android:paddingBottom="@dimen/space_8"
             android:paddingEnd="@dimen/space_6"

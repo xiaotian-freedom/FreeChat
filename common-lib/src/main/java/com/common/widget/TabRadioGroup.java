@@ -300,7 +300,7 @@ public class TabRadioGroup extends LinearLayout {
          * @param group     the group in which the checked radio button has changed
          * @param checkedId the unique identifier of the newly checked radio button
          */
-        public void onCheckedChanged(TabRadioGroup group, int checkedId);
+        void onCheckedChanged(TabRadioGroup group, int checkedId);
     }
 
     private class CheckedStateTracker implements OnClickListener {
@@ -345,7 +345,7 @@ public class TabRadioGroup extends LinearLayout {
                     id = child.hashCode();
                     child.setId(id);
                 }
-                ((TabRadioButton) child).setOnClickListener(mChildOnClickListener);
+                child.setOnClickListener(mChildOnClickListener);
             }
 
             if (mOnHierarchyChangeListener != null) {

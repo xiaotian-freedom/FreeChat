@@ -45,10 +45,7 @@ public class FixedVerticalListView extends ListView {
 
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-            if (Math.abs(distanceY) / Math.abs(distanceX) > 2) {
-                return true;//截获事件
-            }
-            return false;
+            return Math.abs(distanceY) / Math.abs(distanceX) > 2;
         }
     }
 }

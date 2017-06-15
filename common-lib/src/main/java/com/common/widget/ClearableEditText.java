@@ -178,7 +178,7 @@ public class ClearableEditText extends EditText implements
      * @author Administrator
      */
     public interface OnClearBtnClickListener {
-        public void onClearBtnClick();
+        void onClearBtnClick();
     }
 
     /**

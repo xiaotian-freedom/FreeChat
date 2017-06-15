@@ -119,11 +119,7 @@ public class CalendarUtils {
 	}
 	
 	public static boolean isPreDay( int year, int month, int day){
-		if(getGapCount(year,month,day,theYear,theMonth,theDay)<0){
-			return true;
-		}else{
-			return false;
-		}
+        return getGapCount(year, month, day, theYear, theMonth, theDay) < 0;
 	}
 
 	public static void set(int year, int month, int day) {

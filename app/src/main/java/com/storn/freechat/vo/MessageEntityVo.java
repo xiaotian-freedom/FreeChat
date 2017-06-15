@@ -1,12 +1,16 @@
 package com.storn.freechat.vo;
 
+import java.io.Serializable;
+
 /**
  * 主页消息vo
  *
  * @author tianshutong
  *         Created by tianshutong on 2017/1/15.
  */
-public class MessageEntityVo {
+public class MessageEntityVo implements Serializable{
+
+    public int mId;
 
     public String fromJid;
 
@@ -19,4 +23,20 @@ public class MessageEntityVo {
     public long time;
 
     public int msgCount;//未读消息数量
+
+    public MessageEntityVo() {
+    }
+
+    @Override
+    public String toString() {
+        return "MessageEntityVo{" +
+                "mId=" + mId +
+                ", fromJid='" + fromJid + '\'' +
+                ", myJid='" + myJid + '\'' +
+                ", name='" + name + '\'' +
+                ", content='" + content + '\'' +
+                ", time=" + time +
+                ", msgCount=" + msgCount +
+                '}';
+    }
 }

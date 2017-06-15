@@ -20,43 +20,34 @@ import java.util.*
  * Created by tianshutong on 2016/12/22.
  */
 
-class MainFriendsAdapter(private val mContext: Context, private val groupList: ArrayList<FriendsGroupVo>?, private val childList: ArrayList<List<FriendsEntityVo>>?) : BaseExpandableListAdapter() {
+class MainFriendsAdapter(private val mContext: Context, private val groupList: ArrayList<FriendsGroupVo>, private val childList: ArrayList<List<FriendsEntityVo>>) : BaseExpandableListAdapter() {
 
     fun refreshData(groupList: ArrayList<FriendsGroupVo>?, childList: ArrayList<List<FriendsEntityVo>>?) {
         if (groupList != null && groupList.size != 0) {
-            this.groupList!!.clear()
+            this.groupList.clear()
             this.groupList.addAll(groupList)
         }
         if (childList != null && childList.size != 0) {
-            this.childList?.clear()
-            this.childList?.addAll(childList)
+            this.childList.clear()
+            this.childList.addAll(childList)
         }
         notifyDataSetChanged()
     }
 
     override fun getGroupCount(): Int {
-        if (groupList != null) {
-            return groupList.size
-        }
-        return 0
+        return groupList.size
     }
 
     override fun getChildrenCount(i: Int): Int {
-        if (childList != null) {
-            return childList[i].size
-        }
-        return 0
+        return childList[i].size
     }
 
     override fun getGroup(i: Int): Any {
-        return if (groupList == null) 0 else groupList[i]
+        return groupList[i]
     }
 
     override fun getChild(i: Int, i1: Int): Any {
-        if (childList != null) {
-            return childList[i][i1]
-        }
-        return Any()
+        return childList[i][i1]
     }
 
     override fun getGroupId(i: Int): Long {
@@ -81,7 +72,7 @@ class MainFriendsAdapter(private val mContext: Context, private val groupList: A
         } else {
             groupHolder = convertView.tag as GroupHolder
         }
-        val mainGroup = groupList!![i]
+        val mainGroup = groupList[i]
         groupHolder.tvGroupName.text = mainGroup.name
         groupHolder.tvChildCount.text = mainGroup.count.toString()
         return convertView
@@ -99,7 +90,7 @@ class MainFriendsAdapter(private val mContext: Context, private val groupList: A
             childHolder = convertView.tag as ChildHolder
         }
 
-        val mainChild = childList?.get(i)?.get(i1) as FriendsEntityVo
+        val mainChild = childList[i][i1]
         childHolder.tvChildName.text = mainChild.name
         childHolder.tvChildPresence.text = mainChild.presence
         val color = (Math.random() * Constants.COLORS.size).toInt()

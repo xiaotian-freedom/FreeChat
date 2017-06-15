@@ -9,5 +9,8 @@ public class GroupEntityVo {
 
     public String roomName;
     public String roomJid;
+    public String description;
+    public String subject;
+    public int occupantsCount;
 
 }

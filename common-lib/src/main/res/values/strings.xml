@@ -116,5 +116,8 @@
     <string name="cube_views_load_more_loaded_no_more">···到底了,去其他页面看看吧···</string>
     <string name="cube_views_load_more_loaded_empty">结果为空. :(</string>
     <string name="cube_views_load_more_error">点击或上拉重新加载</string>
+    <string name="chat_copy">复制</string>
+    <string name="chat_share">转发</string>
+    <string name="chat_delete">删除</string>
 
 </resources>

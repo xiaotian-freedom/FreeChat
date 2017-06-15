@@ -1,0 +1,544 @@
+[
+    {
+        "outputFile": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/res/merged/androidTest/debug/values-zh/values-zh.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 52,
+                    "endOffset": 103
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 52,
+                        "endOffset": 103
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 108,
+                    "endColumn": 55,
+                    "endOffset": 159
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 108,
+                        "endColumn": 55,
+                        "endOffset": 159
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 164,
+                    "endColumn": 54,
+                    "endOffset": 214
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 164,
+                        "endColumn": 54,
+                        "endOffset": 214
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 219,
+                    "endColumn": 49,
+                    "endOffset": 264
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 219,
+                        "endColumn": 49,
+                        "endOffset": 264
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 269,
+                    "endColumn": 62,
+                    "endOffset": 327
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 269,
+                        "endColumn": 62,
+                        "endOffset": 327
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 332,
+                    "endColumn": 59,
+                    "endOffset": 387
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 332,
+                        "endColumn": 59,
+                        "endOffset": 387
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 392,
+                    "endColumn": 54,
+                    "endOffset": 442
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 392,
+                        "endColumn": 54,
+                        "endOffset": 442
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 447,
+                    "endColumn": 60,
+                    "endOffset": 503
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 447,
+                        "endColumn": 60,
+                        "endOffset": 503
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 508,
+                    "endColumn": 53,
+                    "endOffset": 557
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 508,
+                        "endColumn": 53,
+                        "endOffset": 557
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 562,
+                    "endColumn": 74,
+                    "endOffset": 632
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 562,
+                        "endColumn": 74,
+                        "endOffset": 632
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 637,
+                    "endColumn": 65,
+                    "endOffset": 698
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 637,
+                        "endColumn": 65,
+                        "endOffset": 698
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 703,
+                    "endColumn": 70,
+                    "endOffset": 769
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 703,
+                        "endColumn": 70,
+                        "endOffset": 769
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 774,
+                    "endColumn": 82,
+                    "endOffset": 852
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 774,
+                        "endColumn": 82,
+                        "endOffset": 852
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 857,
+                    "endColumn": 64,
+                    "endOffset": 917
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 857,
+                        "endColumn": 64,
+                        "endOffset": 917
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/res/merged/androidTest/debug/values-zh/values-zh.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 52,
+                    "endOffset": 103
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 52,
+                        "endOffset": 103
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 108,
+                    "endColumn": 55,
+                    "endOffset": 159
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 108,
+                        "endColumn": 55,
+                        "endOffset": 159
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 164,
+                    "endColumn": 54,
+                    "endOffset": 214
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 164,
+                        "endColumn": 54,
+                        "endOffset": 214
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 219,
+                    "endColumn": 49,
+                    "endOffset": 264
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 219,
+                        "endColumn": 49,
+                        "endOffset": 264
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 269,
+                    "endColumn": 62,
+                    "endOffset": 327
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 269,
+                        "endColumn": 62,
+                        "endOffset": 327
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 332,
+                    "endColumn": 59,
+                    "endOffset": 387
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 332,
+                        "endColumn": 59,
+                        "endOffset": 387
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 392,
+                    "endColumn": 54,
+                    "endOffset": 442
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 392,
+                        "endColumn": 54,
+                        "endOffset": 442
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 447,
+                    "endColumn": 60,
+                    "endOffset": 503
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 447,
+                        "endColumn": 60,
+                        "endOffset": 503
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 508,
+                    "endColumn": 53,
+                    "endOffset": 557
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 508,
+                        "endColumn": 53,
+                        "endOffset": 557
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 562,
+                    "endColumn": 74,
+                    "endOffset": 632
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 562,
+                        "endColumn": 74,
+                        "endOffset": 632
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 637,
+                    "endColumn": 65,
+                    "endOffset": 698
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 637,
+                        "endColumn": 65,
+                        "endOffset": 698
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 703,
+                    "endColumn": 70,
+                    "endOffset": 769
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 703,
+                        "endColumn": 70,
+                        "endOffset": 769
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 774,
+                    "endColumn": 82,
+                    "endOffset": 852
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 774,
+                        "endColumn": 82,
+                        "endOffset": 852
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 857,
+                    "endColumn": 64,
+                    "endOffset": 917
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/values-zh/values-zh.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 857,
+                        "endColumn": 64,
+                        "endOffset": 917
+                    }
+                }
+            }
+        ]
+    }
+]

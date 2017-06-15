@@ -11,26 +11,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/space_8"
-        android:layout_marginRight="@dimen/space_8"
         android:gravity="end"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/space_8"
         android:paddingTop="@dimen/space_8">
 
         <LinearLayout
+            android:id="@+id/chat_room_content_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@mipmap/bg_chat_item_right_blue"
             android:gravity="center"
-            android:minHeight="@dimen/img_size_50"
+            android:minHeight="@dimen/chat_bg_style_size"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/chat_room_tv_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/space_8"
-                android:layout_marginRight="@dimen/space_8"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/space_8"
                 android:maxWidth="@dimen/chat_content_max_width"
                 android:text="@string/temp_chat_right"
                 android:textColor="@color/color_f"
@@ -42,7 +42,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:clickable="true"
                 android:maxWidth="@dimen/chat_content_max_width"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/bg_shapeimageview"
@@ -59,9 +58,8 @@
 
         <com.common.widget.SurroundImageView
             android:id="@+id/chat_room_head_view"
-            android:layout_width="@dimen/img_size_50"
-            android:layout_height="@dimen/img_size_50"
-            android:layout_marginLeft="@dimen/space_8"
+            android:layout_width="@dimen/img_size_46"
+            android:layout_height="@dimen/img_size_46"
             android:layout_marginStart="@dimen/space_8"
             android:contentDescription="@null"
             android:scaleType="centerCrop"

@@ -3,7 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="BaseTheme">
         <item name="windowNoTitle">true</item>
-        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+        <!--<item name="android:windowAnimationStyle">@style/AnimationActivity</item>-->
     </style>
 
     <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">

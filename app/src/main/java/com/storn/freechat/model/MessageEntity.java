@@ -12,6 +12,8 @@ import com.orm.androrm.field.IntegerField;
  */
 public class MessageEntity extends Model {
 
+    public IntegerField mId;
+
     public CharField fromJid;
 
     public CharField myJid;
@@ -25,6 +27,7 @@ public class MessageEntity extends Model {
     public IntegerField msgCount;
 
     public MessageEntity() {
+        this.mId = new IntegerField();
         this.fromJid = new CharField();
         this.myJid = new CharField();
         this.name = new CharField();

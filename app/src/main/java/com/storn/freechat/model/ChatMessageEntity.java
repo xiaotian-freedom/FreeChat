@@ -10,6 +10,7 @@ import com.orm.androrm.field.IntegerField;
  */
 public class ChatMessageEntity extends Model {
 
+    public IntegerField cId;
     public CharField fromJid;
     public CharField myJid;
     public CharField content;
@@ -17,6 +18,7 @@ public class ChatMessageEntity extends Model {
     public IntegerField type;
 
     public ChatMessageEntity() {
+        this.cId = new IntegerField();
         this.fromJid = new CharField();
         this.myJid = new CharField();
         this.content = new CharField();

@@ -1,0 +1,273 @@
+[
+    {
+        "outputFile": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/res/merged/debug/values-zh/values-zh.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 52,
+                    "endOffset": 103
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/res/values-zh/cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 526,
+                        "endColumn": 57,
+                        "endOffset": 579
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 108,
+                    "endColumn": 55,
+                    "endOffset": 159
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/res/values-zh/cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 346,
+                        "endColumn": 60,
+                        "endOffset": 402
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 164,
+                    "endColumn": 54,
+                    "endOffset": 214
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/res/values-zh/cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 466,
+                        "endColumn": 59,
+                        "endOffset": 521
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 219,
+                    "endColumn": 49,
+                    "endOffset": 264
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/res/values-zh/cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 49,
+                        "endOffset": 101
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 269,
+                    "endColumn": 62,
+                    "endOffset": 327
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/res/values-zh/cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 106,
+                        "endColumn": 62,
+                        "endOffset": 164
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 332,
+                    "endColumn": 59,
+                    "endOffset": 387
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/res/values-zh/cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 285,
+                        "endColumn": 59,
+                        "endOffset": 340
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 392,
+                    "endColumn": 54,
+                    "endOffset": 442
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/res/values-zh/cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 230,
+                        "endColumn": 54,
+                        "endOffset": 280
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 447,
+                    "endColumn": 60,
+                    "endOffset": 503
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/res/values-zh/cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 169,
+                        "endColumn": 60,
+                        "endOffset": 225
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 508,
+                    "endColumn": 53,
+                    "endOffset": 557
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/res/values-zh/cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 407,
+                        "endColumn": 58,
+                        "endOffset": 461
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 562,
+                    "endColumn": 74,
+                    "endOffset": 632
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/res/values-zh/cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 650,
+                        "endColumn": 74,
+                        "endOffset": 720
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 637,
+                    "endColumn": 65,
+                    "endOffset": 698
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/res/values-zh/cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 879,
+                        "endColumn": 65,
+                        "endOffset": 940
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 703,
+                    "endColumn": 70,
+                    "endOffset": 769
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/res/values-zh/cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 808,
+                        "endColumn": 70,
+                        "endOffset": 874
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 774,
+                    "endColumn": 82,
+                    "endOffset": 852
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/res/values-zh/cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 725,
+                        "endColumn": 82,
+                        "endOffset": 803
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 857,
+                    "endColumn": 64,
+                    "endOffset": 917
+                },
+                "from": {
+                    "file": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/res/values-zh/cube_ptr_string.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 585,
+                        "endColumn": 64,
+                        "endOffset": 645
+                    }
+                }
+            }
+        ]
+    }
+]

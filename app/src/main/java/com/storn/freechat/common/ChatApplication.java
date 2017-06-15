@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import com.common.common.Constants;
 import com.common.util.PreferenceTool;
 import com.storn.freechat.manager.XMPPConnectionManager;
+import com.storn.freechat.util.DBHelper;
 import com.storn.freechat.vo.UserVo;
 
 import org.jivesoftware.smack.SmackException;
@@ -49,6 +50,9 @@ public class ChatApplication extends Application {
                         jid = vCard.getTo();
                     }
                     userVo.jid = jid;
+                    userVo.nickName = vCard.getNickName();
+                    PreferenceTool.putString(Constants.LOGIN_JID, jid);
+                    PreferenceTool.commit();
                 } catch (SmackException.NoResponseException | XMPPException.XMPPErrorException
                         | SmackException.NotConnectedException e) {
                     e.printStackTrace();

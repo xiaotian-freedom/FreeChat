@@ -6,6 +6,9 @@ package com.storn.freechat.vo;
  */
 public class ChatMessageEntityVo {
 
+    //主键
+    public int cId;
+
     //对方的jid
     public String fromJid;
 

@@ -2,7 +2,7 @@ package com.storn.freechat.login.model;
 
 import android.content.Context;
 
-import com.storn.freechat.common.DBHelper;
+import com.storn.freechat.util.DBHelper;
 import com.storn.freechat.login.presenter.LoginContract;
 import com.storn.freechat.vo.UserVo;
 

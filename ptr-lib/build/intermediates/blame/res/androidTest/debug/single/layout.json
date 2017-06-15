@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/res/merged/androidTest/debug/layout/cube_ptr_classic_default_header.xml",
+        "source": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/layout/cube_ptr_classic_default_header.xml"
+    },
+    {
+        "merged": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/res/merged/androidTest/debug/layout/cube_views_load_more_default_footer.xml",
+        "source": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/layout/cube_views_load_more_default_footer.xml"
+    },
+    {
+        "merged": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/res/merged/androidTest/debug/layout/cube_ptr_simple_loading.xml",
+        "source": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/layout/cube_ptr_simple_loading.xml"
+    },
+    {
+        "merged": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/res/merged/androidTest/debug/layout/cube_ptr_classic_default_header.xml",
+        "source": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/layout/cube_ptr_classic_default_header.xml"
+    },
+    {
+        "merged": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/res/merged/androidTest/debug/layout/custom_refresh_header.xml",
+        "source": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/layout/custom_refresh_header.xml"
+    },
+    {
+        "merged": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/res/merged/androidTest/debug/layout/cube_views_load_more_default_footer.xml",
+        "source": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/layout/cube_views_load_more_default_footer.xml"
+    },
+    {
+        "merged": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/res/merged/androidTest/debug/layout/custom_refresh_header.xml",
+        "source": "/Users/tianshutong/Desktop/FreeChat/ptr-lib/build/intermediates/bundles/debug/res/layout/custom_refresh_header.xml"
+    },
+    {
+        "merged": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/res/merged/androidTest/debug/layout/cube_ptr_simple_loading.xml",
+        "source": "/Users/tianshutong/Desktop/大白营销/OperationsHelper2.0/ptr-lib/build/intermediates/bundles/debug/res/layout/cube_ptr_simple_loading.xml"
+    }
+]

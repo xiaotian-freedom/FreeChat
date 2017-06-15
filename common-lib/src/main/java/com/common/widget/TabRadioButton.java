@@ -118,7 +118,7 @@ public class TabRadioButton extends LinearLayout implements Checkable {
      * Interface definition for a callback to be invoked when the checked state
      * of a compound button changed.
      */
-    public static interface OnCheckedChangeListener {
+    public interface OnCheckedChangeListener {
         /**
          * Called when the checked state of a compound button has changed.
          *

@@ -14,6 +14,7 @@ public class UserVo implements Parcelable {
 
     public String jid;
     public String name;
+    public String nickName;
     public String password;
     public String from;
     public String status;
@@ -31,6 +32,7 @@ public class UserVo implements Parcelable {
     public void writeToParcel(Parcel dest, int i) {
         dest.writeString(jid);
         dest.writeString(name);
+        dest.writeString(nickName);
         dest.writeString(password);
         dest.writeString(from);
         dest.writeString(status);
@@ -47,6 +49,7 @@ public class UserVo implements Parcelable {
             UserVo u = new UserVo();
             u.jid = source.readString();
             u.name = source.readString();
+            u.nickName = source.readString();
             u.password = source.readString();
             u.from = source.readString();
             u.status = source.readString();
@@ -78,6 +81,14 @@ public class UserVo implements Parcelable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public String getPassword() {

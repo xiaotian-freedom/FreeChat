@@ -41,9 +41,7 @@ public class Event {
 
         if (color != event.color) return false;
         if (timeInMillis != event.timeInMillis) return false;
-        if (data != null ? !data.equals(event.data) : event.data != null) return false;
-
-        return true;
+        return data != null ? data.equals(event.data) : event.data == null;
     }
 
     @Override

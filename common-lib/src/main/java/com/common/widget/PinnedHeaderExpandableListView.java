@@ -213,11 +213,8 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
     }
 
     private boolean isTouchPointInView(View view, int x, int y) {
-        if (view.isClickable() && y >= view.getTop() && y <= view.getBottom()
-                && x >= view.getLeft() && x <= view.getRight()) {
-            return true;
-        }
-        return false;
+        return view.isClickable() && y >= view.getTop() && y <= view.getBottom()
+                && x >= view.getLeft() && x <= view.getRight();
     }
 
     public void requestRefreshHeader() {

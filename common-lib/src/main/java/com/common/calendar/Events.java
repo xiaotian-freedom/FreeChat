@@ -30,9 +30,7 @@ class Events {
         Events event = (Events) o;
 
         if (timeInMillis != event.timeInMillis) return false;
-        if (events != null ? !events.equals(event.events) : event.events != null) return false;
-
-        return true;
+        return events != null ? events.equals(event.events) : event.events == null;
     }
 
     @Override

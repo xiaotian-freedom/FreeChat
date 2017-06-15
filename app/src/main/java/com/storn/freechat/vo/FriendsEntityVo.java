@@ -8,5 +8,6 @@ package com.storn.freechat.vo;
 public class FriendsEntityVo {
     public String jid;
     public String name;
+    public String nickName;
     public String presence;
 }

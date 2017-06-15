@@ -5,7 +5,9 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Transformation;
 
 import com.common.common.Constants;
 
@@ -46,7 +48,7 @@ public class AnimationUtil {
         ObjectAnimator translatorAnim = ObjectAnimator.ofFloat(view, Constants.TRANS_PROPERTY, height, 0);
         ObjectAnimator alphaAnim = ObjectAnimator.ofFloat(view, Constants.ALPHA_PROPERTY, 0.f, 1.f);
         AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.setDuration(Constants.ANIM_500);
+        animatorSet.setDuration(Constants.ANIM_300);
         animatorSet.setTarget(view);
         animatorSet.playTogether(translatorAnim, alphaAnim);
         animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
@@ -61,14 +63,16 @@ public class AnimationUtil {
      * @param visibleView
      * @param goneView
      */
-    public static void startAlphaAnim(final View visibleView, final View goneView) {
+    public static void startAlphaAnim(final View visibleView, final View goneView, final View goneTwoView) {
         ObjectAnimator objectAnimatorVisible =
                 ObjectAnimator.ofFloat(visibleView, Constants.ALPHA_PROPERTY, 0.0f, 1.0f);
         ObjectAnimator objectAnimatorGone =
                 ObjectAnimator.ofFloat(goneView, Constants.ALPHA_PROPERTY, 1.0f, 0.0f);
+        ObjectAnimator objectAnimatorGoneTwo =
+                ObjectAnimator.ofFloat(goneTwoView, Constants.ALPHA_PROPERTY, 1.0f, 0.0f);
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.setDuration(ANIM_300);
-        animatorSet.playTogether(objectAnimatorVisible, objectAnimatorGone);
+        animatorSet.playTogether(objectAnimatorVisible, objectAnimatorGone, objectAnimatorGoneTwo);
         animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
         animatorSet.addListener(new Animator.AnimatorListener() {
             @Override
@@ -80,6 +84,7 @@ public class AnimationUtil {
             public void onAnimationEnd(Animator animator) {
                 visibleView.setVisibility(View.VISIBLE);
                 goneView.setVisibility(View.GONE);
+                goneTwoView.setVisibility(View.GONE);
             }
 
             @Override
@@ -97,13 +102,14 @@ public class AnimationUtil {
 
     /**
      * 缩放动画
+     *
      * @param view
      */
     public static void startScaleAnim(View view) {
-        ObjectAnimator scaleXAnim = ObjectAnimator.ofFloat(view, Constants.SCALE_X_PROPERTY, 1.f, .5f, 1.f);
-        ObjectAnimator scaleYAnim = ObjectAnimator.ofFloat(view, Constants.SCALE_Y_PROPERTY, 1.f, .5f, 1.f);
+        ObjectAnimator scaleXAnim = ObjectAnimator.ofFloat(view, Constants.SCALE_X_PROPERTY, 1.f, .8f, 1.f);
+        ObjectAnimator scaleYAnim = ObjectAnimator.ofFloat(view, Constants.SCALE_Y_PROPERTY, 1.f, .8f, 1.f);
         AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.setDuration(Constants.ANIM_500);
+        animatorSet.setDuration(Constants.ANIM_300);
         animatorSet.setInterpolator(new DecelerateInterpolator());
         animatorSet.playTogether(scaleXAnim, scaleYAnim);
         animatorSet.start();
@@ -111,25 +117,58 @@ public class AnimationUtil {
 
     /**
      * 顺时针旋转
+     *
      * @param view
      */
     public static void rotationAnim(View view) {
         view.clearAnimation();
-        ObjectAnimator rotation = ObjectAnimator.ofFloat(view, Constants.ROTATION, 0, 135);
-        rotation.setDuration(Constants.ANIM_300);
+        ObjectAnimator rotation = ObjectAnimator.ofFloat(view, Constants.ROTATION, 0, 225);
+        rotation.setDuration(Constants.ANIM_500);
         rotation.setInterpolator(new DecelerateInterpolator());
         rotation.start();
     }
 
     /**
      * 逆时针旋转
+     *
      * @param view
      */
     public static void reverseRotation(View view) {
         view.clearAnimation();
-        ObjectAnimator rotation = ObjectAnimator.ofFloat(view, Constants.ROTATION, 135, 0);
-        rotation.setDuration(Constants.ANIM_300);
+        ObjectAnimator rotation = ObjectAnimator.ofFloat(view, Constants.ROTATION, 225, 0);
+        rotation.setDuration(Constants.ANIM_500);
         rotation.setInterpolator(new DecelerateInterpolator());
         rotation.start();
+    }
+
+    /**
+     * 收缩动画
+     * @param view
+     * @param listener
+     */
+    public static void collapse(final View view, Animation.AnimationListener listener) {
+        final int originalHeight = view.getMeasuredHeight();
+
+        Animation animation = new Animation() {
+            @Override
+            public boolean willChangeBounds() {
+                return true;
+            }
+
+            @Override
+            protected void applyTransformation(float interpolatedTime, Transformation t) {
+                if (interpolatedTime == 1.f) {
+                    view.setVisibility(View.GONE);
+                } else {
+                    view.getLayoutParams().height = originalHeight - (int)(originalHeight * interpolatedTime);
+                    view.requestLayout();
+                }
+            }
+        };
+        if (listener != null) {
+            animation.setAnimationListener(listener);
+        }
+        animation.setDuration(Constants.ANIM_300);
+        view.startAnimation(animation);
     }
 }

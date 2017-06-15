@@ -121,7 +121,6 @@ public class CustomProgressDialog extends Dialog {
 
         private String title;
         private String mPositiveButtonText;
-        ;
         private String mNegativeButtonText;
         private String mNeutralButtonText;
 
