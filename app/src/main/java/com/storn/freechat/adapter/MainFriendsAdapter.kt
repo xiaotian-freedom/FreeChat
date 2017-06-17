@@ -97,7 +97,7 @@ class MainFriendsAdapter(private val mContext: Context, private val groupList: A
         childHolder.headView.setImageResource(Constants.COLORS[color])
         val length = mainChild.name.length
         val headName: String
-        if (length > 0 && length <= 2) {
+        if (length in 0..2) {
             headName = mainChild.name
         } else {
             headName = mainChild.name.substring(mainChild.name.length - 2)

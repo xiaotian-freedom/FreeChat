@@ -1,12 +1,14 @@
 package com.storn.freechat
 
-import android.content.*
+import android.content.DialogInterface
+import android.content.Intent
+import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.os.Message
 import android.support.design.widget.NavigationView
-import android.support.v4.content.LocalBroadcastManager
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
@@ -102,7 +104,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     var mHandler = Handler(Looper.getMainLooper())
     //点击具体的消息列表
-    var mMessageEntity = MessageEntityVo()
+//    var mMessageEntity = MessageEntityVo()
 
     val netWorkStateReiver = NetWorkStateReceiver()
 
@@ -111,9 +113,9 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
      * 需使用companion object代替
      * 用于外部调用内部成员变量
      */
-    //    companion object Factory {
-//        fun create(): HomeActivity = HomeActivity()
-//    }
+    companion object {
+        var homeHandler: HomeHandler? = null
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -131,8 +133,6 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         val filter = IntentFilter()
         filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
         registerReceiver(netWorkStateReiver, filter)
-        LocalBroadcastManager.getInstance(this).registerReceiver(DealMessageReceiver(),
-                IntentFilter(Constants.LOCAL_ACTION))
     }
 
     override fun onPause() {
@@ -158,7 +158,6 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(netWorkStateReiver)
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(DealMessageReceiver())
     }
 
     private fun setupWindowTransition() {
@@ -177,6 +176,8 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer.addDrawerListener(toggle)
         toggle.syncState()
+
+        homeHandler = HomeHandler()
     }
 
     private fun initListener() {
@@ -666,13 +667,10 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
      * 消息列表点击事件
      */
     private val mOnMessageItemClickListener = OnItemClickListener { position: Int ->
-        mHandler.postDelayed({
-            val messageEntity = mMessageList[position]
-            mMessageEntity = messageEntity
-            val intent = Intent(this, ChatRoomAct::class.java)
-            intent.putExtra(Constants.MESSAGEVO, messageEntity)
-            startActivity(intent)
-        }, Constants.DELAY_300.toLong())
+        val messageEntity = mMessageList[position]
+        val intent = Intent(this, ChatRoomAct::class.java)
+        intent.putExtra(Constants.MESSAGEVO, messageEntity)
+        startActivity(intent)
     }
 
     /**
@@ -712,20 +710,20 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
-    inner class DealMessageReceiver : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            if (intent != null && intent.action == Constants.LOCAL_ACTION) {
-                val action: Int = intent.getIntExtra("category", 0)
-                when (action) {
-                    Constants.REFRESH_MESSAGE -> queryMessageList()
-                    Constants.CLEAR_MESSAGE_TIP -> {
-                        clearMsgTip(mMessageEntity)
-                        queryMessageList()
-                    }
-                    Constants.CONNECT_SERVICE ->
-                        mHandler.postDelayed({ initXmmConn() }, Constants.DELAY_1000.toLong())
-                    else -> {
-                    }
+    inner class HomeHandler : Handler() {
+
+        override fun handleMessage(msg: Message?) {
+            super.handleMessage(msg)
+            when (msg?.what) {
+                Constants.REFRESH_MESSAGE -> queryMessageList()
+                Constants.CLEAR_MESSAGE_TIP -> {
+                    val messageEntity = msg.obj as MessageEntityVo
+                    clearMsgTip(messageEntity)
+                    queryMessageList()
+                }
+                Constants.CONNECT_SERVICE ->
+                    mHandler.postDelayed({ initXmmConn() }, Constants.DELAY_1000.toLong())
+                else -> {
                 }
             }
         }

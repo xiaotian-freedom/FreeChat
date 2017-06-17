@@ -79,7 +79,7 @@ public class DoubleSeekBar extends View {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DoubleSeekBar, defStyle, 0);
         mMin = a.getFloat(R.styleable.DoubleSeekBar_minValue, mMin);
         mMax = a.getFloat(R.styleable.DoubleSeekBar_maxValue, mMax);
-        int width = a.getInt(R.styleable.DoubleSeekBar_width, -1);
+        int width = a.getInt(R.styleable.DoubleSeekBar_seekbar_width, -1);
         if (width == -1) {
             Resources res = getResources();
             DisplayMetrics dm = res.getDisplayMetrics();

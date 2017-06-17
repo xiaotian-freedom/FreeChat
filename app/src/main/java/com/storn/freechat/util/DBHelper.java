@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.orm.androrm.DatabaseAdapter;
-import com.orm.androrm.Limit;
 import com.orm.androrm.Model;
 import com.orm.androrm.Where;
 import com.orm.androrm.statement.SelectStatement;
@@ -236,17 +235,37 @@ public class DBHelper {
      */
     public List<ChatMessageEntityVo> queryChatMessageByJid(Context context, String myJid,
                                                            String fromJid, int offset, int limit) {
+        StringBuilder sb = new StringBuilder();
         DatabaseAdapter dba = DatabaseAdapter.getInstance(context);
         Where where = new Where();
         where.and("myJid", myJid);
         where.and("fromJid", fromJid);
-        SelectStatement selectStatement = new SelectStatement();
-        selectStatement.from("chatmessageentity");
-        selectStatement.where(where);
-        selectStatement.orderBy("-time");
-        selectStatement.limit(new Limit(offset, limit));
+//        SelectStatement selectStatement = new SelectStatement();
+//        selectStatement.from("chatmessageentity");
+//        selectStatement.where(where);
+//        selectStatement.orderBy("-time");
+//        selectStatement.limit(new Limit(offset, limit));
+
+        sb.append("SELECT * FROM chatmessageentity ");
+        sb.append("WHERE myJid='");
+        sb.append(myJid);
+        sb.append("'");
+        sb.append(" AND ");
+        sb.append("fromJid='");
+        sb.append(fromJid);
+        sb.append("'");
+        sb.append("ORDER BY time DESC");
+        if (limit != -1) {
+            sb.append(" LIMIT ");
+            sb.append(limit);
+        }
+        if (offset != -1) {
+            sb.append(" OFFSET ");
+            sb.append(offset);
+        }
+
         dba.open();
-        Cursor cursor = dba.query(selectStatement);
+        Cursor cursor = dba.query(sb.toString());
         List<ChatMessageEntityVo> chatMessageEntityVoList = null;
         try {
             if (cursor != null) {
@@ -266,6 +285,7 @@ public class DBHelper {
 
     /**
      * 删除单条消息记录
+     *
      * @param context
      * @param cId
      */

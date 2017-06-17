@@ -1,11 +1,10 @@
 package com.storn.freechat.service
 
 import android.content.Context
-import android.content.Intent
-import android.support.v4.content.LocalBroadcastManager
 import android.text.TextUtils
 import com.common.common.Constants
 import com.common.util.TimeUtil
+import com.storn.freechat.HomeActivity
 import com.storn.freechat.chat.ChatRoomAct
 import com.storn.freechat.util.DBHelper
 import com.storn.freechat.vo.ChatMessageEntityVo
@@ -47,13 +46,15 @@ class MySingleChatListener(val context: Context) : ChatManagerListener {
         dbHelper.insertOrUpdateChatMessage(context, chatMessageEntity)
 
         //save to message list
-
         var mCount: Int = 0
         var messageEntity = DBHelper.getInstance().querySingleMessageByJid(context, fromJid)
         if (messageEntity == null) {
             messageEntity = MessageEntityVo()
         } else {
             mCount = ++messageEntity.msgCount
+        }
+        if (ChatRoomAct.chatHandler != null) {
+            mCount = 0
         }
         messageEntity.mId = currentTime.toInt()
         messageEntity.fromJid = fromJid
@@ -64,23 +65,16 @@ class MySingleChatListener(val context: Context) : ChatManagerListener {
         messageEntity.msgCount = mCount
         dbHelper.insertOrUpdateMessage(context, messageEntity)
 
-        /*RxBusHelper.post(RxEvent(EventCode.REFRESH_MESSAGE_LIST))
-        val homeActivity = HomeActivity()
-        if (homeActivity.mHandler != null) {
-            val refreshMessage = android.os.Message()
-            refreshMessage.what = Constants.REFRESH_MESSAGE
-            homeActivity.mHandler?.sendMessage(refreshMessage)
-        }*/
-        val intent = Intent()
-        intent.action = Constants.LOCAL_ACTION
-        intent.putExtra("category", Constants.REFRESH_MESSAGE)
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
-
-        if (ChatRoomAct.chatMessageHandler != null) {
-            val addMessage = android.os.Message()
+        if (HomeActivity.homeHandler != null) {
+            val homeMessage = android.os.Message.obtain()
+            homeMessage.what = Constants.REFRESH_MESSAGE
+            HomeActivity.homeHandler?.sendMessage(homeMessage)
+        }
+        if (ChatRoomAct.chatHandler != null) {
+            val addMessage = android.os.Message.obtain()
             addMessage.what = Constants.ADD_CHAT_MESSAGE
             addMessage.obj = chatMessageEntity
-            ChatRoomAct.chatMessageHandler.sendMessage(addMessage)
+            ChatRoomAct.chatHandler?.sendMessage(addMessage)
         }
     }
 

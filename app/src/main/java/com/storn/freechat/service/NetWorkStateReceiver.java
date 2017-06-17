@@ -47,7 +47,7 @@ public class NetWorkStateReceiver extends BroadcastReceiver {
             if (activeNetwork != null) { // connected to the internet
                 if (activeNetwork.isConnected()) {
                     intent.setAction(Constants.LOCAL_ACTION);
-                    intent.putExtra("category", Constants.CONNECT_SERVICE);
+                    intent.putExtra("home", Constants.CONNECT_SERVICE);
                     LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
                 } else {
                     Toast.makeText(context, "网络异常", Toast.LENGTH_SHORT).show();

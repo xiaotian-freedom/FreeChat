@@ -27,16 +27,4 @@ public class MessageEntityVo implements Serializable{
     public MessageEntityVo() {
     }
 
-    @Override
-    public String toString() {
-        return "MessageEntityVo{" +
-                "mId=" + mId +
-                ", fromJid='" + fromJid + '\'' +
-                ", myJid='" + myJid + '\'' +
-                ", name='" + name + '\'' +
-                ", content='" + content + '\'' +
-                ", time=" + time +
-                ", msgCount=" + msgCount +
-                '}';
-    }
 }

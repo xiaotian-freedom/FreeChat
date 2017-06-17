@@ -65,7 +65,7 @@ public class TopAutoRefreshListView extends ListView implements AbsListView.OnSc
     public void onLoadFinish() {
         isEnable = false;
         isRefreshing = false;
-        mHeaderLayout.hide();
+        mHeaderLayout.setNoMoreData();
     }
 
     /**

@@ -9,8 +9,7 @@ import com.common.R;
 
 public class Constants {
 
-    //本地广播
-    public static final String LOCAL_ACTION = "com.storn.freechat.BROADCAST_ACTION";
+    public static final String LOCAL_ACTION = "com.freechat.storn.BROADCAST";
 
     //随机头像
     public static final int COLORS[] = new int[]{R.drawable.color01, R.drawable.color02, R.drawable.color03,

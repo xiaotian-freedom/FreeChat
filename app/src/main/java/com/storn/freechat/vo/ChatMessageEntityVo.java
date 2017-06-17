@@ -1,10 +1,12 @@
 package com.storn.freechat.vo;
 
+import java.io.Serializable;
+
 /**
  * 聊天实体类
  * Created by tianshutong on 2017/1/9.
  */
-public class ChatMessageEntityVo {
+public class ChatMessageEntityVo implements Serializable{
 
     //主键
     public int cId;
@@ -21,4 +23,15 @@ public class ChatMessageEntityVo {
 
     public int type;
 
+    @Override
+    public String toString() {
+        return "ChatMessageEntityVo{" +
+                "cId=" + cId +
+                ", fromJid='" + fromJid + '\'' +
+                ", myJid='" + myJid + '\'' +
+                ", content='" + content + '\'' +
+                ", time=" + time +
+                ", type=" + type +
+                '}';
+    }
 }
