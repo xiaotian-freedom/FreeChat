@@ -6,6 +6,8 @@ import com.storn.freechat.util.DBHelper;
 import com.storn.freechat.login.presenter.LoginContract;
 import com.storn.freechat.vo.UserVo;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Created by tianshutong on 2017/4/7.
  */
@@ -29,7 +31,7 @@ public class LoginRepository implements LoginContract.ILoginRepo {
     }
 
     @Override
-    public void insertOrUpdateAccount(Context context, UserVo userVo) {
+    public void insertOrUpdateAccount(@NotNull Context context,@NotNull UserVo userVo) {
         DBHelper.getInstance().insertOrUpdateAccount(context, userVo);
     }
 }

@@ -7,16 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-
 import com.common.common.Constants
 import com.common.util.AnimationUtil
+import com.common.util.DensityUtil
 import com.common.util.TimeUtil
 import com.common.widget.dragindicator.DragIndicatorView
 import com.storn.freechat.R
 import com.storn.freechat.interfac.OnItemClickListener
 import com.storn.freechat.vo.MessageEntityVo
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuAdapter
-
 import de.hdodenhof.circleimageview.CircleImageView
 
 /**
@@ -24,17 +23,26 @@ import de.hdodenhof.circleimageview.CircleImageView
  * Created by tianshutong on 2016/12/15.
  */
 
-class MainMessageAdapter(private val mContext: Context, private var mList: List<MessageEntityVo>) : SwipeMenuAdapter<MainMessageAdapter.MainMessageViewHolder>() {
+class MainMessageAdapter(val mContext: Context, var mList: List<MessageEntityVo>,var isFirstAnim: Boolean)
+    : SwipeMenuAdapter<MainMessageAdapter.MainMessageViewHolder>() {
     private var mOnItemClickListener: OnItemClickListener? = null
 
     fun setOnItemClickListener(onItemClickListener: OnItemClickListener) {
         mOnItemClickListener = onItemClickListener
     }
 
-    fun setRefreshData(list: List<MessageEntityVo>) {
+    fun setRefreshData(list: List<MessageEntityVo>, isFirstAnim: Boolean) {
         if (list.isNotEmpty()) {
             this.mList = list
+            this.isFirstAnim = isFirstAnim
             notifyDataSetChanged()
+        }
+    }
+
+    fun deleteData(list: List<MessageEntityVo>, position: Int) {
+        if (list.isNotEmpty()) {
+            this.mList = list
+            notifyItemRemoved(position)
         }
     }
 
@@ -46,20 +54,61 @@ class MainMessageAdapter(private val mContext: Context, private var mList: List<
         return MainMessageViewHolder(realContentView)
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return mList[position].type
+    }
+
     override fun onBindViewHolder(holder: MainMessageViewHolder, position: Int) {
-        //        AnimationUtil.runEnterAnimation(holder.itemView, DensityUtil.getScreenHeight(mContext), mList);
-        val messageEntity = mList[position]
-        holder.tvName.text = messageEntity.name
-        val color = (Math.random() * Constants.COLORS.size).toInt()
-        holder.headView.setImageResource(Constants.COLORS[color])
-        val length = messageEntity.name.length
-        val headName: String
-        if (length in 0..2) {
-            headName = messageEntity.name
-        } else {
-            headName = messageEntity.name.substring(messageEntity.name.length - 2)
+        if (isFirstAnim) {
+            AnimationUtil.runEnterAnimation(holder.itemView, DensityUtil.getScreenWidth(mContext), mList)
         }
-        holder.tvHeadName.text = headName
+
+        val messageEntity = mList[position]
+
+        when (messageEntity.type) {
+            0 -> {
+                holder.tvName.text = messageEntity.fromName
+                val color = (Math.random() * Constants.COLORS.size).toInt()
+                holder.headView.setImageResource(Constants.COLORS[color])
+                if (!TextUtils.isEmpty(messageEntity.fromName)) {
+                    val length = messageEntity.fromName.length
+                    val headName: String
+                    if (length in 0..2) {
+                        headName = messageEntity.fromName
+                    } else {
+                        headName = messageEntity.fromName.substring(messageEntity.fromName.length - 2)
+                    }
+                    holder.tvHeadName.text = headName
+                } else {
+                    holder.tvHeadName.text = ""
+                }
+
+                holder.tvContent.text = messageEntity.content
+
+            }
+            1 -> {
+                holder.tvName.text = messageEntity.roomName
+                val color = (Math.random() * Constants.COLORS.size).toInt()
+                holder.headView.setImageResource(Constants.COLORS[color])
+                val length = messageEntity.roomName.length
+                val headName: String
+                if (length in 0..2) {
+                    headName = messageEntity.roomName
+                } else {
+                    headName = messageEntity.roomName.substring(messageEntity.roomName.length - 2)
+                }
+                holder.tvHeadName.text = headName
+
+                val sb = StringBuilder()
+                sb.append(messageEntity.fromName)
+                sb.append(":")
+                sb.append(messageEntity.content)
+                holder.tvContent.text = sb.toString()
+            }
+            else -> {
+            }
+        }
+
 
         val time = messageEntity.time
         val showTime = TimeUtil.formatChatDate(time)
@@ -68,7 +117,6 @@ class MainMessageAdapter(private val mContext: Context, private var mList: List<
         } else {
             holder.tvTime.text = showTime
         }
-        holder.tvContent.text = messageEntity.content
 
         if (messageEntity.msgCount > 0) {
             holder.tvTip.text = messageEntity.msgCount.toString()
@@ -110,7 +158,7 @@ class MainMessageAdapter(private val mContext: Context, private var mList: List<
 
         override fun onClick(view: View) {
             if (mOnItemClickListener != null) {
-                AnimationUtil.startScaleAnim(this@MainMessageViewHolder.itemView)
+//                AnimationUtil.startScaleAnim(this@MainMessageViewHolder.itemView)
                 mOnItemClickListener!!.onItemClick(adapterPosition)
             }
         }

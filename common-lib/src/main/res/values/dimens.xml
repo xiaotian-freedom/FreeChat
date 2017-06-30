@@ -70,5 +70,6 @@
     <dimen name="mm_progress_dialog_min_height">54.0dp</dimen>
     <dimen name="mm_progress_dialog_textview_min_width">150.0dp</dimen>
     <dimen name="mm_progress_dialog_textview_max_width">200.0dp</dimen>
+    <dimen name="height_100_dp">100dp</dimen>
 
 </resources>

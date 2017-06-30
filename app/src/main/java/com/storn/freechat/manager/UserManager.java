@@ -2,7 +2,6 @@ package com.storn.freechat.manager;
 
 import com.common.common.Constants;
 
-import org.jivesoftware.smack.AbstractXMPPConnection;
 import org.jivesoftware.smack.SmackException;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smackx.vcardtemp.VCardManager;
@@ -40,30 +39,10 @@ public class UserManager {
      * @param jid
      * @return
      */
-    public VCardManager getUserVCardManager(String jid) {
-        AbstractXMPPConnection connection = XMPPConnectionManager.getInstance().getConnection();
-        VCardManager vCardManager = VCardManager.getInstanceFor(connection);
+    public VCard getUserVCard(String jid) {
+        VCardManager vCardManager = VCardManager.getInstanceFor(XMPPConnectionManager.getInstance().getConnection());
         try {
-            vCardManager.loadVCard(jid);
-        } catch (SmackException.NoResponseException | XMPPException.XMPPErrorException
-                | SmackException.NotConnectedException e) {
-            e.printStackTrace();
-        }
-        return vCardManager;
-    }
-
-    /**
-     * 保存用户信息
-     *
-     * @param vCard
-     * @return
-     */
-    public VCardManager saveUserVCard(VCard vCard) {
-        AbstractXMPPConnection connection = XMPPConnectionManager.getInstance().getConnection();
-        VCardManager vCardManager = VCardManager.getInstanceFor(connection);
-        try {
-            vCardManager.saveVCard(vCard);
-            return getUserVCardManager(vCard.getJabberId());
+            return vCardManager.loadVCard(jid);
         } catch (SmackException.NoResponseException | XMPPException.XMPPErrorException
                 | SmackException.NotConnectedException e) {
             e.printStackTrace();
@@ -78,18 +57,11 @@ public class UserManager {
      * @return
      */
     public InputStream getUserHead(String jid) {
-        VCardManager vCardManager = getUserVCardManager(jid);
-        try {
-            VCard vCard = vCardManager.loadVCard(jid);
-            if (vCard == null || vCard.getAvatar() == null) {
-                return null;
-            }
-            return new ByteArrayInputStream(vCard.getAvatar());
-        } catch (SmackException.NoResponseException | XMPPException.XMPPErrorException
-                | SmackException.NotConnectedException e) {
-            e.printStackTrace();
+        VCard vCard = getUserVCard(jid);
+        if (vCard == null || vCard.getAvatar() == null) {
+            return null;
         }
-        return null;
+        return new ByteArrayInputStream(vCard.getAvatar());
     }
 
     /**
@@ -99,18 +71,11 @@ public class UserManager {
      * @return
      */
     public String getUserName(String jid) {
-        VCardManager vCardManager = getUserVCardManager(jid);
-        try {
-            VCard vCard = vCardManager.loadVCard(jid);
-            if (vCard == null || vCard.getFirstName() == null) {
-                return null;
-            }
-            return vCard.getFirstName();
-        } catch (SmackException.NoResponseException | XMPPException.XMPPErrorException
-                | SmackException.NotConnectedException e) {
-            e.printStackTrace();
+        VCard vCard = getUserVCard(jid);
+        if (vCard == null || vCard.getFirstName() == null) {
+            return null;
         }
-        return null;
+        return vCard.getFirstName();
     }
 
     /**
@@ -120,18 +85,11 @@ public class UserManager {
      * @return
      */
     public String getUserEmail(String jid) {
-        VCardManager vCardManager = getUserVCardManager(jid);
-        try {
-            VCard vCard = vCardManager.loadVCard(jid);
-            if (vCard == null || vCard.getEmailWork() == null) {
-                return null;
-            }
-            return vCard.getEmailWork();
-        } catch (SmackException.NoResponseException | XMPPException.XMPPErrorException
-                | SmackException.NotConnectedException e) {
-            e.printStackTrace();
+        VCard vCard = getUserVCard(jid);
+        if (vCard == null || vCard.getEmailWork() == null) {
+            return null;
         }
-        return null;
+        return vCard.getEmailWork();
     }
 
     /**
@@ -141,18 +99,11 @@ public class UserManager {
      * @return
      */
     public String getUserPhone(String jid) {
-        VCardManager vCardManager = getUserVCardManager(jid);
-        try {
-            VCard vCard = vCardManager.loadVCard(jid);
-            if (vCard == null || vCard.getPhoneWork(Constants.PHONE_TYPE_5) == null) {
-                return null;
-            }
-            return vCard.getPhoneWork(Constants.PHONE_TYPE_5);
-        } catch (SmackException.NoResponseException | XMPPException.XMPPErrorException
-                | SmackException.NotConnectedException e) {
-            e.printStackTrace();
+        VCard vCard = getUserVCard(jid);
+        if (vCard == null || vCard.getPhoneWork(Constants.PHONE_TYPE_5) == null) {
+            return null;
         }
-        return null;
+        return vCard.getPhoneWork(Constants.PHONE_TYPE_5);
     }
 
 }

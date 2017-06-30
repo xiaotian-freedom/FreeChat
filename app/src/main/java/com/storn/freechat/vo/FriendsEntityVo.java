@@ -10,4 +10,5 @@ public class FriendsEntityVo {
     public String name;
     public String nickName;
     public String presence;
+    public String myJid;
 }

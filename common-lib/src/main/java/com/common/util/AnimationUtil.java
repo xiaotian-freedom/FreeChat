@@ -41,11 +41,11 @@ public class AnimationUtil {
      * @param view
      * @param mList
      */
-    public static void runEnterAnimation(View view, int height, List<?> mList) {
+    public static void runEnterAnimation(View view, int width, List<?> mList) {
         if (mList.size() == 0) {
             return;
         }
-        ObjectAnimator translatorAnim = ObjectAnimator.ofFloat(view, Constants.TRANS_PROPERTY, height, 0);
+        ObjectAnimator translatorAnim = ObjectAnimator.ofFloat(view, Constants.TRANS_PROPERTY_X, width, 0);
         ObjectAnimator alphaAnim = ObjectAnimator.ofFloat(view, Constants.ALPHA_PROPERTY, 0.f, 1.f);
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.setDuration(Constants.ANIM_300);
@@ -143,6 +143,7 @@ public class AnimationUtil {
 
     /**
      * 收缩动画
+     *
      * @param view
      * @param listener
      */
@@ -150,19 +151,21 @@ public class AnimationUtil {
         final int originalHeight = view.getMeasuredHeight();
 
         Animation animation = new Animation() {
-            @Override
-            public boolean willChangeBounds() {
-                return true;
-            }
 
             @Override
             protected void applyTransformation(float interpolatedTime, Transformation t) {
                 if (interpolatedTime == 1.f) {
-                    view.setVisibility(View.GONE);
+//                    view.setVisibility(View.GONE);//会删除两个item
+                    view.getLayoutParams().height = originalHeight;
                 } else {
-                    view.getLayoutParams().height = originalHeight - (int)(originalHeight * interpolatedTime);
-                    view.requestLayout();
+                    view.getLayoutParams().height = originalHeight - (int) (originalHeight * interpolatedTime);
                 }
+                view.requestLayout();
+            }
+
+            @Override
+            public boolean willChangeBounds() {
+                return true;
             }
         };
         if (listener != null) {

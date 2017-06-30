@@ -8,44 +8,44 @@ package com.yanzhenjie.recyclerview.swipe;
 
 public final class R {
     public static final class attr {
-        public static int android_descendantFocusability = 10;
-        public static int android_orientation = 8;
-        public static int contentViewId = 22;
-        public static int layoutManager = 6;
-        public static int leftViewId = 18;
-        public static int reverseLayout = 14;
-        public static int rightViewId = 20;
-        public static int spanCount = 12;
-        public static int stackFromEnd = 16;
+        public static int android_descendantFocusability = 0x7f040003;
+        public static int android_orientation = 0x7f040002;
+        public static int contentViewId = 0x7f040009;
+        public static int layoutManager = 0x7f040001;
+        public static int leftViewId = 0x7f040007;
+        public static int reverseLayout = 0x7f040005;
+        public static int rightViewId = 0x7f040008;
+        public static int spanCount = 0x7f040004;
+        public static int stackFromEnd = 0x7f040006;
     }
     public static final class color {
-        public static int transparent = 5;
+        public static int transparent = 0x7f060001;
     }
     public static final class dimen {
-        public static int item_touch_helper_max_drag_scroll_per_frame = 24;
-        public static int item_touch_helper_swipe_escape_max_velocity = 25;
-        public static int item_touch_helper_swipe_escape_velocity = 26;
+        public static int item_touch_helper_max_drag_scroll_per_frame = 0x7f080001;
+        public static int item_touch_helper_swipe_escape_max_velocity = 0x7f080002;
+        public static int item_touch_helper_swipe_escape_velocity = 0x7f080003;
     }
     public static final class id {
-        public static int item_touch_helper_previous_elevation = 27;
-        public static int swipe_content = 2;
-        public static int swipe_left = 3;
-        public static int swipe_right = 4;
+        public static int item_touch_helper_previous_elevation = 0x7f0c0004;
+        public static int swipe_content = 0x7f0c0001;
+        public static int swipe_left = 0x7f0c0002;
+        public static int swipe_right = 0x7f0c0003;
     }
     public static final class layout {
-        public static int yanzhenjie_item_default = 1;
+        public static int yanzhenjie_item_default = 0x7f0f0001;
     }
     public static final class styleable {
-        public static int[] RecyclerView = {7,9,11,13,15,17};
-        public static int RecyclerView_android_descendantFocusability = 11;
-        public static int RecyclerView_android_orientation = 9;
-        public static int RecyclerView_layoutManager = 7;
-        public static int RecyclerView_reverseLayout = 15;
-        public static int RecyclerView_spanCount = 13;
-        public static int RecyclerView_stackFromEnd = 17;
-        public static int[] SwipeMenuLayout = {19,21,23};
-        public static int SwipeMenuLayout_contentViewId = 23;
-        public static int SwipeMenuLayout_leftViewId = 19;
-        public static int SwipeMenuLayout_rightViewId = 21;
+        public static int[] RecyclerView = {0x7f170001,0x7f170002,0x7f170003,0x7f170004,0x7f170005,0x7f170006};
+        public static int RecyclerView_android_descendantFocusability = 0x7f170003;
+        public static int RecyclerView_android_orientation = 0x7f170002;
+        public static int RecyclerView_layoutManager = 0x7f170001;
+        public static int RecyclerView_reverseLayout = 0x7f170005;
+        public static int RecyclerView_spanCount = 0x7f170004;
+        public static int RecyclerView_stackFromEnd = 0x7f170006;
+        public static int[] SwipeMenuLayout = {0x7f170007,0x7f170008,0x7f170009};
+        public static int SwipeMenuLayout_contentViewId = 0x7f170009;
+        public static int SwipeMenuLayout_leftViewId = 0x7f170007;
+        public static int SwipeMenuLayout_rightViewId = 0x7f170008;
     }
 }

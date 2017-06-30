@@ -2,12 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/color_w"
     android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height_size"
+        android:layout_marginTop="@dimen/space_12"
+        android:background="@color/color_y_ec_a0" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/color_w"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingEnd="@dimen/space_11"
         android:paddingLeft="@dimen/space_11"
@@ -27,8 +33,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:textColor="@color/color_b_c0"
+            android:background="@drawable/round_blue_bg"
+            android:gravity="center"
+            android:textColor="@color/color_w"
             android:textSize="@dimen/text_size_12" />
 
     </RelativeLayout>

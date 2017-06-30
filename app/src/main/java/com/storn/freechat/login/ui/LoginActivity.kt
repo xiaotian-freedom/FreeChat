@@ -69,13 +69,6 @@ class LoginActivity : BeamBaseActivity<LoginPresenter>(), LoginContract.View, Vi
     private fun initListener() {
         loginFab.setOnClickListener(this)
         mLoginFormView.setOnClickListener(this)
-//        mPasswordView!!.setOnEditorActionListener { _: TextView, id: Int, _: KeyEvent ->
-//            if (id == R.id.mLoginFormView || id == EditorInfo.IME_NULL) {
-//                checkFocusView()
-//                true
-//            } else
-//                false
-//        }
     }
 
     override fun fillLastAccount(userName: String, password: String) {

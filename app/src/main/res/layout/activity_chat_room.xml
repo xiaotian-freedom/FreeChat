@@ -1,48 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/chatRoomRootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/mainToolBar"
+    <include
+        android:id="@+id/toolBar_include"
+        layout="@layout/common_yellow_tool_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/color_y_e2"
-        android:minHeight="@dimen/tool_bar_size">
+        android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/mainToolBarTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/temp_name"
-            android:textColor="@color/color_w"
-            android:textSize="@dimen/text_size_20" />
-
-        <ImageView
-            android:id="@+id/mainToolBarRight"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:layout_marginEnd="@dimen/space_8"
-            android:contentDescription="@null"
-            android:padding="@dimen/space_6"
-            android:src="@mipmap/slide_user" />
-
-    </android.support.v7.widget.Toolbar>
-
-    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+    <com.yanzhenjie.recyclerview.swipe.overscroll.OverScrollLayout
         android:id="@+id/scrollLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/chatBottomLayout"
-        android:layout_below="@+id/mainToolBar"
-        android:background="@mipmap/bg_chat_list_pink"
-        app:tr_pureScrollMode_on="true">
+        android:layout_below="@+id/toolBar_include"
+        android:background="@mipmap/bg_chat_list_pink">
 
-        <com.common.widget.TopAutoRefreshListView
+        <com.common.widget.KeySoftListView
             android:id="@+id/refreshableView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -56,7 +32,7 @@
             android:overScrollMode="never"
             android:transcriptMode="normal" />
 
-    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+    </com.yanzhenjie.recyclerview.swipe.overscroll.OverScrollLayout>
 
     <!-- bottom -->
     <LinearLayout

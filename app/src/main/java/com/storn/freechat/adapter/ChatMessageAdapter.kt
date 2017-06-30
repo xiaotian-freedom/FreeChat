@@ -1,9 +1,11 @@
 package com.storn.freechat.adapter
 
 import am.widget.shapeimageview.ShapeImageView
+import android.app.ActivityOptions
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import android.text.TextUtils
 import android.view.*
 import android.view.animation.Animation
@@ -16,7 +18,10 @@ import com.common.util.AnimationUtil
 import com.common.util.DensityUtil
 import com.common.util.TimeUtil
 import com.common.widget.CopyPopWindow
+import com.common.widget.SurroundImageView
 import com.storn.freechat.R
+import com.storn.freechat.chat.ChatRoomAct
+import com.storn.freechat.me.ui.ProfileDetailAct
 import com.storn.freechat.util.DBHelper
 import com.storn.freechat.vo.ChatMessageEntityVo
 
@@ -161,6 +166,13 @@ class ChatMessageAdapter(private val mContext: Context, private val mChatList: M
         val content = messageEntityVo.content
         fromMessageHolder.tvContent.text = content
 
+//        fromMessageHolder.headView.setOnClickListener {
+//            val intent = Intent(mContext, ProfileDetailAct::class.java)
+//            val context = mContext as ChatRoomAct
+//            val options = ActivityOptions.makeSceneTransitionAnimation(context, fromMessageHolder.headView, mContext.resources.getString(R.string.profile_head))
+//            mContext.startActivity(intent, options.toBundle())
+//        }
+
         fromMessageHolder.contentLayout.setOnTouchListener(onTouchListener)
         fromMessageHolder.contentLayout.setOnLongClickListener { v: View ->
             showCopyPop(v, 0, content, position, cId, fromMessageHolder.rootLayout)
@@ -179,6 +191,13 @@ class ChatMessageAdapter(private val mContext: Context, private val mChatList: M
         }
         val content = messageEntityVo.content
         toMessageHolder.tvContent.text = content
+
+        toMessageHolder.headView.setOnClickListener {
+            val intent = Intent(mContext, ProfileDetailAct::class.java)
+            val context = mContext as ChatRoomAct
+            val options = ActivityOptions.makeSceneTransitionAnimation(context, toMessageHolder.headView, mContext.resources.getString(R.string.profile_head))
+            mContext.startActivity(intent, options.toBundle())
+        }
 
         toMessageHolder.contentLayout.setOnTouchListener(onTouchListener)
         toMessageHolder.contentLayout.setOnLongClickListener { v: View ->
@@ -275,6 +294,7 @@ class ChatMessageAdapter(private val mContext: Context, private val mChatList: M
         val dateLayout = itemView.findViewById(R.id.chat_room_time_layout) as LinearLayout
         val contentLayout = itemView.findViewById(R.id.chat_room_content_layout) as LinearLayout
         val rootLayout = itemView.findViewById(R.id.chat_room_root_layout) as LinearLayout
+        val headView = itemView.findViewById(R.id.chat_room_head_view) as SurroundImageView
         val shapeImageView = itemView.findViewById(R.id.chat_room_shape_view) as ShapeImageView
     }
 
@@ -284,6 +304,7 @@ class ChatMessageAdapter(private val mContext: Context, private val mChatList: M
         val dateLayout = itemView.findViewById(R.id.chat_room_time_layout) as LinearLayout
         val contentLayout = itemView.findViewById(R.id.chat_room_content_layout) as LinearLayout
         val rootLayout = itemView.findViewById(R.id.chat_room_root_layout) as LinearLayout
+        val headView = itemView.findViewById(R.id.chat_room_head_view) as SurroundImageView
         val shapeImageView = itemView.findViewById(R.id.chat_room_shape_view) as ShapeImageView
     }
 }

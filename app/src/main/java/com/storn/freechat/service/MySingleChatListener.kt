@@ -57,12 +57,13 @@ class MySingleChatListener(val context: Context) : ChatManagerListener {
             mCount = 0
         }
         messageEntity.mId = currentTime.toInt()
-        messageEntity.fromJid = fromJid
+        messageEntity.jid = fromJid
         messageEntity.myJid = toJid
-        messageEntity.name = fromName
+        messageEntity.fromName = fromName
         messageEntity.content = content
         messageEntity.time = currentTime
         messageEntity.msgCount = mCount
+        messageEntity.type = 0
         dbHelper.insertOrUpdateMessage(context, messageEntity)
 
         if (HomeActivity.homeHandler != null) {

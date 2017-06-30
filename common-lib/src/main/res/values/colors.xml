@@ -45,6 +45,7 @@
     <color name="color_w_fb">#fbf7ee</color>
     <color name="color_w_ff">#FFFBF7FF</color>
     <color name="color_b">#000</color>
+    <color name="color_b_26">#262626</color>
     <color name="color_b_38">#383838</color>
     <color name="color_b_60">#606060</color>
     <color name="color_b_11">#111111</color>
@@ -54,10 +55,12 @@
     <color name="color_y_e2_pressed">#FFB6471B</color>
     <color name="color_y_ec">#ec794b</color>
     <color name="color_y_ec_a0">#eca07b</color>
-    <color name="translucent">#e0000000</color>
+    <color name="color_y_ef">#efa384</color>
+    <color name="color_y_df">#df5d26</color>
 
     <!-- android 特有颜色 -->
     <color name="transparent">#00000000</color>
+    <color name="translucent">#e0000000</color>
     <color name="translucent_background">#80000000</color>
     <color name="translucent_background_30">#30000000</color>
     <color name="circle_red_bg">#FF3E32</color>
@@ -92,4 +95,8 @@
     <color name="confirm_dialog_btn_ok_txt">@color/color_f</color>
     <color name="confirm_dialog_btn_ok_bg_normal">@color/color_th</color>
     <color name="confirm_dialog_btn_ok_bg_pressed">@color/color_th_80</color>
+
+    <!-- loading color -->
+    <color name="dialog_bg">#f5f5f5</color>
+    <color name="black_19">#191919</color>
 </resources>

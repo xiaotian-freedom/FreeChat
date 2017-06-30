@@ -7,6 +7,7 @@ import com.storn.freechat.vo.FriendsEntityVo;
 import com.storn.freechat.vo.FriendsGroupVo;
 import com.storn.freechat.vo.GroupEntityVo;
 import com.storn.freechat.vo.MessageEntityVo;
+import com.storn.freechat.vo.MultiChatEntityVo;
 import com.storn.freechat.vo.UserVo;
 
 /**
@@ -29,12 +30,12 @@ public class DBUtils {
         ctv.put("jid", userVo.jid);
         ctv.put("name", userVo.name);
         ctv.put("password", userVo.password);
-        ctv.put("fromJid", userVo.from);
-        ctv.put("status", userVo.status);
-        ctv.put("groupName", userVo.groupName);
-        ctv.put("imgId", userVo.imgId);
-        ctv.put("groupSize", userVo.groupSize);
-        ctv.put("available", userVo.available);
+        ctv.put("img", userVo.img);
+        ctv.put("signature", userVo.signature);
+        ctv.put("nickName", userVo.nickName);
+        ctv.put("telephone", userVo.telephone);
+        ctv.put("email", userVo.email);
+        ctv.put("qq", userVo.qq);
         return ctv;
     }
 
@@ -47,12 +48,14 @@ public class DBUtils {
     public static ContentValues Message2Cv(MessageEntityVo messageEntityVo) {
         ContentValues ctv = new ContentValues();
         ctv.put("mId", messageEntityVo.mId);
-        ctv.put("fromJid", messageEntityVo.fromJid);
+        ctv.put("jid", messageEntityVo.jid);
         ctv.put("myJid", messageEntityVo.myJid);
-        ctv.put("name", messageEntityVo.name);
+        ctv.put("roomName", messageEntityVo.roomName);
+        ctv.put("fromName", messageEntityVo.fromName);
         ctv.put("content", messageEntityVo.content);
         ctv.put("time", messageEntityVo.time);
         ctv.put("msgCount", messageEntityVo.msgCount);
+        ctv.put("type", messageEntityVo.type);
         return ctv;
     }
 
@@ -70,6 +73,25 @@ public class DBUtils {
         ctv.put("content", chatMessageEntityVo.content);
         ctv.put("time", chatMessageEntityVo.time);
         ctv.put("type", chatMessageEntityVo.type);
+        return ctv;
+    }
+
+    /**
+     * 组装多人聊天消息
+     *
+     * @param multiChatEntityVo
+     * @return
+     */
+    public static ContentValues MultiChatMessage2Cv(MultiChatEntityVo multiChatEntityVo) {
+        ContentValues ctv = new ContentValues();
+        ctv.put("cId", multiChatEntityVo.cId);
+        ctv.put("myJid", multiChatEntityVo.myJid);
+        ctv.put("roomJid", multiChatEntityVo.roomJid);
+        ctv.put("roomName", multiChatEntityVo.roomName);
+        ctv.put("fromName", multiChatEntityVo.fromName);
+        ctv.put("content", multiChatEntityVo.content);
+        ctv.put("time", multiChatEntityVo.time);
+        ctv.put("type", multiChatEntityVo.type);
         return ctv;
     }
 
@@ -95,6 +117,7 @@ public class DBUtils {
     public static ContentValues FriendsGroup2Cv(FriendsGroupVo friendsGroupVo) {
         ContentValues ctv = new ContentValues();
         ctv.put("name", friendsGroupVo.name);
+        ctv.put("myJid",friendsGroupVo.myJid);
         ctv.put("count", friendsGroupVo.count);
         return ctv;
     }
@@ -110,6 +133,7 @@ public class DBUtils {
         ctv.put("name", friendsEntityVo.name);
         ctv.put("jid", friendsEntityVo.jid);
         ctv.put("presence", friendsEntityVo.presence);
+        ctv.put("myJid", friendsEntityVo.myJid);
         return ctv;
     }
 }

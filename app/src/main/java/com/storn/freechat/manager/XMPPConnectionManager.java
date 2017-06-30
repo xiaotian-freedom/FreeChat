@@ -1,9 +1,18 @@
 package com.storn.freechat.manager;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+
 import com.common.common.Constants;
+import com.common.util.BitmapUtil;
+import com.common.util.CommonUtil;
 import com.common.util.PreferenceTool;
+import com.storn.freechat.R;
+import com.storn.freechat.common.ChatApplication;
 import com.storn.freechat.jni.FreeChatCommon;
 import com.storn.freechat.login.presenter.LoginContract;
+import com.storn.freechat.vo.UserVo;
 
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.SmackException;
@@ -11,6 +20,8 @@ import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 import org.jivesoftware.smackx.muc.MultiUserChat;
+import org.jivesoftware.smackx.vcardtemp.VCardManager;
+import org.jivesoftware.smackx.vcardtemp.packet.VCard;
 import org.jivesoftware.smackx.xdata.Form;
 import org.jivesoftware.smackx.xdata.FormField;
 
@@ -100,16 +111,47 @@ public class XMPPConnectionManager {
                     if (!connection.isConnected()) {
                         connection.connect();
                     }
-                    connection.login(userName, passWord);
-                    if (mLoginListener != null) {
-                        mLoginListener.success();
+                    if (!isLogin()) {
+                        connection.login(userName, passWord);
+                    }
+                    if (connection.isAuthenticated()) {
+                        UserVo userVo = new UserVo();
+                        userVo.name = PreferenceTool.getString(Constants.LOGIN_UNAME);
+                        try {
+                            VCardManager vCardManager = VCardManager.getInstanceFor(connection);
+
+                            VCard vCard = vCardManager.loadVCard();
+                            String jid = vCard.getJabberId();
+                            if (TextUtils.isEmpty(jid)) {
+                                jid = vCard.getTo();
+                            }
+                            userVo.jid = jid;
+                            userVo.nickName = vCard.getNickName();
+                            PreferenceTool.putString(Constants.LOGIN_JID, jid);
+                            PreferenceTool.commit();
+                        } catch (SmackException.NoResponseException | XMPPException.XMPPErrorException
+                                | SmackException.NotConnectedException e) {
+                            e.printStackTrace();
+                        }
+                        ChatApplication.setUserVo(userVo);
+                        if (mLoginListener != null) {
+                            mLoginListener.success();
+                        }
                     }
                 }
             } catch (IOException | XMPPException | SmackException e) {
-                e.printStackTrace();
-                if (mLoginListener != null) {
-                    mLoginListener.fail();
+                boolean error = e.getMessage().equals("XMPPError: conflict - cancel");
+                if (error) {
+                    // 關閉連接
+                    XMPPConnectionManager.getInstance().connection.disconnect();
+                    // 重连服务器
+                    login();
+                } else {
+                    if (mLoginListener != null) {
+                        mLoginListener.fail();
+                    }
                 }
+
             }
         }).start();
     }
@@ -126,21 +168,21 @@ public class XMPPConnectionManager {
     }
 
     /**
-     * 断开XMPP连接
-     */
-    public void disconnect() {
-        if (connection != null) {
-            connection.disconnect();
-        }
-    }
-
-    /**
      * 是否已连接
      *
      * @return
      */
     public boolean isConnected() {
         return getConnection().isConnected();
+    }
+
+    /**
+     * 断开连接
+     */
+    public void disconnect() {
+        if (connection != null) {
+            connection.disconnect();
+        }
     }
 
     /**
@@ -183,7 +225,7 @@ public class XMPPConnectionManager {
             // 仅允许注册的昵称登录
             submitForm.setAnswer("x-muc#roomconfig_reservednick", true);
             // 允许使用者修改昵称
-            submitForm.setAnswer("x-muc#roomconfig_canchangenick", false);
+            submitForm.setAnswer("x-muc#roomconfig_canchangenick", true);
             // 允许用户注册房间
             submitForm.setAnswer("x-muc#roomconfig_registration", false);
             // 发送已完成的表单（有默认值）到服务器来配置聊天室
@@ -195,5 +237,57 @@ public class XMPPConnectionManager {
             e.printStackTrace();
         }
         return false;
+    }
+
+    /**
+     * 保存头像
+     *
+     * @param context
+     * @param bitmap
+     */
+    public void saveAvatar(Context context, Bitmap bitmap, LoginContract.ILoginListener loginListener) {
+        if (loginListener != null) {
+            loginListener.start();
+        }
+        if (connection == null) {
+            getConnection();
+        }
+        new Thread(() -> {
+            try {
+                if (getConnection() != null) {
+                    if (!connection.isConnected()) {
+                        connection.connect();
+                    }
+                    if (connection.isConnected()) {
+                        if (connection.isAuthenticated()) {
+                            VCardManager vCardManager = VCardManager.getInstanceFor(connection);
+                            VCard vCard = vCardManager.loadVCard();
+                            byte[] bytes = BitmapUtil.bitmapToByteArray(bitmap, true);
+                            vCard.setAvatar(bytes);
+                            vCardManager.saveVCard(vCard);
+                            if (loginListener != null) {
+                                loginListener.success();
+                            }
+                        } else {
+                            if (loginListener != null) {
+                                loginListener.fail();
+                            }
+                            CommonUtil.showToast(context, R.string.error_login);
+                        }
+                    } else {
+                        if (loginListener != null) {
+                            loginListener.fail();
+                        }
+                        CommonUtil.showToast(context, R.string.error_network);
+                    }
+                }
+            } catch (IOException | XMPPException | SmackException e) {
+                e.printStackTrace();
+                if (loginListener != null) {
+                    loginListener.fail();
+                }
+                CommonUtil.showToast(context, R.string.error_upload);
+            }
+        }).start();
     }
 }

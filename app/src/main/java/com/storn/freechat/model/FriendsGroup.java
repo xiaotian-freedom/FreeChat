@@ -12,10 +12,12 @@ import com.orm.androrm.field.IntegerField;
 public class FriendsGroup extends Model {
 
     public CharField name;
+    public CharField myJid;
     public IntegerField count;
 
     public FriendsGroup() {
         this.name = new CharField();
+        this.myJid = new CharField();
         this.count = new IntegerField();
     }
 }

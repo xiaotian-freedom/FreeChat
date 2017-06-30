@@ -1,119 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/message_list_item_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_margin="@dimen/space_11"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/color_w"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
 
-    <android.support.v7.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/space_11"
-        app:cardBackgroundColor="@color/color_w"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="2dp">
+        android:baselineAligned="true"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/space_11"
+        android:paddingLeft="@dimen/space_11"
+        android:paddingRight="@dimen/space_11"
+        android:paddingStart="@dimen/space_11">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <FrameLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:baselineAligned="true"
-            android:orientation="horizontal"
-            android:paddingEnd="@dimen/space_11"
-            android:paddingLeft="@dimen/space_11"
-            android:paddingRight="@dimen/space_11"
-            android:paddingStart="@dimen/space_11">
+            android:paddingBottom="@dimen/space_6"
+            android:paddingTop="@dimen/space_6">
 
-            <FrameLayout
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/message_list_item_head_view"
+                android:layout_width="@dimen/img_size_50"
+                android:layout_height="@dimen/img_size_50"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:src="@mipmap/default_head" />
+
+            <TextView
+                android:id="@+id/message_list_item_head_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/space_6"
-                android:paddingTop="@dimen/space_6">
+                android:layout_gravity="center"
+                android:textColor="@color/color_w"
+                android:textSize="@dimen/text_size_15" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/message_list_item_head_view"
-                    android:layout_width="@dimen/img_size_50"
-                    android:layout_height="@dimen/img_size_50"
-                    android:layout_gravity="center"
-                    android:contentDescription="@null"
-                    android:src="@mipmap/default_head" />
+        </FrameLayout>
 
-                <TextView
-                    android:id="@+id/message_list_item_head_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textColor="@color/color_w"
-                    android:textSize="@dimen/text_size_15" />
-
-            </FrameLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/space_11"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/space_11"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/message_list_item_tv_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:maxWidth="200dp"
+                    android:text="@string/temp_name"
+                    android:textColor="@color/color_b_11"
+                    android:textSize="@dimen/text_size_15" />
 
-                    <TextView
-                        android:id="@+id/message_list_item_tv_name"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:maxWidth="200dp"
-                        android:text="@string/temp_name"
-                        android:textColor="@color/color_b_11"
-                        android:textSize="@dimen/text_size_15" />
+                <TextView
+                    android:id="@+id/message_list_item_tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_20"
+                    android:textColor="@color/color_b_51"
+                    android:textSize="@dimen/text_size_10" />
 
-                    <TextView
-                        android:id="@+id/message_list_item_tv_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/space_20"
-                        android:textColor="@color/color_b_51"
-                        android:textSize="@dimen/text_size_10" />
+            </LinearLayout>
 
-                </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/space_8"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/space_8"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/message_list_item_tv_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/temp_message_request"
+                    android:textColor="@color/color_b_51"
+                    android:textSize="@dimen/text_size_13" />
 
-                    <TextView
-                        android:id="@+id/message_list_item_tv_content"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:text="@string/temp_message_request"
-                        android:textColor="@color/color_b_51"
-                        android:textSize="@dimen/text_size_13" />
-
-                    <com.common.widget.dragindicator.DragIndicatorView
-                        android:id="@+id/message_tip"
-                        android:layout_width="@dimen/space_20"
-                        android:layout_height="@dimen/space_20"
-                        android:layout_marginStart="@dimen/space_20"
-                        android:textColor="@color/color_w" />
-
-                </LinearLayout>
+                <com.common.widget.dragindicator.DragIndicatorView
+                    android:id="@+id/message_tip"
+                    android:layout_width="@dimen/space_20"
+                    android:layout_height="@dimen/space_20"
+                    android:layout_marginStart="@dimen/space_20"
+                    android:textColor="@color/color_w" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+    </LinearLayout>
 
-</LinearLayout>
+</android.support.v7.widget.CardView>

@@ -11,11 +11,12 @@ import android.widget.ListView;
  * Created by tianshutong on 2017/6/6.
  */
 
-public class TopAutoRefreshListView extends ListView implements AbsListView.OnScrollListener {
+public abstract class TopAutoRefreshListView extends ListView implements AbsListView.OnScrollListener {
 
     private boolean isRefreshing = false;
     private boolean isEnable = false;
     private boolean canScroll = true;
+    public boolean isBottom = false;
     private int mPosition;
     private RefreshHeaderLayout mHeaderLayout;
     private onTopRefreshListener mTopRefreshListener;
@@ -53,6 +54,7 @@ public class TopAutoRefreshListView extends ListView implements AbsListView.OnSc
 
     /**
      * 设置是否可滚动
+     *
      * @param b
      */
     public void setCanScroll(boolean b) {
@@ -74,6 +76,13 @@ public class TopAutoRefreshListView extends ListView implements AbsListView.OnSc
     public void onRefreshComplete() {
         mHeaderLayout.hide();
         isRefreshing = false;
+    }
+
+    /**
+     * 显示头部刷新效果
+     */
+    public void showHeader() {
+        mHeaderLayout.show();
     }
 
     @Override
@@ -98,7 +107,6 @@ public class TopAutoRefreshListView extends ListView implements AbsListView.OnSc
 
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-
     }
 
     @Override

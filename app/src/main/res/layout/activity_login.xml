@@ -123,12 +123,6 @@
                     android:textSize="@dimen/text_size_13"
                     android:visibility="visible" />
 
-                <!--<com.common.widget.MetaballView-->
-                <!--android:id="@+id/mProgressView"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:visibility="gone" />-->
-
                 <storn.github.io.loadingview.CircleLoadingView
                     android:id="@+id/mProgressView"
                     android:layout_width="50dp"

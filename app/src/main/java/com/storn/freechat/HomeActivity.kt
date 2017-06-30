@@ -1,14 +1,18 @@
 package com.storn.freechat
 
+import android.app.ActivityOptions
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.IntentFilter
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.support.design.widget.NavigationView
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
@@ -18,19 +22,16 @@ import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
-import android.transition.Explode
-import android.util.Log
 import android.view.*
 import android.widget.ExpandableListView
 import android.widget.TextView
 import android.widget.Toast
 import com.common.common.Constants
-import com.common.util.AnimationUtil
-import com.common.util.DensityUtil
-import com.common.util.PreferenceTool
-import com.common.util.SoftKeyBoardUtil
+import com.common.util.*
+import com.common.widget.CircleImageView
 import com.common.widget.ConfirmDialog
 import com.common.widget.PinnedHeaderExpandableListView
+import com.jaeger.library.StatusBarUtil
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
 import com.lcodecore.tkrefreshlayout.header.GoogleDotView
@@ -41,15 +42,23 @@ import com.storn.freechat.adapter.MainGroupAdapter
 import com.storn.freechat.adapter.MainMessageAdapter
 import com.storn.freechat.base.BaseActivity
 import com.storn.freechat.chat.ChatRoomAct
+import com.storn.freechat.chat.MultiChatRoomAct
 import com.storn.freechat.common.ChatApplication
 import com.storn.freechat.interfac.OnItemClickListener
+import com.storn.freechat.jni.FreeChatCommon
 import com.storn.freechat.login.presenter.LoginContract
+import com.storn.freechat.manager.UserManager
 import com.storn.freechat.manager.XMPPConnectionManager
+import com.storn.freechat.me.ui.ProfileDetailAct
 import com.storn.freechat.service.MySingleChatListener
 import com.storn.freechat.service.NetWorkStateReceiver
+import com.storn.freechat.service.TaxiConnectionListener
 import com.storn.freechat.util.ActivityManagerUtil
 import com.storn.freechat.util.DBHelper
-import com.storn.freechat.vo.*
+import com.storn.freechat.vo.FriendsEntityVo
+import com.storn.freechat.vo.FriendsGroupVo
+import com.storn.freechat.vo.GroupEntityVo
+import com.storn.freechat.vo.MessageEntityVo
 import com.yanzhenjie.recyclerview.swipe.Closeable
 import com.yanzhenjie.recyclerview.swipe.OnSwipeMenuItemClickListener
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
@@ -58,14 +67,12 @@ import kotlinx.android.synthetic.main.activity_home_drawer_layout.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.content_home.*
 import kotlinx.android.synthetic.main.tool_bar_layout.*
-import org.jivesoftware.smack.SmackConfiguration
 import org.jivesoftware.smack.SmackException
 import org.jivesoftware.smack.XMPPException
 import org.jivesoftware.smack.chat.ChatManager
 import org.jivesoftware.smack.packet.Presence
 import org.jivesoftware.smack.roster.Roster
 import org.jivesoftware.smack.roster.RosterListener
-import org.jivesoftware.smackx.muc.DiscussionHistory
 import org.jivesoftware.smackx.muc.MultiUserChatManager
 import org.jivesoftware.smackx.muc.RoomInfo
 import java.util.*
@@ -83,6 +90,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     var currentSelect: Int = MESSAGE
     var customView: View? = null
+    var headView: CircleImageView? = null
     var dialog: ConfirmDialog? = null
     var createEditText: AppCompatEditText? = null
 
@@ -91,11 +99,11 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     var groupAdapter: MainGroupAdapter? = null
 
     //消息列表
-    var mMessageList = listOf<MessageEntityVo>()
+    var mMessageList = mutableListOf<MessageEntityVo>()
     //群列表
-    var mGroupList = arrayListOf<GroupEntityVo>()
+    var mGroupList = mutableListOf<GroupEntityVo>()
     //好友列表
-    var groupList = arrayListOf<FriendsGroupVo>()
+    var groupList = mutableListOf<FriendsGroupVo>()
     var childList = arrayListOf<List<FriendsEntityVo>>()
 
     var isExit: Boolean = false
@@ -103,10 +111,12 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     var isFirstShowChatRoomList: Boolean = true
 
     var mHandler = Handler(Looper.getMainLooper())
-    //点击具体的消息列表
-//    var mMessageEntity = MessageEntityVo()
 
-    val netWorkStateReiver = NetWorkStateReceiver()
+    val netWorkStateReceiver = NetWorkStateReceiver()
+
+    val mChatListener = MySingleChatListener(this)
+
+    val connectionListener = TaxiConnectionListener(this)
 
     /**
      * kotlin没有static
@@ -120,9 +130,8 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        setupWindowTransition()
-        initXmmConn()
         initToolbar()
+        initXmmConn()
         initMessageRecyclerView()
         initGroupRecyclerView()
         initListener()
@@ -132,11 +141,8 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         super.onResume()
         val filter = IntentFilter()
         filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
-        registerReceiver(netWorkStateReiver, filter)
-    }
-
-    override fun onPause() {
-        super.onPause()
+        registerReceiver(netWorkStateReceiver, filter)
+        XMPPConnectionManager.getInstance().connection.addConnectionListener(connectionListener)
     }
 
     override fun onBackPressed() {
@@ -157,25 +163,24 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onDestroy() {
         super.onDestroy()
-        unregisterReceiver(netWorkStateReiver)
-    }
-
-    private fun setupWindowTransition() {
-        val explode = Explode()
-        explode.duration = 300
-        window.enterTransition = explode
+        unregisterReceiver(netWorkStateReceiver)
+        if (XMPPConnectionManager.getInstance().connection != null) {
+            XMPPConnectionManager.getInstance().connection.removeConnectionListener(connectionListener)
+            ChatManager.getInstanceFor(XMPPConnectionManager.getInstance().connection).removeChatListener(mChatListener)
+            XMPPConnectionManager.getInstance().disconnect()
+        }
     }
 
     fun initToolbar() {
         toolbar.title = ""
         setSupportActionBar(toolbar)
-        setToolbarTitle("小田一郎君")
-
+        mainToolBarRight.visibility = View.GONE
         val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
         val toggle = ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer.addDrawerListener(toggle)
         toggle.syncState()
+        StatusBarUtil.setColorNoTranslucentForDrawerLayout(this, drawer, ContextCompat.getColor(this, R.color.color_y_e2))
 
         homeHandler = HomeHandler()
     }
@@ -189,9 +194,14 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 }
             }
         }
+        headView = navigationView.getHeaderView(0).findViewById(R.id.nav_head_view) as CircleImageView
+        headView!!.setOnClickListener({
+            val intent = Intent(this, ProfileDetailAct::class.java)
+            val options = ActivityOptions.makeSceneTransitionAnimation(this, headView, resources.getString(R.string.profile_head))
+            startActivity(intent, options.toBundle())
+        })
         navigationView.setNavigationItemSelectedListener(this)
         mainExpandableListView.setOnChildClickListener(this)
-        mainExpandableListView.setOnHeaderUpdateListener(this)
         mainExpandableListView.setOnGroupClickListener(this, true)
         mainMessageRecyclerView.setSwipeMenuItemClickListener(this)
 
@@ -233,6 +243,9 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         queryMessageList()
     }
 
+    /**
+     * 初始化群列表
+     */
     private fun initGroupRecyclerView() {
         mainGroupRecyclerView.setHasFixedSize(true)
         mainGroupRecyclerView.itemAnimator = DefaultItemAnimator()
@@ -254,11 +267,11 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
      */
     private fun setMessageAdapter() {
         if (messageAdapter == null) {
-            messageAdapter = MainMessageAdapter(this, mMessageList)
+            messageAdapter = MainMessageAdapter(this, mMessageList, true)
             messageAdapter?.setOnItemClickListener(mOnMessageItemClickListener)
             mainMessageRecyclerView.adapter = messageAdapter
         } else {
-            messageAdapter?.setRefreshData(mMessageList)
+            messageAdapter?.setRefreshData(mMessageList, false)
         }
         messageRefreshLayout.finishRefreshing()
     }
@@ -268,13 +281,12 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
      */
     private fun setGroupAdapter() {
         if (groupAdapter == null) {
-            groupAdapter = MainGroupAdapter(this, mGroupList)
+            groupAdapter = MainGroupAdapter(this, mGroupList, true)
             groupAdapter?.setOnItemClickListener(mOnGroupItemClickListener)
             mainGroupRecyclerView.adapter = groupAdapter
         } else {
-            groupAdapter?.setRefreshData(mGroupList)
+            groupAdapter?.setRefreshData(mGroupList, false)
         }
-        groupRefreshLayout.finishRefreshing()
     }
 
     /**
@@ -282,11 +294,12 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
      */
     private fun setFriendsAdapter() {
         if (friendsAdapter == null) {
-            friendsAdapter = MainFriendsAdapter(this, groupList, childList)
+            friendsAdapter = MainFriendsAdapter(this, groupList, childList, true, true)
             mainExpandableListView.setAdapter(friendsAdapter)
-            mainExpandableListView.requestRefreshHeader()
+            mainExpandableListView.setOnHeaderUpdateListener(this)
+//            mainExpandableListView.requestRefreshHeader()
         } else {
-            friendsAdapter?.refreshData(groupList, childList)
+            friendsAdapter?.refreshData(groupList, childList, false, false)
         }
     }
 
@@ -302,14 +315,17 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     /**
-     * 设置导航栏右侧图标
-
-     * @param resId
+     * 设置头像
      */
-    private fun setToolbarRight(resId: Int) {
-        if (resId != 0) {
-            mainToolBarRight!!.setImageResource(resId)
-        }
+    private fun setHeadView(bitmap: Bitmap) {
+        headView!!.setImageBitmap(bitmap)
+    }
+
+    /**
+     * 更新头像
+     */
+    private fun updateHeadView(url: String) {
+        GlideHelper.showHeadViewWithNoAnim(this, url, headView)
     }
 
     /**
@@ -344,9 +360,11 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
+    /**
+     * 显示群聊刷新控件
+     */
     private fun showGroupRecyclerRefreshLayout() {
         if (groupRefreshLayout.visibility == View.GONE) {
-
             AnimationUtil.startAlphaAnim(groupRefreshLayout, messageRefreshLayout, expandableRefreshLayout)
         }
     }
@@ -385,13 +403,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 if (chatRoom.length < 2) {
                     Toast.makeText(this, getString(R.string.create_room_tip_min), Toast.LENGTH_SHORT).show()
                 } else {
-                    val isCreated = createChatRooms(chatRoom)
-                    if (isCreated) {
-                        queryChatRooms()
-//                        Toast.makeText(this, getString(R.string.create_room_success), Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(this, getString(R.string.create_room_fail), Toast.LENGTH_SHORT).show()
-                    }
+                    createChatRooms(chatRoom)
                 }
             }
         }
@@ -412,43 +424,64 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     /**
      * 创建聊天室
      */
-    private fun createChatRooms(roomName: String): Boolean {
+    private fun createChatRooms(roomName: String): Unit {
+        mProgressView.visibility = View.VISIBLE
         val connection = XMPPConnectionManager.getInstance().connection
         val mMultiUserChatManager = MultiUserChatManager.getInstanceFor(connection)
         val mUserVo = ChatApplication.getUserVo()
-        if (TextUtils.isEmpty(mUserVo.jid)) {
-            return false
-        }
-        try {
-            val SERVICE_NAME = mMultiUserChatManager.serviceNames
-            val userChat = mMultiUserChatManager.getMultiUserChat(roomName + "@" + SERVICE_NAME[0])
-            userChat.createOrJoin(mUserVo.name)
-            joinChatRoom(mUserVo, mMultiUserChatManager)
-            queryChatRooms()
-            return XMPPConnectionManager.getInstance().configChatRoom(userChat)
-        } catch (e: XMPPException.XMPPErrorException) {
-            e.printStackTrace()
-        } catch (e: SmackException) {
-            e.printStackTrace()
-        }
+        var created: Boolean
 
-        return false
+        mHandler.postDelayed({
+            try {
+                val SERVICE_NAME = mMultiUserChatManager.serviceNames
+                val userChat = mMultiUserChatManager.getMultiUserChat(roomName + "@" + SERVICE_NAME[0])
+                userChat.create(mUserVo.name)
+//                joinChatRoom(mUserVo, mMultiUserChatManager)
+                created = XMPPConnectionManager.getInstance().configChatRoom(userChat)
+
+            } catch (e: XMPPException.XMPPErrorException) {
+                e.printStackTrace()
+                created = false
+            } catch (e: SmackException) {
+                e.printStackTrace()
+                created = false
+            }
+
+            mProgressView.visibility = View.GONE
+            if (created) {
+                getChatRooms()
+                Toast.makeText(this, getString(R.string.create_room_success), Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, getString(R.string.create_room_fail), Toast.LENGTH_SHORT).show()
+            }
+        }, Constants.DELAY_3000.toLong())
     }
 
-    private fun joinChatRoom(userVo: UserVo, mucChatManager: MultiUserChatManager) {
+    /*private fun joinChatRoom(userVo: UserVo, mucChatManager: MultiUserChatManager) {
         val muc = mucChatManager.getMultiUserChat(userVo.jid)
         val history: DiscussionHistory = DiscussionHistory()
-        history.maxStanzas = Constants.MULTICHAT_MAX_HISTORY
+        history.maxStanzas = 0
         muc.join(userVo.name, userVo.password, history, SmackConfiguration.getDefaultPacketReplyTimeout().toLong())
+    }*/
+
+    /**
+     * 查询本地好友列表
+     */
+    private fun queryLocalFriends() {
+        val userVo = ChatApplication.userVo
+        if (userVo == null || userVo.jid.isEmpty()) return
+        groupList = DBHelper.getInstance().queryFriendsGroupList(this, userVo.jid)
+        val tempList = DBHelper.getInstance().queryFriendsList(this, userVo.jid)
+        if (tempList.isNotEmpty()) childList.add(tempList)
+        if (groupList.isNotEmpty()) setFriendsAdapter()
     }
 
     /**
      * 获取好友列表
      */
     private fun getFriendsData() {
-        groupList.clear()
-        childList.clear()
         val connection = XMPPConnectionManager.getInstance().connection
+        if (!connection.isConnected || !connection.isAuthenticated) return
         val roster = Roster.getInstanceFor(connection)
         roster.addRosterListener(object : RosterListener {
             override fun entriesAdded(addresses: Collection<String>) {
@@ -469,6 +502,10 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         })
 
         val rosterEntries = roster.groups
+        if (rosterEntries.isNotEmpty()) {
+            groupList.clear()
+            childList.clear()
+        }
 
         for (rosterGroup in rosterEntries) {
             val groupName = rosterGroup.name
@@ -476,7 +513,9 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             val friendsGroupVo = FriendsGroupVo()
             friendsGroupVo.name = groupName
             friendsGroupVo.count = count
+            friendsGroupVo.myJid = ChatApplication.getUserVo().jid
             groupList.add(friendsGroupVo)
+            DBHelper.getInstance().insertOrUpdateFriendsGroup(this, friendsGroupVo)
 
             val rosterEntryList = rosterGroup.entries
             val tempChildList = java.util.ArrayList<FriendsEntityVo>()
@@ -484,11 +523,9 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 val rosterEntry = rosterEntryList[i]
                 val friendsEntityVo = FriendsEntityVo()
                 val presence = roster.getPresence(rosterEntry.user)
-                Log.e("状态", "presence=" + presence)
-                Log.e("状态", "presence status=" + presence.status)
-                Log.e("状态", "presence mode=" + presence.mode)
 
-                if (presence.isAvailable) {
+                val type = presence.type
+                if (type == Presence.Type.available) {
                     friendsEntityVo.presence = "[在线]"
                 } else {
                     friendsEntityVo.presence = "[离线]"
@@ -496,36 +533,57 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 friendsEntityVo.jid = rosterEntry.user + Constants.JID_POST
                 friendsEntityVo.name = rosterEntry.user
                 friendsEntityVo.nickName = rosterEntry.name
+                friendsEntityVo.myJid = ChatApplication.getUserVo().jid
                 tempChildList.add(friendsEntityVo)
+                DBHelper.getInstance().insertOrUpdateFriends(this, friendsEntityVo)
             }
             childList.add(tempChildList)
         }
-        setFriendsAdapter()
+        if (groupList.isNotEmpty()) {
+            setFriendsAdapter()
+        }
         expandableRefreshLayout.finishRefreshing()
     }
 
     /**
-     * 获取已加入的聊天室
+     * 获取本地聊天室
      */
-    private fun queryChatRooms() {
+    private fun queryLocalChatRooms() {
         mGroupList.clear()
+        mGroupList = DBHelper.getInstance().queryGroupList(this)
+        if (mGroupList.isNotEmpty()) setGroupAdapter()
+    }
+
+    /**
+     * 获取服务器所有的聊天室
+     */
+    private fun getChatRooms() {
         val connection = XMPPConnectionManager.getInstance().connection
+        if (!XMPPConnectionManager.getInstance().isLogin) return
+        mGroupList.clear()
         val mMultiUserChatManager = MultiUserChatManager.getInstanceFor(connection)
         try {
-            val tempRoomList = mMultiUserChatManager.getHostedRooms(connection.serviceName)
-            for (hostRoom in tempRoomList) {
+            val tempRoomList = mMultiUserChatManager.getHostedRooms("conference." + FreeChatCommon.getXMPPServerName())
+            if (tempRoomList.isNotEmpty()) {
+                for (hostRoom in tempRoomList) {
 
-                val roomInfo: RoomInfo = mMultiUserChatManager.getRoomInfo(hostRoom.jid)
+                    val roomInfo: RoomInfo = mMultiUserChatManager.getRoomInfo(hostRoom.jid)
 
-                val groupVo = GroupEntityVo()
-                groupVo.roomJid = hostRoom.jid
-                groupVo.roomName = hostRoom.name
-                groupVo.description = roomInfo.description
-                groupVo.subject = roomInfo.subject
-                groupVo.occupantsCount = roomInfo.occupantsCount
-                mGroupList.add(groupVo)
+                    val groupVo = GroupEntityVo()
+                    groupVo.roomJid = hostRoom.jid
+                    groupVo.roomName = hostRoom.name
+                    groupVo.description = roomInfo.description
+                    groupVo.subject = roomInfo.subject
+                    groupVo.occupantsCount = roomInfo.occupantsCount
+                    mGroupList.add(groupVo)
+                    DBHelper.getInstance().insertOrUpdateGroup(this, groupVo)
+                }
             }
-            setGroupAdapter()
+            if (mGroupList.isNotEmpty()) {
+                setGroupAdapter()
+            }
+            groupRefreshLayout.finishRefreshing()
+
         } catch (e: SmackException.NoResponseException) {
             e.printStackTrace()
         } catch (e: XMPPException.XMPPErrorException) {
@@ -533,7 +591,6 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         } catch (e: SmackException.NotConnectedException) {
             e.printStackTrace()
         }
-
     }
 
     /**
@@ -562,7 +619,10 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 currentSelect = CHATROOM
                 fab.visibility = View.VISIBLE
                 if (isFirstShowChatRoomList) {
-                    queryChatRooms()
+                    queryLocalChatRooms()
+                    mHandler.postDelayed({
+                        getChatRooms()
+                    }, Constants.DELAY_1000.toLong())
                     isFirstShowChatRoomList = false
                 }
                 showGroupRecyclerRefreshLayout()
@@ -571,7 +631,10 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 currentSelect = FRIENDS
                 fab.visibility = View.VISIBLE
                 if (isFirstShowFriendList) {
-                    getFriendsData()
+                    queryLocalFriends()
+                    mHandler.postDelayed({
+                        getFriendsData()
+                    }, Constants.DELAY_1000.toLong())
                     isFirstShowFriendList = false
                 }
                 showExpandableRefreshLayout()
@@ -605,16 +668,37 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun start() {
-        progressView.visibility = View.VISIBLE
-        setToolbarTitle("连接中...")
+        runOnUiThread({
+            progressView.visibility = View.VISIBLE
+            setToolbarTitle("连接中...")
+        })
     }
 
     override fun success() {
         runOnUiThread {
             progressView.visibility = View.GONE
-            setToolbarTitle(ChatApplication.getUserVo().name)
+            val name: String
+            val userVo = DBHelper.getInstance().queryProfileInfo(this, PreferenceTool.getString(Constants.LOGIN_JID))
+            if (userVo != null) {
+                if (userVo.nickName.isNotEmpty()) {
+                    name = userVo.nickName
+                } else {
+                    name = userVo.name
+                }
+                setToolbarTitle(name)
+                if (userVo.img != null && userVo.img.isNotEmpty()) {
+                    updateHeadView(userVo.img)
+                } else {
+                    val inputStream = UserManager.getInstance().getUserHead(PreferenceTool.getString(Constants.LOGIN_JID))
+                    if (inputStream != null) {
+                        setHeadView(BitmapFactory.decodeStream(inputStream))
+                    } else {
+                        headView!!.setImageResource(R.mipmap.default_head_2)
+                    }
+                }
+            }
+
             val chatManager = ChatManager.getInstanceFor(XMPPConnectionManager.getInstance().connection)
-            val mChatListener = MySingleChatListener(this)
             chatManager.addChatListener(mChatListener)
         }
     }
@@ -625,13 +709,17 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
+    /**
+     * 好友列表点击
+     */
     override fun onChildClick(parent: ExpandableListView?, v: View?, groupPosition: Int, childPosition: Int, id: Long): Boolean {
         val mainChild = childList[groupPosition][childPosition]
         val intent = Intent(this, ChatRoomAct::class.java)
-        intent.putExtra(Constants.FRIEND_JID, mainChild.jid)
-        intent.putExtra(Constants.FRIEND_NAME, mainChild.name)
+        val messageEntity = MessageEntityVo()
+        messageEntity.jid = mainChild.jid
+        messageEntity.fromName = mainChild.name
+        intent.putExtra(Constants.MESSAGEVO, messageEntity)
         startActivity(intent)
-
         return false
     }
 
@@ -647,37 +735,61 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun updatePinnedHeader(headerView: View?, firstVisibleGroupPos: Int) {
-        if (friendsAdapter == null || friendsAdapter?.groupCount == 0) {
-            return
-        }
-        val mainGroup = friendsAdapter?.getGroup(firstVisibleGroupPos) as FriendsGroupVo
+        if (friendsAdapter == null) return
+        if (groupList.isEmpty()) return
+        val mainGroup = groupList[firstVisibleGroupPos]
         val tvGroupName = headerView?.findViewById(R.id.main_group_name) as TextView
         val tvCount = headerView.findViewById(R.id.main_group_count) as TextView
         tvGroupName.text = mainGroup.name
         tvCount.text = mainGroup.count.toString()
     }
 
+    /**
+     * 删除消息列表
+     */
     override fun onItemClick(closeable: Closeable?, adapterPosition: Int, menuPosition: Int, direction: Int) {
         closeable?.smoothCloseRightMenu()
-        mMessageList.drop(adapterPosition)
-        messageAdapter?.notifyItemRemoved(adapterPosition)
+        val mId = mMessageList[adapterPosition].mId
+        mMessageList.removeAt(adapterPosition)
+        messageAdapter!!.deleteData(mMessageList, adapterPosition)
+        DBHelper.getInstance().deleteMessage(this, mId)
     }
 
     /**
      * 消息列表点击事件
      */
     private val mOnMessageItemClickListener = OnItemClickListener { position: Int ->
-        val messageEntity = mMessageList[position]
-        val intent = Intent(this, ChatRoomAct::class.java)
-        intent.putExtra(Constants.MESSAGEVO, messageEntity)
-        startActivity(intent)
+        if (mMessageList.isNotEmpty()) {
+            val messageEntity = mMessageList[position]
+            val intent = Intent()
+
+            if (messageEntity.type == 0) {
+                intent.setClass(this, ChatRoomAct::class.java)
+            } else if (messageEntity.type == 1) {
+                intent.setClass(this, MultiChatRoomAct::class.java)
+            }
+            intent.putExtra(Constants.MESSAGEVO, messageEntity)
+            startActivity(intent)
+        }
     }
 
     /**
      * 群列表点击事件
      */
     private val mOnGroupItemClickListener = OnItemClickListener { position: Int ->
-        Toast.makeText(this, "这是点击的第" + position + "个群", Toast.LENGTH_SHORT).show()
+        if (mGroupList.isNotEmpty()) {
+            val groupEntity = mGroupList[position]
+            if (groupEntity.roomJid == "my_server@conference.freechat.storn.com") {
+                Toast.makeText(this, "拒绝加入", Toast.LENGTH_SHORT).show()
+            } else {
+                val intent = Intent(this, MultiChatRoomAct::class.java)
+                val messageEntity = MessageEntityVo()
+                messageEntity.jid = groupEntity.roomJid
+                messageEntity.roomName = groupEntity.roomName
+                intent.putExtra(Constants.MESSAGEVO, messageEntity)
+                startActivity(intent)
+            }
+        }
     }
 
 
@@ -696,7 +808,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
      */
     private val mGroupListListener = object : RefreshListenerAdapter() {
         override fun onRefresh(refreshLayout: TwinklingRefreshLayout?) {
-            groupRefreshLayout.postDelayed({ queryChatRooms() }, Constants.DELAY_2000.toLong())
+            groupRefreshLayout.postDelayed({ getChatRooms() }, Constants.DELAY_2000.toLong())
         }
     }
 
@@ -710,6 +822,9 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
+    /**
+     * 消息处理
+     */
     inner class HomeHandler : Handler() {
 
         override fun handleMessage(msg: Message?) {
@@ -721,29 +836,17 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                     clearMsgTip(messageEntity)
                     queryMessageList()
                 }
-                Constants.CONNECT_SERVICE ->
+                Constants.CONNECT_SERVICE -> {
                     mHandler.postDelayed({ initXmmConn() }, Constants.DELAY_1000.toLong())
+                }
+                Constants.UPDATE_HEADVIEW -> {
+                    val url = msg.obj as String
+                    updateHeadView(url)
+                }
                 else -> {
                 }
             }
         }
     }
-
-    /**
-     * 处理接收消息
-     * RxBus在kotlin中不起作用
-     */
-    /*private fun dealMessage() {
-        RxBusHelper.doOnMainThread(RxEvent::class.java, object : RxBusHelper.OnEventListener<RxEvent> {
-            override fun onEvent(rxEvent: RxEvent) {
-                if (rxEvent.getEventCode() == EventCode.REFRESH_MESSAGE_LIST)
-                    queryMessageList()
-            }
-
-            override fun onError(errorBean: ErrorBean) {
-
-            }
-        })
-    }*/
 
 }

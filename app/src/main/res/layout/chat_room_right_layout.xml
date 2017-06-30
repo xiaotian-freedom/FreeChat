@@ -64,7 +64,8 @@
             android:layout_marginStart="@dimen/space_8"
             android:contentDescription="@null"
             android:scaleType="centerCrop"
-            android:src="@mipmap/default_head" />
+            android:transitionName="@string/profile_head"
+            android:src="@mipmap/default_head_2" />
 
     </LinearLayout>
 

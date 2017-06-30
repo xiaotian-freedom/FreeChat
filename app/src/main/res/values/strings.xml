@@ -15,7 +15,11 @@
     <string name="error_invalid_password">密码无效</string>
     <string name="error_incorrect_password">用户名或密码不正确</string>
     <string name="error_field_required">请求失败</string>
+    <string name="error_login">登录异常</string>
+    <string name="error_network">网络连接失败，请稍后再试</string>
+    <string name="error_upload">上传失败</string>
     <string name="permission_rationale">木有权限</string>
+
     <!-- nav menu left -->
     <string name="slide_menu_left_head_des">我的头像</string>
     <string name="slide_menu_left_message">我的消息</string>
@@ -24,12 +28,28 @@
     <string name="slide_menu_left_service">我的服务</string>
     <string name="slide_menu_left_settings">系统设置</string>
     <string name="nav_service">服务</string>
-    <!-- slide menu right -->
-    <string name="slide_menu_right_account">账号:</string>
-    <string name="slide_menu_right_sign">个性签名:</string>
-    <string name="slide_menu_right_telephone">联系电话:</string>
-    <string name="slide_menu_right_QQ">QQ:</string>
-    <string name="slide_menu_right_email">E-mail:</string>
+
+    <!-- profile -->
+    <string name="profile_title">个人信息</string>
+    <string name="profile_head">头像</string>
+    <string name="profile_signature">个性签名</string>
+    <string name="profile_nick">昵称</string>
+    <string name="profile_account">账号</string>
+    <string name="profile_telephone">联系电话</string>
+    <string name="profile_qq">QQ</string>
+    <string name="profile_email">E-mail</string>
+    <string name="profile_modify_title">%1$s修改</string>
+    <string name="profile_modify_edit_nick">%1$s/24</string>
+    <string name="profile_modify_edit_telephone">%1$s/11</string>
+    <string name="profile_modify_edit_qq">%1$s/10</string>
+    <string name="profile_modify_tip">您还没写点啥呢</string>
+    <string name="profile_modify_telephone_error">请填写正确的手机号</string>
+    <string name="profile_modify_email_error">邮件格式不正确哟🙃</string>
+    <string name="profile_modify_complete">修改成功</string>
+
+    <!-- camera -->
+    <string name="camera">拍照</string>
+    <string name="album">相册</string>
 
     <!-- pull to refresh -->
     <string name="refreshing">正在刷新&#8230;</string>
@@ -45,6 +65,7 @@
     <string name="confirm">确定</string>
     <string name="cancel">取消</string>
     <string name="send">发送</string>
+    <string name="complete">完成</string>
     <string name="click_one_more_exit">再点一次退出应用</string>
 
     <!-- create multiChatRoom -->
@@ -56,11 +77,21 @@
     <string name="create_room_success">创建成功</string>
     <string name="create_room_fail">创建失败</string>
 
+    <!-- Permission -->
+    <string name="camera_no_permission">无法获取相机权限，请打开相关设置开启</string>
+    <string name="storage_no_permission">无法获取读写文件权限，请打开相关设置开启</string>
+    <string name="contact_no_permission">无法获取通讯录权限，请打开相关设置开启</string>
+    <string name="record_audio_no_permission">无法获取录音权限，请打开相关设置开启</string>
+    <string name="coarse_location_no_permission">无法获取精准定位权限，请打开相关设置开启</string>
+    <string name="call_phone_no_permission">无法获取打电话权限，请打开相关设置开启</string>
+    <string name="internet_no_permission">无法获取因特网权限，请打开相关设置开启</string>
+    <string name="camera_catch_exception">无法打开系统相机，请在权限管理中开启拍照权限</string>
+
     <!-- temp strings -->
     <string name="temp_name">小田一郎君</string>
     <string name="temp_position">移动研发部 android开发攻城狮</string>
     <string name="temp_account">xiaotianyilang</string>
-    <string name="temp_sign">人并不是因为美丽才可爱\n而是因为可爱才美丽！</string>
+    <string name="temp_sign">人并不是因为美丽才可爱，而是因为可爱才美丽！</string>
     <string name="temp_telephone">15617687251</string>
     <string name="temp_qq">990963457</string>
     <string name="temp_email">990963457@qq.com</string>

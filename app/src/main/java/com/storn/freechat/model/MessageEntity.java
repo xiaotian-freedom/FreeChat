@@ -14,11 +14,11 @@ public class MessageEntity extends Model {
 
     public IntegerField mId;
 
-    public CharField fromJid;
+    public CharField jid;
 
     public CharField myJid;
 
-    public CharField name;
+    public CharField fromName;
 
     public CharField content;
 
@@ -26,13 +26,19 @@ public class MessageEntity extends Model {
 
     public IntegerField msgCount;
 
+    public CharField roomName;
+
+    public IntegerField type;
+
     public MessageEntity() {
         this.mId = new IntegerField();
-        this.fromJid = new CharField();
+        this.jid = new CharField();
         this.myJid = new CharField();
-        this.name = new CharField();
+        this.fromName = new CharField();
         this.content = new CharField();
         this.time = new IntegerField();
         this.msgCount = new IntegerField();
+        this.roomName = new CharField();
+        this.type = new IntegerField();
     }
 }

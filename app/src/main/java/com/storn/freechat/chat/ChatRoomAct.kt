@@ -1,5 +1,6 @@
 package com.storn.freechat.chat
 
+import android.graphics.Rect
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -8,8 +9,11 @@ import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.View
+import android.view.ViewTreeObserver
 import com.common.common.Constants
+import com.common.util.DensityUtil
 import com.common.util.PreferenceTool
+import com.common.util.SoftKeyBoardUtil
 import com.common.util.TimeUtil
 import com.common.widget.TopAutoRefreshListView
 import com.jaeger.library.StatusBarUtil
@@ -23,7 +27,9 @@ import com.storn.freechat.util.DBHelper
 import com.storn.freechat.vo.ChatMessageEntityVo
 import com.storn.freechat.vo.FriendsEntityVo
 import com.storn.freechat.vo.MessageEntityVo
+import com.yanzhenjie.recyclerview.swipe.overscroll.OnOverScrollListener
 import kotlinx.android.synthetic.main.activity_chat_room.*
+import kotlinx.android.synthetic.main.common_yellow_tool_bar_layout.*
 import org.jivesoftware.smack.SmackException
 import org.jivesoftware.smack.chat.ChatManager
 
@@ -32,7 +38,8 @@ import org.jivesoftware.smack.chat.ChatManager
  * Created by tianshutong on 2016/12/9.
  */
 
-class ChatRoomAct : BaseActivity(), TextWatcher, View.OnClickListener, TopAutoRefreshListView.onTopRefreshListener {
+class ChatRoomAct : BaseActivity(), TextWatcher, View.OnClickListener,
+        TopAutoRefreshListView.onTopRefreshListener, OnOverScrollListener, ViewTreeObserver.OnGlobalLayoutListener {
 
     private var mOffset = 0
     private val mLimit = 10
@@ -66,32 +73,36 @@ class ChatRoomAct : BaseActivity(), TextWatcher, View.OnClickListener, TopAutoRe
     }
 
     private fun initToolbar() {
-        mainToolBar!!.setNavigationIcon(R.mipmap.white_arrow_left)
+        mainToolBar.setNavigationIcon(R.mipmap.white_arrow_left)
     }
 
     private fun initData() {
 
         val data = this.intent
         mMessageVo = data.getSerializableExtra(Constants.MESSAGEVO) as MessageEntityVo
-        friendInfo.jid = mMessageVo.fromJid
-        friendInfo.name = mMessageVo.name
-        setToolbarTitle(mMessageVo.name)
+        friendInfo.jid = mMessageVo.jid
+        friendInfo.name = mMessageVo.fromName
+        setToolbarTitle(mMessageVo.fromName)
         getChatMessage()
         clearMsgTip()
     }
 
     private fun initListener() {
 
-        mainToolBar!!.setNavigationOnClickListener { _ -> finish() }
-        mainToolBarRight!!.setOnClickListener { _ ->
+        mainToolBar.setNavigationOnClickListener { _ -> finish() }
+        mainToolBarRight.setOnClickListener { _ ->
 
         }
-        chatRoomSend!!.setOnClickListener(this)
-        chatRoomEdit!!.addTextChangedListener(this)
+        chatRoomSend.setOnClickListener(this)
+        chatRoomEdit.addTextChangedListener(this)
 
-        refreshableView!!.setAutoRefreshEnabled(true)
-        refreshableView!!.setOnTopRefreshListener(this)
+        refreshableView.bindActivity(this)
+        refreshableView.setAutoRefreshEnabled(true)
+        refreshableView.setOnTopRefreshListener(this)
 
+        scrollLayout.setOnOverScrollListener(this)
+
+        chatRoomRootLayout.viewTreeObserver.addOnGlobalLayoutListener(this)
     }
 
     private fun initChat() {
@@ -203,12 +214,13 @@ class ChatRoomAct : BaseActivity(), TextWatcher, View.OnClickListener, TopAutoRe
 
         //save to message list
         mMessageVo.mId = currentTime.toInt()
-        mMessageVo.fromJid = friendInfo.jid
+        mMessageVo.jid = friendInfo.jid
         mMessageVo.myJid = mUserVo.jid
-        mMessageVo.name = friendInfo.name
+        mMessageVo.fromName = friendInfo.name
         mMessageVo.content = content
         mMessageVo.time = currentTime
         mMessageVo.msgCount = 0
+        mMessageVo.type = 0
         dbHelper.insertOrUpdateMessage(this, mMessageVo)
 
         val addMessage = Message.obtain()
@@ -256,6 +268,52 @@ class ChatRoomAct : BaseActivity(), TextWatcher, View.OnClickListener, TopAutoRe
     override fun onRefresh() {
         mOffset += mLimit
         getChatMessage()
+    }
+
+    override fun onTopOverScroll() {
+    }
+
+    override fun onBottomOverScroll() {
+        if (!ShowKeyboard) {
+            chatRoomEdit.requestFocus()
+            SoftKeyBoardUtil.showSoftKeyboard(this)
+            ShowKeyboard = true
+        }
+    }
+
+    override fun onLeftOverScroll() {
+    }
+
+    override fun onRightOverScroll() {
+    }
+
+    var ShowKeyboard = false
+
+    override fun onGlobalLayout() {
+        val r = Rect()
+        chatRoomRootLayout.getWindowVisibleDisplayFrame(r)
+        // 获取状态栏高度
+        val statusBarHeight = DensityUtil.getStatusBarHeight(chatRoomRootLayout)
+        // 屏幕高度,不含虚拟按键的高度
+        val screenHeight = DensityUtil.getScreenHeight(this)
+        // 键盘最小高度
+        val minKeyboardHeight = screenHeight / 3
+        // 在不显示软键盘时，height 等于状态栏的高度
+        val height = screenHeight - (r.bottom - r.top)
+
+        if (ShowKeyboard) {
+            // 如果软键盘是弹出的状态，并且 height 小于等于状态栏高度，
+            // 说明这时软键盘已经收起
+            if (height - statusBarHeight < minKeyboardHeight) {
+                ShowKeyboard = false
+            }
+        } else {
+            // 如果软键盘是收起的状态，并且 height 大于状态栏高度，
+            // 说明这时软键盘已经弹出
+            if (height - statusBarHeight > minKeyboardHeight) {
+                ShowKeyboard = true
+            }
+        }
     }
 
     /**

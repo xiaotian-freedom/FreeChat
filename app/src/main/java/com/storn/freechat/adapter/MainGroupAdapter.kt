@@ -20,16 +20,18 @@ import de.hdodenhof.circleimageview.CircleImageView
  * Created by tianshutong on 2016/12/15.
  */
 
-class MainGroupAdapter(private val mContext: Context, private var mList: List<GroupEntityVo>?) : SwipeMenuAdapter<MainGroupAdapter.MainMessageViewHolder>() {
+class MainGroupAdapter(val mContext: Context, var mList: List<GroupEntityVo>?,
+                       var isFirstAnim: Boolean) : SwipeMenuAdapter<MainGroupAdapter.MainMessageViewHolder>() {
     private var mOnItemClickListener: OnItemClickListener? = null
 
     fun setOnItemClickListener(onItemClickListener: OnItemClickListener) {
         mOnItemClickListener = onItemClickListener
     }
 
-    fun setRefreshData(list: List<GroupEntityVo>) {
+    fun setRefreshData(list: List<GroupEntityVo>, isFirstAnim: Boolean) {
         if (list.isNotEmpty()) {
             this.mList = list
+            this.isFirstAnim = isFirstAnim
             notifyDataSetChanged()
         }
     }
@@ -43,7 +45,9 @@ class MainGroupAdapter(private val mContext: Context, private var mList: List<Gr
     }
 
     override fun onBindViewHolder(holder: MainMessageViewHolder, position: Int) {
-        AnimationUtil.runEnterAnimation(holder.itemView, DensityUtil.getScreenHeight(mContext), mList)
+        if (isFirstAnim) {
+            AnimationUtil.runEnterAnimation(holder.itemView, DensityUtil.getScreenWidth(mContext), mList)
+        }
         val groupVo = mList!![position]
         val name = groupVo.roomName
         holder.tvName.text = name

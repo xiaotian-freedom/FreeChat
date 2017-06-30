@@ -20,17 +20,20 @@ import java.util.*
  * Created by tianshutong on 2016/12/22.
  */
 
-class MainFriendsAdapter(private val mContext: Context, private val groupList: ArrayList<FriendsGroupVo>, private val childList: ArrayList<List<FriendsEntityVo>>) : BaseExpandableListAdapter() {
+class MainFriendsAdapter(var mContext: Context, var groupList: List<FriendsGroupVo>,
+                         var childList: ArrayList<List<FriendsEntityVo>>,
+                         var isFirstInGroup: Boolean, var isFirstInChild: Boolean) : BaseExpandableListAdapter() {
 
-    fun refreshData(groupList: ArrayList<FriendsGroupVo>?, childList: ArrayList<List<FriendsEntityVo>>?) {
-        if (groupList != null && groupList.size != 0) {
-            this.groupList.clear()
-            this.groupList.addAll(groupList)
+    fun refreshData(groupList: List<FriendsGroupVo>, childList: ArrayList<List<FriendsEntityVo>>,
+                    isFirstInGroup: Boolean, isFirstInChild: Boolean) {
+        if (groupList.isNotEmpty()) {
+            this.groupList = groupList
         }
-        if (childList != null && childList.size != 0) {
-            this.childList.clear()
-            this.childList.addAll(childList)
+        if (childList.size != 0) {
+            this.childList = childList
         }
+        this.isFirstInGroup = isFirstInGroup
+        this.isFirstInChild = isFirstInChild
         notifyDataSetChanged()
     }
 
@@ -72,6 +75,9 @@ class MainFriendsAdapter(private val mContext: Context, private val groupList: A
         } else {
             groupHolder = convertView.tag as GroupHolder
         }
+        if (isFirstInGroup) {
+            AnimationUtil.runEnterAnimation(convertView, DensityUtil.getScreenWidth(mContext), groupList)
+        }
         val mainGroup = groupList[i]
         groupHolder.tvGroupName.text = mainGroup.name
         groupHolder.tvChildCount.text = mainGroup.count.toString()
@@ -85,22 +91,24 @@ class MainFriendsAdapter(private val mContext: Context, private val groupList: A
             convertView = LayoutInflater.from(mContext).inflate(R.layout.main_expandable_child, viewGroup, false)
             childHolder = ChildHolder(convertView)
             convertView!!.tag = childHolder
-            AnimationUtil.runEnterAnimation(view, DensityUtil.getScreenHeight(mContext), childList)
         } else {
             childHolder = convertView.tag as ChildHolder
         }
+        if (isFirstInChild) {
+            AnimationUtil.runEnterAnimation(convertView, DensityUtil.getScreenHeight(mContext), childList)
+        }
 
         val mainChild = childList[i][i1]
-        childHolder.tvChildName.text = mainChild.name
+        childHolder.tvChildName.text = mainChild.nickName
         childHolder.tvChildPresence.text = mainChild.presence
         val color = (Math.random() * Constants.COLORS.size).toInt()
         childHolder.headView.setImageResource(Constants.COLORS[color])
-        val length = mainChild.name.length
+        val length = mainChild.nickName.length
         val headName: String
         if (length in 0..2) {
-            headName = mainChild.name
+            headName = mainChild.nickName
         } else {
-            headName = mainChild.name.substring(mainChild.name.length - 2)
+            headName = mainChild.nickName.substring(mainChild.nickName.length - 2)
         }
         childHolder.tvHeadName.text = headName
         return convertView

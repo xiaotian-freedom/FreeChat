@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mainToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_y_e2"
+        android:minHeight="@dimen/tool_bar_size">
+
+        <TextView
+            android:id="@+id/mainToolBarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/temp_name"
+            android:textColor="@color/color_w"
+            android:textSize="@dimen/text_size_20" />
+
+        <ImageView
+            android:id="@+id/mainToolBarRight"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/space_8"
+            android:contentDescription="@null"
+            android:padding="@dimen/space_6"
+            android:src="@mipmap/slide_user"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/mainToolBarRightText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="@drawable/ripple_no_mask"
+            android:gravity="center"
+            android:padding="@dimen/space_12"
+            android:textColor="@color/color_w"
+            android:textSize="@dimen/text_size_15"
+            android:visibility="gone" />
+
+    </android.support.v7.widget.Toolbar>
+
+</LinearLayout>

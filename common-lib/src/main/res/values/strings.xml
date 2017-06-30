@@ -11,6 +11,7 @@
     <string name="tip_execution_fail">操作不成功，请稍后再试</string>
     <string name="tip_add_collect_success">收藏成功</string>
     <string name="tip_cancel_collect_success">取消收藏成功</string>
+    <string name="tip_modify_ing">正在修改&#8230;</string>
     <string name="tip_submit_success">提交成功</string>
     <string name="tip_load_fail_without_network">加载失败，请检查网络设置</string>
 

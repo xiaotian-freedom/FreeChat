@@ -34,32 +34,31 @@ public class Constants {
     /* 加密密钥 */
     public static final String ENCRYPT_SEED = "lovestory";
     //平移属性
+    public static final String TRANS_PROPERTY_X = "translationX";
     public static final String TRANS_PROPERTY = "translationY";
     //渐变属性
     public static final String ALPHA_PROPERTY = "alpha";
     //旋转
-    public static final String ROTATION_X = "rotationX";
-    public static final String ROTATION_Y = "rotationY";
     public static final String ROTATION = "rotation";
     //缩放属性
     public static final String SCALE_X_PROPERTY = "scaleX";
     public static final String SCALE_Y_PROPERTY = "scaleY";
-    //Toolbar右侧图标的宽高
-    public static final int MENU_RIGHT_WIDTH = 15;
-    public static final int MENU_RIGHT_HEIGHT = 16;
+    public static final String RESOURCE = "android";
+    /* State */
+    public static final String EXTRA_STATE = "status";
+    /*File */
+    public static final String EXTRA_FILE = "file";
 
     //延迟时间
     public static final int DELAY_300 = 300;
     public static final int DELAY_500 = 500;
     public static final int DELAY_1000 = 1000;
     public static final int DELAY_2000 = 2000;
-
+    public static final int DELAY_3000 = 3000;
     //动画时长
     public static final int ANIM_300 = 300;
     public static final int ANIM_500 = 500;
     public static final int ANIM_1000 = 1000;
-    public static final int RESPONSE_TIME_OUT = 10000;
-    public static final String RESOURCE = "android";
 
     //XMPP 电话类型
     public static final String PHONE_TYPE_1 = "VOICE";
@@ -78,6 +77,10 @@ public class Constants {
     public static final String FRIEND_NAME = "friend_name";
     public static final String FRIEND_JID = "friend_jid";
     public static final String MESSAGEVO = "message_entity_vo";
+    public static final String GROUPVO = "group_entity_vo";
+    //修改信息
+    public static final String PROFILE_INFO = "profile_info";
+    public static final String PROFILE_TEXT = "profile_text";
 
     //聊天类型
     public static final int CHAT_MESSAGE_TYPE_FROM = 0;
@@ -86,6 +89,7 @@ public class Constants {
 
     //聊天室保存的历史记录数量
     public static final int MULTICHAT_MAX_HISTORY = 10 * 1000;
+    public static final int RESPONSE_TIME_OUT = 10000;
 
     //刷新消息通知
     public static final int REFRESH_MESSAGE = 200;
@@ -93,5 +97,6 @@ public class Constants {
     public static final int CLEAR_EDIT_TEXT = 202;
     public static final int CLEAR_MESSAGE_TIP = 203;
     public static final int CONNECT_SERVICE = 204;
+    public static final int UPDATE_HEADVIEW = 205;
 
 }

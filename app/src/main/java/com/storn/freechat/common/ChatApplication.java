@@ -2,18 +2,11 @@ package com.storn.freechat.common;
 
 import android.app.Application;
 import android.content.Context;
-import android.text.TextUtils;
 
 import com.common.common.Constants;
 import com.common.util.PreferenceTool;
-import com.storn.freechat.manager.XMPPConnectionManager;
 import com.storn.freechat.util.DBHelper;
 import com.storn.freechat.vo.UserVo;
-
-import org.jivesoftware.smack.SmackException;
-import org.jivesoftware.smack.XMPPException;
-import org.jivesoftware.smackx.vcardtemp.VCardManager;
-import org.jivesoftware.smackx.vcardtemp.packet.VCard;
 
 /**
  * Created by tianshutong on 2016/12/7.
@@ -37,29 +30,6 @@ public class ChatApplication extends Application {
     }
 
     public static UserVo getUserVo() {
-        if (userVo == null) {
-            if (PreferenceTool.contains(Constants.LOGIN_UNAME)) {
-                userVo = new UserVo();
-                userVo.name = PreferenceTool.getString(Constants.LOGIN_UNAME);
-                try {
-                    VCardManager vCardManager = VCardManager
-                            .getInstanceFor(XMPPConnectionManager.getInstance().getConnection());
-                    VCard vCard = vCardManager.loadVCard();
-                    String jid = vCard.getJabberId();
-                    if (TextUtils.isEmpty(jid)) {
-                        jid = vCard.getTo();
-                    }
-                    userVo.jid = jid;
-                    userVo.nickName = vCard.getNickName();
-                    PreferenceTool.putString(Constants.LOGIN_JID, jid);
-                    PreferenceTool.commit();
-                } catch (SmackException.NoResponseException | XMPPException.XMPPErrorException
-                        | SmackException.NotConnectedException e) {
-                    e.printStackTrace();
-                }
-                ChatApplication.setUserVo(userVo);
-            }
-        }
         return userVo;
     }
 

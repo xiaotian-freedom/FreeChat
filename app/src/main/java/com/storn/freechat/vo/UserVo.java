@@ -16,12 +16,11 @@ public class UserVo implements Parcelable {
     public String name;
     public String nickName;
     public String password;
-    public String from;
-    public String status;
-    public String groupName;
-    public int imgId;
-    public int groupSize;
-    public boolean available;
+    public String img;
+    public String signature;
+    public String telephone;
+    public String email;
+    public String qq;
 
     @Override
     public int describeContents() {
@@ -34,12 +33,11 @@ public class UserVo implements Parcelable {
         dest.writeString(name);
         dest.writeString(nickName);
         dest.writeString(password);
-        dest.writeString(from);
-        dest.writeString(status);
-        dest.writeString(groupName);
-        dest.writeInt(imgId);
-        dest.writeInt(groupSize);
-        dest.writeInt(available ? 1 : 0);
+        dest.writeString(img);
+        dest.writeString(signature);
+        dest.writeString(telephone);
+        dest.writeString(email);
+        dest.writeString(qq);
     }
 
     public static final Parcelable.Creator<UserVo> CREATOR = new Parcelable.Creator<UserVo>() {
@@ -51,12 +49,11 @@ public class UserVo implements Parcelable {
             u.name = source.readString();
             u.nickName = source.readString();
             u.password = source.readString();
-            u.from = source.readString();
-            u.status = source.readString();
-            u.groupName = source.readString();
-            u.imgId = source.readInt();
-            u.groupSize = source.readInt();
-            u.available = source.readInt() == 1;
+            u.img = source.readString();
+            u.signature = source.readString();
+            u.telephone = source.readString();
+            u.email = source.readString();
+            u.qq = source.readString();
             return u;
         }
 
@@ -67,83 +64,4 @@ public class UserVo implements Parcelable {
 
     };
 
-    public String getJid() {
-        return jid;
-    }
-
-    public void setJid(String jid) {
-        this.jid = jid;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public void setFrom(String from) {
-        this.from = from;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getGroupName() {
-        return groupName;
-    }
-
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
-    }
-
-    public int getImgId() {
-        return imgId;
-    }
-
-    public void setImgId(int imgId) {
-        this.imgId = imgId;
-    }
-
-    public int getGroupSize() {
-        return groupSize;
-    }
-
-    public void setGroupSize(int groupSize) {
-        this.groupSize = groupSize;
-    }
-
-    public boolean isAvailable() {
-        return available;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
 }

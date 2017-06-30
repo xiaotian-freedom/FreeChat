@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-//apply plugin: 'com.antfortune.freeline'
 
 android {
     compileSdkVersion 25
@@ -57,20 +56,18 @@ dependencies {
     compile "com.android.support:design:${supportLibVersion}"
     compile "com.android.support:cardview-v7:${supportLibVersion}"
     compile "com.android.support:appcompat-v7:${supportLibVersion}"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
     //    compile "com.google.guava:guava:21.0"
 
     //    compile 'com.android.support:multidex:1.0.1'
 
-    //annotation
-//    compile 'com.jakewharton:butterknife:8.4.0'
-//    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
-
     //statusBar
     compile 'com.jaeger.statusbaruitl:library:1.3.1'
 
     //refresh view
-//    compile 'com.yalantis:phoenix:1.2.3'
+
+    //    compile 'com.yalantis:phoenix:1.2.3'
     compile 'com.lcodecorex:tkrefreshlayout:1.0.7'
 
     //image view
@@ -89,16 +86,8 @@ dependencies {
 
     //For XMPP
     compile 'org.igniterealtime.smack:smack-android-extensions:4.1.3'
-
-    // Optional for XMPPTCPConnection
     compile 'org.igniterealtime.smack:smack-tcp:4.1.3'
-
-    // Optional for XMPP-IM (RFC 6121) support (Roster, Threaded Chats, …)
     compile 'org.igniterealtime.smack:smack-im:4.1.3'
-
-    // Optional for XMPP extensions support
-
-    //    compile 'org.igniterealtime.smack:smack-extensions:4.1.3'
 
     //rxJava rxAndroid
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
@@ -106,8 +95,9 @@ dependencies {
 
     //mvp框架
     compile 'com.jude:beam:3.0.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    compile 'me.wangyuwei:FlipShare:1.0.2'
 }
 repositories {
     mavenCentral()

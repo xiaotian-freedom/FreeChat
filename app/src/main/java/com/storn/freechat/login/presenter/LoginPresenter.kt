@@ -181,21 +181,22 @@ class LoginPresenter : BeamBasePresenter<LoginActivity>(), LoginContract.Present
                 isLogin = false
             }
 
-            dealResult(isLogin, userName, password, connection)
+            mHandler.postDelayed({
+                dealResult(isLogin, userName, password, connection)
+            }, Constants.DELAY_1000.toLong())
+
         }.start()
     }
 
     private fun dealResult(login: Boolean, userName: String, password: String, conn: AbstractXMPPConnection) {
 
-        view.runOnUiThread { view.showProgress(false) }
 
         if (login) {
             view.runOnUiThread { view.loadSuccess() }
 
             saveAccount(userName, password)
             val userVo = UserVo()
-            userVo.name = userName
-            userVo.password = password
+
             try {
                 val vCardManager = VCardManager.getInstanceFor(conn)
                 val vCard = vCardManager.loadVCard()
@@ -207,8 +208,14 @@ class LoginPresenter : BeamBasePresenter<LoginActivity>(), LoginContract.Present
                     userVo.nickName = vCard.nickName
                 } else if (!TextUtils.isEmpty(vCard.firstName)) {
                     userVo.nickName = vCard.firstName
+                } else {
+                    userVo.nickName = userName
                 }
                 userVo.jid = jid
+                userVo.name = userName
+                userVo.password = password
+                userVo.telephone = vCard.getPhoneWork(Constants.PHONE_TYPE_5)
+                userVo.email = vCard.emailWork
                 PreferenceTool.putString(Constants.LOGIN_JID, jid)
                 PreferenceTool.commit()
             } catch (e: SmackException.NoResponseException) {
@@ -226,9 +233,13 @@ class LoginPresenter : BeamBasePresenter<LoginActivity>(), LoginContract.Present
             PreferenceTool.putString(Constants.LOGIN_UPASS, password)
             PreferenceTool.commit()
 
-            mHandler.postDelayed({ goToMainAct() }, Constants.DELAY_1000.toLong())
+            mHandler.postDelayed({ goToMainAct() }, Constants.DELAY_2000.toLong())
         } else {
             view.runOnUiThread { view.loadFailed() }
         }
+
+        mHandler.postDelayed({
+            view.runOnUiThread { view.showProgress(false) }
+        }, Constants.DELAY_2000.toLong())
     }
 }

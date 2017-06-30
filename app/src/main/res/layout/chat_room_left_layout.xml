@@ -22,13 +22,13 @@
             android:layout_height="@dimen/img_size_46"
             android:contentDescription="@null"
             android:scaleType="centerCrop"
-            android:src="@mipmap/default_head" />
+            android:src="@mipmap/default_head"
+            android:transitionName="@string/profile_head" />
 
         <LinearLayout
             android:id="@+id/chat_room_content_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_8"
             android:background="@mipmap/bg_chat_item_left"
             android:gravity="center"
             android:minHeight="@dimen/chat_bg_style_size"

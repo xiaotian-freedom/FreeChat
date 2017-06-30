@@ -8,6 +8,7 @@ package com.storn.freechat.vo;
 public class FriendsGroupVo {
 
     public String name;
+    public String myJid;
     public int count;
 
 }

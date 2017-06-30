@@ -6,11 +6,6 @@
     android:orientation="vertical">
 
     <include
-        layout="@layout/tool_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <include
         layout="@layout/activity_home_drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

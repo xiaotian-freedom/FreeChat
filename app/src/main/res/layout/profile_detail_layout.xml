@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_w_fb"
+    android:orientation="vertical"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="25dp">
+
+    <include
+        android:id="@+id/toolBar_include"
+        layout="@layout/common_yellow_tool_bar_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <RelativeLayout
+        android:id="@+id/headLayout"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/space_e_2"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/touch_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolBar_include"
+        tools:layout_editor_absoluteY="56dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:background="@color/color_y_ef" />
+
+        <TextView
+            android:id="@+id/headText"
+            android:layout_width="@dimen/space_100"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="@string/profile_head"
+            android:textColor="@color/color_y_df"
+            android:textSize="@dimen/text_size_6" />
+
+        <com.common.widget.CircleImageView
+            android:id="@+id/headView"
+            android:layout_width="@dimen/img_size_50"
+            android:layout_height="@dimen/img_size_50"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/space_20"
+            android:layout_toStartOf="@+id/arrow"
+            android:src="@mipmap/default_head_2"
+            android:transitionName="@string/profile_head" />
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/space_10"
+            android:background="@mipmap/arrow_grey_right"
+            android:contentDescription="@null" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_y_ef" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/signatureLayout"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/space_e_2"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/touch_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headLayout"
+        tools:layout_editor_absoluteY="136dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:background="@color/color_y_ef" />
+
+        <TextView
+            android:id="@+id/signatureText"
+            android:layout_width="@dimen/space_100"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="@string/profile_signature"
+            android:textColor="@color/color_y_df"
+            android:textSize="@dimen/text_size_6" />
+
+        <TextView
+            android:id="@+id/signatureView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/space_20"
+            android:layout_marginStart="@dimen/space_10"
+            android:layout_toEndOf="@+id/signatureText"
+            android:layout_toStartOf="@+id/arrow_two"
+            android:ellipsize="marquee"
+            android:gravity="end"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxLines="2"
+            android:textColor="@color/color_b_26"
+            android:textSize="@dimen/text_size_7" />
+
+        <ImageView
+            android:id="@+id/arrow_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/space_10"
+            android:background="@mipmap/arrow_grey_right"
+            android:contentDescription="@null" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_y_ef" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/nickLayout"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/space_i_16"
+        android:layout_marginBottom="284dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/touch_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signatureLayout"
+        tools:layout_editor_absoluteY="224dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:background="@color/color_y_ef" />
+
+        <TextView
+            android:id="@+id/nickText"
+            android:layout_width="@dimen/space_100"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="@string/profile_nick"
+            android:textColor="@color/color_y_df"
+            android:textSize="@dimen/text_size_6" />
+
+        <TextView
+            android:id="@+id/nickView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/space_20"
+            android:layout_marginStart="@dimen/space_20"
+            android:layout_toEndOf="@+id/nickText"
+            android:layout_toStartOf="@+id/arrow_three"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="@color/color_b_26"
+            android:textSize="@dimen/text_size_7" />
+
+        <ImageView
+            android:id="@+id/arrow_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/space_10"
+            android:background="@mipmap/arrow_grey_right"
+            android:contentDescription="@null" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/accountLayout"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/space_i_16"
+        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/touch_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nickLayout"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="296dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:background="@color/color_y_ef" />
+
+        <TextView
+            android:id="@+id/accountText"
+            android:layout_width="@dimen/space_100"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="@string/profile_account"
+            android:textColor="@color/color_y_df"
+            android:textSize="@dimen/text_size_6" />
+
+        <TextView
+            android:id="@+id/accountView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/space_20"
+            android:layout_marginStart="@dimen/space_20"
+            android:layout_toEndOf="@+id/accountText"
+            android:layout_toStartOf="@+id/arrow_four"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="@color/color_b_26"
+            android:textSize="@dimen/text_size_7" />
+
+        <ImageView
+            android:id="@+id/arrow_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/space_10"
+            android:background="@mipmap/arrow_grey_right"
+            android:contentDescription="@null" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/phoneLayout"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/space_i_16"
+        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/touch_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountLayout"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="360dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:background="@color/color_y_ef" />
+
+        <TextView
+            android:id="@+id/telephoneText"
+            android:layout_width="@dimen/space_100"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="@string/profile_telephone"
+            android:textColor="@color/color_y_df"
+            android:textSize="@dimen/text_size_6" />
+
+        <TextView
+            android:id="@+id/telephoneView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/space_20"
+            android:layout_marginStart="@dimen/space_20"
+            android:layout_toEndOf="@+id/telephoneText"
+            android:layout_toStartOf="@+id/arrow_five"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="@color/color_b_26"
+            android:textSize="@dimen/text_size_7" />
+
+        <ImageView
+            android:id="@+id/arrow_five"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/space_10"
+            android:background="@mipmap/arrow_grey_right"
+            android:contentDescription="@null" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/qqLayout"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/space_i_16"
+        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/touch_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneLayout"
+        app:layout_constraintVertical_bias="0.00999999"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="424dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:background="@color/color_y_ef" />
+
+        <TextView
+            android:id="@+id/qqText"
+            android:layout_width="@dimen/space_100"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="@string/profile_qq"
+            android:textColor="@color/color_y_df"
+            android:textSize="@dimen/text_size_6" />
+
+        <TextView
+            android:id="@+id/qqView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/space_20"
+            android:layout_marginStart="@dimen/space_20"
+            android:layout_toEndOf="@+id/qqText"
+            android:layout_toStartOf="@+id/arrow_six"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="@color/color_b_26"
+            android:textSize="@dimen/text_size_7" />
+
+        <ImageView
+            android:id="@+id/arrow_six"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/space_10"
+            android:background="@mipmap/arrow_grey_right"
+            android:contentDescription="@null" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/emailLayout"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/space_i_16"
+        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/touch_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qqLayout"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="489dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:background="@color/color_y_ef" />
+
+        <TextView
+            android:id="@+id/mailText"
+            android:layout_width="@dimen/space_100"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="@string/profile_email"
+            android:textColor="@color/color_y_df"
+            android:textSize="@dimen/text_size_6" />
+
+        <TextView
+            android:id="@+id/emailView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/space_20"
+            android:layout_marginStart="@dimen/space_20"
+            android:layout_toEndOf="@+id/mailText"
+            android:layout_toStartOf="@+id/arrow_seven"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="@color/color_b_26"
+            android:textSize="@dimen/text_size_7" />
+
+        <ImageView
+            android:id="@+id/arrow_seven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/space_10"
+            android:background="@mipmap/arrow_grey_right"
+            android:contentDescription="@null" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_y_ef" />
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>

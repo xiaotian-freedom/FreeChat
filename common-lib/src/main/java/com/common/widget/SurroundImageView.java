@@ -13,8 +13,8 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 import com.common.R;
 
@@ -23,7 +23,7 @@ import com.common.R;
  *
  * @author Administrator
  */
-public class SurroundImageView extends ImageView {
+public class SurroundImageView extends AppCompatImageView {
 
     private int mBorderThickness = 0;
     private Context mContext;

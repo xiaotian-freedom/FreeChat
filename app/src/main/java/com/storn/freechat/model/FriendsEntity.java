@@ -13,10 +13,12 @@ public class FriendsEntity extends Model {
     public CharField name;
     public CharField jid;
     public CharField presence;
+    public CharField myJid;
 
     public FriendsEntity() {
         this.name = new CharField();
         this.jid = new CharField();
         this.presence = new CharField();
+        this.myJid = new CharField();
     }
 }
