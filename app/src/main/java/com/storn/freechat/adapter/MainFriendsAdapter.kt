@@ -72,12 +72,11 @@ class MainFriendsAdapter(var mContext: Context, var groupList: List<FriendsGroup
             convertView = LayoutInflater.from(mContext).inflate(R.layout.main_expandable_group, viewGroup, false)
             groupHolder = GroupHolder(convertView)
             convertView!!.tag = groupHolder
+            AnimationUtil.runEnterAnimation(convertView, DensityUtil.getScreenWidth(mContext), groupList)
         } else {
             groupHolder = convertView.tag as GroupHolder
         }
-        if (isFirstInGroup) {
-            AnimationUtil.runEnterAnimation(convertView, DensityUtil.getScreenWidth(mContext), groupList)
-        }
+
         val mainGroup = groupList[i]
         groupHolder.tvGroupName.text = mainGroup.name
         groupHolder.tvChildCount.text = mainGroup.count.toString()
@@ -91,11 +90,11 @@ class MainFriendsAdapter(var mContext: Context, var groupList: List<FriendsGroup
             convertView = LayoutInflater.from(mContext).inflate(R.layout.main_expandable_child, viewGroup, false)
             childHolder = ChildHolder(convertView)
             convertView!!.tag = childHolder
+            if (isFirstInChild) {
+                AnimationUtil.runEnterAnimation(convertView, DensityUtil.getScreenHeight(mContext), childList)
+            }
         } else {
             childHolder = convertView.tag as ChildHolder
-        }
-        if (isFirstInChild) {
-            AnimationUtil.runEnterAnimation(convertView, DensityUtil.getScreenHeight(mContext), childList)
         }
 
         val mainChild = childList[i][i1]

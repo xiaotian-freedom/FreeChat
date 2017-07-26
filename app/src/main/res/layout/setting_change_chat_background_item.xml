@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/shape_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/space_20">
+
+
+    <am.widget.shapeimageview.ShapeImageView
+        android:id="@+id/shape_view"
+        android:layout_width="@dimen/image_size_75dp"
+        android:layout_height="@dimen/image_size_100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/space_20"
+        android:scaleType="centerCrop"
+        app:sivRoundRectRadius="@dimen/space_8"
+        app:sivShape="RoundRect" />
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/space_4">
+
+        <com.common.widget.XCRoundImageViewByXfermode
+            android:id="@+id/reflect_view"
+            android:layout_width="@dimen/image_size_75dp"
+            android:layout_height="@dimen/image_size_40dp"
+            android:layout_gravity="center"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/selected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@null"
+            android:src="@mipmap/chat_bg_selected" />
+    </FrameLayout>
+
+</LinearLayout>

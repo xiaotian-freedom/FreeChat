@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="24dp"
-    android:background="@drawable/white_solid_with_8dp_corners"
+    android:background="@drawable/white_solid_with_20dp_corners"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -25,7 +25,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:background="@null"
             android:contentDescription="@null"
@@ -40,33 +39,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <com.common.widget.BounceScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@null"
-            android:overScrollMode="ifContentScrolls">
+        <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minLines="1"
+            android:text=""
+            android:textColor="@color/color_1"
+            android:textSize="16sp" />
 
-            <LinearLayout
-                android:id="@+id/llContent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvMessage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="start|center_vertical"
-                    android:minLines="1"
-                    android:text=""
-                    android:textColor="#555555"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-        </com.common.widget.BounceScrollView>
     </LinearLayout>
 
     <LinearLayout
@@ -81,8 +65,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="6dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="6dp"
             android:layout_marginStart="24dp"
             android:layout_weight="1.0"
             android:background="@drawable/confirm_dialog_btn_cancel_selector"
@@ -99,8 +81,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="24dp"
-            android:layout_marginLeft="6dp"
-            android:layout_marginRight="24dp"
             android:layout_marginStart="6dp"
             android:layout_weight="1.0"
             android:background="@drawable/confirm_dialog_btn_ok_selector"

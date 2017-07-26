@@ -20,7 +20,7 @@ import de.hdodenhof.circleimageview.CircleImageView
  * Created by tianshutong on 2016/12/15.
  */
 
-class MainGroupAdapter(val mContext: Context, var mList: List<GroupEntityVo>?,
+class MainGroupAdapter(val mContext: Context, var mList: MutableList<GroupEntityVo>,
                        var isFirstAnim: Boolean) : SwipeMenuAdapter<MainGroupAdapter.MainMessageViewHolder>() {
     private var mOnItemClickListener: OnItemClickListener? = null
 
@@ -28,12 +28,17 @@ class MainGroupAdapter(val mContext: Context, var mList: List<GroupEntityVo>?,
         mOnItemClickListener = onItemClickListener
     }
 
-    fun setRefreshData(list: List<GroupEntityVo>, isFirstAnim: Boolean) {
+    fun setRefreshData(list: MutableList<GroupEntityVo>, isFirstAnim: Boolean) {
         if (list.isNotEmpty()) {
             this.mList = list
             this.isFirstAnim = isFirstAnim
             notifyDataSetChanged()
         }
+    }
+
+    fun addData(groupEntityVo: GroupEntityVo) {
+        this.mList.add(0, groupEntityVo)
+        notifyItemInserted(0)
     }
 
     override fun onCreateContentView(parent: ViewGroup, viewType: Int): View {
@@ -48,7 +53,7 @@ class MainGroupAdapter(val mContext: Context, var mList: List<GroupEntityVo>?,
         if (isFirstAnim) {
             AnimationUtil.runEnterAnimation(holder.itemView, DensityUtil.getScreenWidth(mContext), mList)
         }
-        val groupVo = mList!![position]
+        val groupVo = mList[position]
         val name = groupVo.roomName
         holder.tvName.text = name
         val color = (Math.random() * Constants.COLORS.size).toInt()
@@ -66,7 +71,7 @@ class MainGroupAdapter(val mContext: Context, var mList: List<GroupEntityVo>?,
     }
 
     override fun getItemCount(): Int {
-        return if (mList == null) 0 else mList!!.size
+        return mList.size
     }
 
     class MainMessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {

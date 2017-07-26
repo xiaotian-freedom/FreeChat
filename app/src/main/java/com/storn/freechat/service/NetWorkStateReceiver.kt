@@ -4,9 +4,8 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
-import android.widget.Toast
 import com.common.common.Constants
-import com.storn.freechat.HomeActivity
+import com.storn.freechat.main.ui.HomeActivity
 
 /**
  * 网络广播

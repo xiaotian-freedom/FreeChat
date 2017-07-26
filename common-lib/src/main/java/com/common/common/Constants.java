@@ -31,6 +31,8 @@ public class Constants {
     public static final String LOGIN_JID = "myJid";
     /* 登录密码 */
     public static final String LOGIN_UPASS = "password";
+    /* 聊天背景 */
+    public static final String CHAT_BACKGROUND = "chat_bg";
     /* 加密密钥 */
     public static final String ENCRYPT_SEED = "lovestory";
     //平移属性
@@ -78,18 +80,35 @@ public class Constants {
     public static final String FRIEND_JID = "friend_jid";
     public static final String MESSAGEVO = "message_entity_vo";
     public static final String GROUPVO = "group_entity_vo";
+
     //修改信息
     public static final String PROFILE_INFO = "profile_info";
     public static final String PROFILE_TEXT = "profile_text";
 
-    //聊天类型
+    //聊天来源类型
     public static final int CHAT_MESSAGE_TYPE_FROM = 0;
     public static final int CHAT_MESSAGE_TYPE_TO = 1;
     public static final int CHAT_MESSAGE_TYPE_COUNT = 2;
 
+    //聊天消息类型
+    public static final int CHAT_MESSAGE_TXT = 0;
+    public static final int CHAT_MESSAGE_AUDIO = 1;
+    public static final int CHAT_MESSAGE_PIC = 2;
+    public static final int CHAT_MESSAGE_FILE = 3;
+
+    //聊天消息发送状态
+    public static final int CHAT_SEND_ING = 0;
+    public static final int CHAT_SEND_SUCCESS = 1;
+    public static final int CHAT_SEND_FAIL = 2;
+
     //聊天室保存的历史记录数量
     public static final int MULTICHAT_MAX_HISTORY = 10 * 1000;
-    public static final int RESPONSE_TIME_OUT = 10000;
+    public static final int RESPONSE_TIME_OUT = 5000;
+
+    //聊天底部状态
+    public static final int CHAT_EDIT_TYPE = 0;
+    public static final int CHAT_RECORD_TYPE = 1;
+    public static final String CHAT_TYPE = "chat_type";
 
     //刷新消息通知
     public static final int REFRESH_MESSAGE = 200;
@@ -98,5 +117,8 @@ public class Constants {
     public static final int CLEAR_MESSAGE_TIP = 203;
     public static final int CONNECT_SERVICE = 204;
     public static final int UPDATE_HEADVIEW = 205;
+    public static final int UPDATE_NICKNAME = 206;
+    public static final int CHANGE_CHAT_BG = 207;
+    public static final int RESEND_CHAT_MESSAGE = 208;
 
 }

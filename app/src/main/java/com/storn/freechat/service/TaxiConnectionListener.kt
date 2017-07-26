@@ -3,7 +3,7 @@ package com.storn.freechat.service
 import android.content.Context
 import com.common.common.Constants
 import com.common.util.NetworkUtil
-import com.storn.freechat.HomeActivity
+import com.storn.freechat.main.ui.HomeActivity
 import com.storn.freechat.manager.XMPPConnectionManager
 import org.jivesoftware.smack.ConnectionListener
 import org.jivesoftware.smack.XMPPConnection

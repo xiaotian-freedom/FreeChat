@@ -71,7 +71,6 @@ public class ConfirmDialog extends Dialog {
         private int paddingBottom = 0;
         private int contentPanelHeight = 0;
         private float dimAmount = 0.6f;
-        private int messageGravity = -1;
         private float mWidthRate = 0.87F;
 
         private boolean isBold = false;
@@ -119,11 +118,6 @@ public class ConfirmDialog extends Dialog {
          */
         public Builder setMessage(int contentId) {
             this.message = mContext.getText(contentId).toString();
-            return this;
-        }
-
-        public Builder setMessageGravity(int gravity) {
-            this.messageGravity = gravity;
             return this;
         }
 
@@ -350,9 +344,8 @@ public class ConfirmDialog extends Dialog {
                 llPanel.setLayoutParams(lp);
             }
 
-            LinearLayout llContent = (LinearLayout) layout.findViewById(R.id.llContent);
             if (customView != null) {
-                llContent.addView(customView);
+                llPanel.addView(customView);
             } else {
                 TextView tvMessage = (TextView) layout.findViewById(R.id.tvMessage);
                 if (!TextUtils.isEmpty(message)) {
@@ -367,10 +360,6 @@ public class ConfirmDialog extends Dialog {
 
                     if (paddingTop != 0 && paddingBottom != 0) {
                         tvMessage.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
-                    }
-
-                    if (messageGravity != -1) {
-                        tvMessage.setGravity(messageGravity);
                     }
 
                     if (isBold) {
@@ -429,9 +418,7 @@ public class ConfirmDialog extends Dialog {
                             mNegativeButtonListener.onClick(dialog,
                                     BUTTON_NEGATIVE);
                         }
-                        if (autoDismiss) {
-                            dialog.dismiss();
-                        }
+                        dialog.dismiss();
                     }
                 });
             }

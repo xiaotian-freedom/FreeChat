@@ -13,13 +13,13 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Vibrator;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.method.ArrowKeyMovementMethod;
 import android.text.style.ForegroundColorSpan;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -524,10 +524,10 @@ public class CommonUtil {
      * @param resId    int
      * @param isFinish boolean
      */
-    public static void showCustomDialog(Context context, int resId, final boolean isFinish) {
+    public static void showCustomDialog(Context context, int resId, final boolean isFinish, final boolean toSettings) {
         String message = context.getResources().getString(resId);
         if (!TextUtils.isEmpty(message)) {
-            showCustomDialog(context, message, isFinish);
+            showCustomDialog(context, message, isFinish, toSettings);
         }
     }
 
@@ -538,18 +538,27 @@ public class CommonUtil {
      * @param message String
      */
 
-    public static void showCustomDialog(final Context context, String message, final boolean isFinish) {
+    public static void showCustomDialog(final Context context, String message, final boolean isFinish, final boolean toSettings) {
         // TODO Auto-generated method stub
         ConfirmDialog.Builder builder = new ConfirmDialog.Builder(context);
         builder.setTitle(R.string.alert);
-        builder.setMessageGravity(Gravity.CENTER);
         builder.setMessage(message);
         builder.setMessageColor(context.getResources().getColor(R.color.color_1));
-        builder.setNeutralButton(R.string.i_see, new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(R.string.to_setting, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (isFinish && context instanceof Activity) {
-                            ((Activity) context).finish();
+
+                        if (context instanceof Activity) {
+                            if (isFinish) {
+                                ((Activity) context).finish();
+                            } else {
+                                if (toSettings) {
+                                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                    intent.setData(Uri.parse("package:" + "com.storn.freechat"));
+                                    context.startActivity(intent);
+                                }
+                            }
+
                         }
                     }
                 }

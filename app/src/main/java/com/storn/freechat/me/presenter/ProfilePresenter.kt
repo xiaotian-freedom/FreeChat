@@ -14,10 +14,10 @@ import android.text.TextUtils
 import com.common.common.Constants
 import com.common.util.*
 import com.jude.beam.expansion.BeamBasePresenter
-import com.storn.freechat.HomeActivity
 import com.storn.freechat.R
 import com.storn.freechat.login.presenter.LoginContract
-import com.storn.freechat.manager.XMPPConnectionManager
+import com.storn.freechat.main.ui.HomeActivity
+import com.storn.freechat.manager.UserManager
 import com.storn.freechat.me.ui.ModifyInfoAct
 import com.storn.freechat.me.ui.ProfileDetailAct
 import com.storn.freechat.util.DBHelper
@@ -156,11 +156,11 @@ class ProfilePresenter : BeamBasePresenter<ProfileDetailAct>(), ProfileContract.
         if (mCropFileUri != null) {
             mPhotoFile = File(mCropFileUri!!.getPath())
             if (mPhotoFile != null && mPhotoFile!!.exists()) {
-                XMPPConnectionManager.getInstance().saveAvatar(view,
+                UserManager.getInstance().saveAvatar(view,
                         BitmapFactory.decodeFile(mPhotoFile!!.absolutePath), this)
             }
         } else if (mPhotoFile != null && mPhotoFile!!.exists()) {
-            XMPPConnectionManager.getInstance().saveAvatar(view,
+            UserManager.getInstance().saveAvatar(view,
                     BitmapFactory.decodeFile(mPhotoFile!!.absolutePath), this)
         } else {
             view.error()
@@ -181,7 +181,7 @@ class ProfilePresenter : BeamBasePresenter<ProfileDetailAct>(), ProfileContract.
         }, Constants.DELAY_2000.toLong())
     }
 
-    override fun fail() {
+    override fun fail(error: String) {
         view.error()
     }
 

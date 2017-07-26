@@ -56,6 +56,8 @@ public class DBUtils {
         ctv.put("time", messageEntityVo.time);
         ctv.put("msgCount", messageEntityVo.msgCount);
         ctv.put("type", messageEntityVo.type);
+        ctv.put("messageType", messageEntityVo.messageType);
+        ctv.put("status", messageEntityVo.status);
         return ctv;
     }
 
@@ -71,8 +73,13 @@ public class DBUtils {
         ctv.put("fromJid", chatMessageEntityVo.fromJid);
         ctv.put("myJid", chatMessageEntityVo.myJid);
         ctv.put("content", chatMessageEntityVo.content);
+        ctv.put("audioPath", chatMessageEntityVo.audioPath);
+        ctv.put("imgPath", chatMessageEntityVo.imgPath);
+        ctv.put("audioTime", chatMessageEntityVo.audioTime);
         ctv.put("time", chatMessageEntityVo.time);
         ctv.put("type", chatMessageEntityVo.type);
+        ctv.put("messageType", chatMessageEntityVo.messageType);
+        ctv.put("status", chatMessageEntityVo.status);
         return ctv;
     }
 
@@ -117,7 +124,7 @@ public class DBUtils {
     public static ContentValues FriendsGroup2Cv(FriendsGroupVo friendsGroupVo) {
         ContentValues ctv = new ContentValues();
         ctv.put("name", friendsGroupVo.name);
-        ctv.put("myJid",friendsGroupVo.myJid);
+        ctv.put("myJid", friendsGroupVo.myJid);
         ctv.put("count", friendsGroupVo.count);
         return ctv;
     }

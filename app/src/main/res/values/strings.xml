@@ -3,6 +3,7 @@
     <!-- label description -->
     <string name="title_activity_login">Sign in</string>
     <string name="title_activity_register">Register</string>
+
     <!-- Strings related to login -->
     <string name="prompt_account">用户名</string>
     <string name="prompt_password">密码</string>
@@ -16,9 +17,13 @@
     <string name="error_incorrect_password">用户名或密码不正确</string>
     <string name="error_field_required">请求失败</string>
     <string name="error_login">登录异常</string>
-    <string name="error_network">网络连接失败，请稍后再试</string>
+    <string name="error_network">网络异常，请稍后再试</string>
     <string name="error_upload">上传失败</string>
-    <string name="permission_rationale">木有权限</string>
+    <string name="error_register_account">服务器不支持注册</string>
+    <string name="error_diff_password">两次输入的密码不一致</string>
+    <string name="error_account_with_chinese">用户名不能包含汉字</string>
+    <string name="error_register_conflict">账号已注册,请返回登录</string>
+    <string name="error_timeout">请求超时，请重试</string>
 
     <!-- nav menu left -->
     <string name="slide_menu_left_head_des">我的头像</string>
@@ -29,13 +34,35 @@
     <string name="slide_menu_left_settings">系统设置</string>
     <string name="nav_service">服务</string>
 
+    <!-- nav setting -->
+    <string name="setting_change_chat_bg">更换聊天背景</string>
+    <string name="setting_change_pwd">修改密码</string>
+    <string name="setting_old_pwd_tip">请输入旧密码</string>
+    <string name="setting_new_pwd_tip">请输入新密码(4~20个字)</string>
+    <string name="setting_new_pwd_confirm">确认新密码</string>
+    <string name="setting_pwd_min_tip">密码不能少于4个字</string>
+    <string name="setting_pwd_max_tip">密码不能超过20个字</string>
+    <string name="setting_pwd_empty_tip">新密码不能为空</string>
+    <string name="setting_old_pwd_error">原密码输入错误</string>
+    <string name="setting_old_pwd_empty">原密码不能为空</string>
+    <string name="setting_pwd_confirm_error">两次密码输入的不一样</string>
+    <string name="setting_change_pwd_ing">正在修改&#8230;</string>
+    <string name="setting_clear_cache">清除缓存</string>
+    <string name="setting_login_out">退出登录</string>
+    <string name="setting_login_out_title">提示</string>
+    <string name="setting_login_out_message">确定退出登录吗？</string>
+
+    <string name="clear_no_cache">暂无缓存</string>
+    <string name="clear_cache_ing">正在清除缓存&#8230;</string>
+    <string name="clear_yes_cache">为您清除了%1$s缓存</string>
+
     <!-- profile -->
     <string name="profile_title">个人信息</string>
     <string name="profile_head">头像</string>
     <string name="profile_signature">个性签名</string>
     <string name="profile_nick">昵称</string>
     <string name="profile_account">账号</string>
-    <string name="profile_telephone">联系电话</string>
+    <string name="profile_telephone">手机号</string>
     <string name="profile_qq">QQ</string>
     <string name="profile_email">E-mail</string>
     <string name="profile_modify_title">%1$s修改</string>
@@ -66,6 +93,7 @@
     <string name="cancel">取消</string>
     <string name="send">发送</string>
     <string name="complete">完成</string>
+    <string name="resend_message">重新发送这条消息吗?</string>
     <string name="click_one_more_exit">再点一次退出应用</string>
 
     <!-- create multiChatRoom -->
@@ -74,10 +102,12 @@
     <string name="create_room_tip_min">不能少于2个字</string>
     <string name="create_room_tip_max">不能多于10个字</string>
     <string name="create_room_empty">群名不能为空</string>
+    <string name="create_room_ing">正在创建&#8230;</string>
     <string name="create_room_success">创建成功</string>
     <string name="create_room_fail">创建失败</string>
 
     <!-- Permission -->
+    <string name="permission_rationale">木有权限</string>
     <string name="camera_no_permission">无法获取相机权限，请打开相关设置开启</string>
     <string name="storage_no_permission">无法获取读写文件权限，请打开相关设置开启</string>
     <string name="contact_no_permission">无法获取通讯录权限，请打开相关设置开启</string>

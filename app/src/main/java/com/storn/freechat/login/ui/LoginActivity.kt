@@ -1,16 +1,20 @@
 package com.storn.freechat.login.ui
 
 import android.Manifest
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
+import android.app.Activity
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.text.TextUtils
+import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
+import android.widget.TextView
+import com.common.common.Constants
 import com.common.util.*
 import com.gitonway.lee.niftynotification.lib.Effects
 import com.jude.beam.bijection.RequiresPresenter
@@ -24,7 +28,7 @@ import kotlinx.android.synthetic.main.activity_login.*
  * A login screen that offers login via email/password.
  */
 @RequiresPresenter(LoginPresenter::class)
-class LoginActivity : BeamBaseActivity<LoginPresenter>(), LoginContract.View, View.OnClickListener {
+class LoginActivity : BeamBaseActivity<LoginPresenter>(), LoginContract.View, View.OnClickListener, TextView.OnEditorActionListener {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -33,6 +37,14 @@ class LoginActivity : BeamBaseActivity<LoginPresenter>(), LoginContract.View, Vi
             } else {
                 ToastUtil.showToast(this, "授权失败,无法记录密码", R.id.login_form, Effects.standard)
             }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == presenter.REQUEST_REGISTER && resultCode == Activity.RESULT_OK && data != null) {
+            mAccountView.setText(data.getStringExtra(Constants.LOGIN_UNAME))
+            mPasswordView.setText(data.getStringExtra(Constants.LOGIN_UPASS))
         }
     }
 
@@ -69,6 +81,7 @@ class LoginActivity : BeamBaseActivity<LoginPresenter>(), LoginContract.View, Vi
     private fun initListener() {
         loginFab.setOnClickListener(this)
         mLoginFormView.setOnClickListener(this)
+        mPasswordView.setOnEditorActionListener(this)
     }
 
     override fun fillLastAccount(userName: String, password: String) {
@@ -88,26 +101,21 @@ class LoginActivity : BeamBaseActivity<LoginPresenter>(), LoginContract.View, Vi
     }
 
     override fun showProgress(active: Boolean) {
-        val shortAnimTime = resources.getInteger(android.R.integer.config_shortAnimTime)
-
-        mLoginFormView.visibility = if (active) View.GONE else View.VISIBLE
-        mLoginFormView.animate().setDuration(shortAnimTime.toLong()).alpha(
-                (if (active) 0 else 1).toFloat()).setListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator) {
-                mLoginFormView.visibility = if (active) View.GONE else View.VISIBLE
-            }
-        })
-
-        mProgressView.visibility = if (active) View.VISIBLE else View.GONE
-        mProgressView.animate().setDuration(shortAnimTime.toLong()).alpha(
-                (if (active) 1 else 0).toFloat()).setListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator) {
-                mProgressView.visibility = if (active) View.VISIBLE else View.GONE
-            }
-        })
-        if (mProgressView.visibility == View.VISIBLE) {
-            mProgressView.postDelayed({ mProgressView.startAnim() }, 200)
+        if (active) {
+            AnimationUtil.startAlphaAnim(Constants.ANIM_300, mProgressView, mLoginFormView)
+        } else {
+            AnimationUtil.startAlphaAnim(Constants.ANIM_300, mLoginFormView, mProgressView)
         }
+        mProgressView.postDelayed({
+            if (mProgressView.visibility == View.VISIBLE) {
+                mProgressView.startAnim()
+            }
+        }, Constants.ANIM_500.toLong())
+    }
+
+    fun resetLoad() {
+        SoftKeyBoardUtil.hideSoftKeyboard(this@LoginActivity)
+        mProgressView.reset()
     }
 
     override fun loadSuccess() {
@@ -118,42 +126,27 @@ class LoginActivity : BeamBaseActivity<LoginPresenter>(), LoginContract.View, Vi
     override fun loadFailed() {
         SoftKeyBoardUtil.hideSoftKeyboard(this@LoginActivity)
         mProgressView.fail()
-        mPasswordView.error = getString(R.string.error_incorrect_password)
         mPasswordView.requestFocus()
+        CommonUtil.showToast(this, R.string.error_incorrect_password)
     }
 
     override fun checkFocusView() {
-        var cancel = false
-        var focusView: View? = null
-
-        // Reset errors.
-        mAccountView.error = null
-        mPasswordView.error = null
-
         val userName = mAccountView.text.toString()
         val password = mPasswordView.text.toString()
 
-        // Check for a valid email address.
         if (TextUtils.isEmpty(userName)) {
-            focusView = mAccountView
-            cancel = true
+            mAccountView.requestFocus()
+            CommonUtil.setShakeAnimation(mAccountView)
+            return
         }
         if (TextUtils.isEmpty(password)) {
-            focusView = mAccountView
-            cancel = true
+            mPasswordView.requestFocus()
+            CommonUtil.setShakeAnimation(mPasswordView)
+            return
         }
 
-        if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
-            focusView!!.requestFocus()
-            CommonUtil.setShakeAnimation(focusView)
-        } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-            SoftKeyBoardUtil.hideSoftKeyboard(this)
-            presenter.attemptLogin(userName, password)
-        }
+        SoftKeyBoardUtil.hideSoftKeyboard(this)
+        presenter.attemptLogin(userName, password)
     }
 
     override fun onClick(v: View?) {
@@ -163,6 +156,14 @@ class LoginActivity : BeamBaseActivity<LoginPresenter>(), LoginContract.View, Vi
             else -> {
             }
         }
+    }
+
+    override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
+        if (actionId == EditorInfo.IME_ACTION_DONE) {
+            checkFocusView()
+            return true
+        }
+        return false
     }
 
     companion object {

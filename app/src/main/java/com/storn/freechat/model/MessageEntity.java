@@ -30,6 +30,10 @@ public class MessageEntity extends Model {
 
     public IntegerField type;
 
+    public IntegerField messageType;
+
+    public IntegerField status;
+
     public MessageEntity() {
         this.mId = new IntegerField();
         this.jid = new CharField();
@@ -40,5 +44,7 @@ public class MessageEntity extends Model {
         this.msgCount = new IntegerField();
         this.roomName = new CharField();
         this.type = new IntegerField();
+        this.messageType = new IntegerField();
+        this.status = new IntegerField();
     }
 }

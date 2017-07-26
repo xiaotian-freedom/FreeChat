@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/color_w"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.storn.freechat.HomeActivity"
+    tools:context="com.storn.freechat.main.ui.HomeActivity"
     tools:showIn="@layout/app_bar_home">
 
     <!-- 消息列表 -->
@@ -26,58 +26,5 @@
             android:overScrollMode="never" />
 
     </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
-
-    <!-- 群列表 -->
-    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
-        android:id="@+id/groupRefreshLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:soundEffectsEnabled="true"
-        android:visibility="gone"
-        app:tr_enable_loadmore="false"
-        app:tr_enable_refresh="true">
-
-        <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
-            android:id="@+id/mainGroupRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:overScrollMode="never" />
-
-    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
-
-    <!-- 分组列表 -->
-    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
-        android:id="@+id/expandableRefreshLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:soundEffectsEnabled="true"
-        android:visibility="gone"
-        app:tr_enable_loadmore="false"
-        app:tr_enable_refresh="true">
-
-        <com.common.widget.PinnedHeaderExpandableListView
-            android:id="@+id/mainExpandableListView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@null"
-            android:dividerHeight="0dp"
-            android:groupIndicator="@null"
-            android:overScrollMode="never" />
-
-    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
-
-    <com.common.widget.MetaballView
-        android:id="@+id/mProgressView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="8dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/messageRefreshLayout" />
 
 </android.support.constraint.ConstraintLayout>

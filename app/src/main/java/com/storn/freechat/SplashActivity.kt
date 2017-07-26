@@ -44,7 +44,7 @@ class SplashActivity : BaseActivity() {
             var classZ: Class<*>? = null
             try {
                 if (isLogin) {
-                    classZ = Class.forName("com.storn.freechat.HomeActivity")
+                    classZ = Class.forName("com.storn.freechat.main.ui.HomeActivity")
                 } else {
                     classZ = Class.forName("com.storn.freechat.login.ui.LoginActivity")
                 }

@@ -4,8 +4,8 @@ import android.content.Context
 import android.text.TextUtils
 import com.common.common.Constants
 import com.common.util.TimeUtil
-import com.storn.freechat.HomeActivity
-import com.storn.freechat.chat.MultiChatRoomAct
+import com.storn.freechat.chat.ui.MultiChatRoomAct
+import com.storn.freechat.main.ui.HomeActivity
 import com.storn.freechat.util.DBHelper
 import com.storn.freechat.vo.MessageEntityVo
 import com.storn.freechat.vo.MultiChatEntityVo

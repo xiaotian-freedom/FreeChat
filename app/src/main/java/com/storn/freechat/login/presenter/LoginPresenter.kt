@@ -13,11 +13,11 @@ import com.common.common.Constants
 import com.common.util.CommonUtil
 import com.common.util.PreferenceTool
 import com.jude.beam.expansion.BeamBasePresenter
-import com.storn.freechat.HomeActivity
-import com.storn.freechat.RegisterActivity
 import com.storn.freechat.common.ChatApplication
 import com.storn.freechat.login.model.LoginRepository
 import com.storn.freechat.login.ui.LoginActivity
+import com.storn.freechat.login.ui.RegisterActivity
+import com.storn.freechat.main.ui.HomeActivity
 import com.storn.freechat.manager.XMPPConnectionManager
 import com.storn.freechat.vo.UserVo
 import org.jivesoftware.smack.AbstractXMPPConnection
@@ -34,9 +34,10 @@ import java.util.*
 
 class LoginPresenter : BeamBasePresenter<LoginActivity>(), LoginContract.Presenter {
 
-    private var loginRepository: LoginRepository? = null
-    private val mAccountList = ArrayList<UserVo>()
-    private val mHandler = Handler(Looper.getMainLooper())
+    val REQUEST_REGISTER = 200
+    var loginRepository: LoginRepository? = null
+    val mAccountList = ArrayList<UserVo>()
+    val mHandler = Handler(Looper.getMainLooper())
 
     override fun onCreateView(view: LoginActivity) {
         super.onCreateView(view)
@@ -82,9 +83,9 @@ class LoginPresenter : BeamBasePresenter<LoginActivity>(), LoginContract.Present
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val options = ActivityOptions.makeSceneTransitionAnimation(getView(), view, s)
-            getView().startActivity(Intent(getView(), RegisterActivity::class.java), options.toBundle())
+            getView().startActivityForResult(Intent(getView(), RegisterActivity::class.java), REQUEST_REGISTER, options.toBundle())
         } else {
-            getView().startActivity(Intent(getView(), RegisterActivity::class.java))
+            getView().startActivityForResult(Intent(getView(), RegisterActivity::class.java), REQUEST_REGISTER)
         }
     }
 
@@ -158,6 +159,7 @@ class LoginPresenter : BeamBasePresenter<LoginActivity>(), LoginContract.Present
 
     override fun attemptLogin(userName: String, password: String) {
         view.showProgress(true)
+
         Thread {
             var isLogin: Boolean
             val connection: AbstractXMPPConnection
@@ -166,10 +168,10 @@ class LoginPresenter : BeamBasePresenter<LoginActivity>(), LoginContract.Present
             connection = manager.connection
             try {
                 connection.connect()
-                if (connection.isConnected()) {
+                if (connection.isConnected) {
                     connection.login(userName, password)
                 }
-                isLogin = connection.isAuthenticated()
+                isLogin = connection.isAuthenticated
             } catch (e: IOException) {
                 e.printStackTrace()
                 isLogin = false
@@ -183,16 +185,17 @@ class LoginPresenter : BeamBasePresenter<LoginActivity>(), LoginContract.Present
 
             mHandler.postDelayed({
                 dealResult(isLogin, userName, password, connection)
-            }, Constants.DELAY_1000.toLong())
+            }, Constants.DELAY_2000.toLong())
 
         }.start()
     }
 
     private fun dealResult(login: Boolean, userName: String, password: String, conn: AbstractXMPPConnection) {
 
-
         if (login) {
-            view.runOnUiThread { view.loadSuccess() }
+            view.runOnUiThread {
+                view.loadSuccess()
+            }
 
             saveAccount(userName, password)
             val userVo = UserVo()
@@ -216,30 +219,53 @@ class LoginPresenter : BeamBasePresenter<LoginActivity>(), LoginContract.Present
                 userVo.password = password
                 userVo.telephone = vCard.getPhoneWork(Constants.PHONE_TYPE_5)
                 userVo.email = vCard.emailWork
+
+                ChatApplication.setUserVo(userVo)
+                loginRepository!!.insertOrUpdateAccount(view, userVo)
+                PreferenceTool.putBoolean(Constants.LOGIN_STATUS, true)
                 PreferenceTool.putString(Constants.LOGIN_JID, jid)
+                PreferenceTool.putString(Constants.LOGIN_UNAME, userName)
+                PreferenceTool.putString(Constants.LOGIN_UPASS, password)
+                PreferenceTool.putInt(Constants.CHAT_BACKGROUND, 0)
                 PreferenceTool.commit()
+
+                mHandler.postDelayed({ goToMainAct() }, Constants.DELAY_2000.toLong())
             } catch (e: SmackException.NoResponseException) {
                 e.printStackTrace()
+                view.runOnUiThread {
+                    view.loadFailed()
+                    mHandler.postDelayed({
+                        view.resetLoad()
+                        view.showProgress(false)
+                    }, Constants.DELAY_1000.toLong())
+                }
             } catch (e: XMPPException.XMPPErrorException) {
                 e.printStackTrace()
+                view.runOnUiThread {
+                    view.loadFailed()
+                    mHandler.postDelayed({
+                        view.resetLoad()
+                        view.showProgress(false)
+                    }, Constants.DELAY_1000.toLong())
+                }
             } catch (e: SmackException.NotConnectedException) {
                 e.printStackTrace()
+                view.runOnUiThread {
+                    view.loadFailed()
+                    mHandler.postDelayed({
+                        view.resetLoad()
+                        view.showProgress(false)
+                    }, Constants.DELAY_1000.toLong())
+                }
             }
-
-            ChatApplication.setUserVo(userVo)
-            loginRepository!!.insertOrUpdateAccount(view, userVo)
-            PreferenceTool.putBoolean(Constants.LOGIN_STATUS, true)
-            PreferenceTool.putString(Constants.LOGIN_UNAME, userName)
-            PreferenceTool.putString(Constants.LOGIN_UPASS, password)
-            PreferenceTool.commit()
-
-            mHandler.postDelayed({ goToMainAct() }, Constants.DELAY_2000.toLong())
         } else {
-            view.runOnUiThread { view.loadFailed() }
+            view.runOnUiThread {
+                view.loadFailed()
+                mHandler.postDelayed({
+                    view.resetLoad()
+                    view.showProgress(false)
+                }, Constants.DELAY_1000.toLong())
+            }
         }
-
-        mHandler.postDelayed({
-            view.runOnUiThread { view.showProgress(false) }
-        }, Constants.DELAY_2000.toLong())
     }
 }

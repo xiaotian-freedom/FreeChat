@@ -54,6 +54,15 @@ interface LoginContract {
 
         fun success()
 
-        fun fail()
+        fun fail(error: String)
+
+    }
+
+    interface IChangePwdListener {
+        fun start()
+
+        fun success()
+
+        fun fail(error: String)
     }
 }

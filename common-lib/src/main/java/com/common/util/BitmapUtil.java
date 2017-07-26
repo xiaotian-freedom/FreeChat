@@ -7,9 +7,14 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.LinearGradient;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -291,11 +296,11 @@ public class BitmapUtil {
      */
     public static Bitmap getLogoBitmap(Context context) {
         Bitmap bmpLogo = null;
-        File diskCacheDir = FileUtil.getAppExternalCacheDir(FileUtil.APP_IMAGE_FOLDER_NAME);
+        File diskCacheDir = FileUtil.getAppExternalCacheDir(FileUtil.APP_TEMP_FOLDER_NAME);
         if (!diskCacheDir.exists()) {
             diskCacheDir.mkdir();
         }
-        File logoFile = FileUtil.getDiskFile(FileUtil.APP_IMAGE_FOLDER_PATH, SHARE_LOGO_IMAGE_NAME);
+        File logoFile = FileUtil.getDiskFile(FileUtil.APP_TEMP_FOLDER_NAME, SHARE_LOGO_IMAGE_NAME);
 
         try {
             if (!logoFile.exists()) {
@@ -337,5 +342,34 @@ public class BitmapUtil {
         // 把 drawable 内容画到画布中
         drawable.draw(canvas);
         return bitmap;
+    }
+
+    /**
+     * 创建倒影图片
+     *
+     * @param originalImage
+     * @return
+     */
+    public static Bitmap createReflectedImage(Bitmap originalImage) {
+        int width = originalImage.getWidth();
+        int height = originalImage.getHeight();
+        Matrix matrix = new Matrix();
+        //翻转图片90°
+        matrix.preScale(1, -1);
+        //创建倒影图片
+        Bitmap reflectionImage = Bitmap.createBitmap(originalImage, 0, 0, width, height, matrix, false);
+//        Bitmap finalReflection = Bitmap.createBitmap(width, (height + height / 3), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(reflectionImage);
+//        canvas.drawBitmap(originalImage, 0, 0, null);
+        //画倒影
+        canvas.drawBitmap(reflectionImage, 0, 0, null);
+        Paint shaderPaint = new Paint();
+        LinearGradient gradient = new LinearGradient(0, 0, 0, originalImage.getHeight(),
+                0x70ffffff, 0x00ffffff, Shader.TileMode.MIRROR);
+        shaderPaint.setShader(gradient);
+        shaderPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+        //画布画出反转图片大小区域，然后把渐变效果加到其中，就出现了图片的倒影效果。
+        canvas.drawRect(0, 0, width, reflectionImage.getHeight(), shaderPaint);
+        return reflectionImage;
     }
 }

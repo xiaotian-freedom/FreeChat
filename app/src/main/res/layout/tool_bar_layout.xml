@@ -2,9 +2,9 @@
 
 <android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appbar_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/appbar_layout"
     android:theme="@style/AppTheme.AppBarOverlay">
 
     <android.support.v7.widget.Toolbar
@@ -46,7 +46,8 @@
             android:layout_marginEnd="@dimen/space_8"
             android:contentDescription="@null"
             android:padding="@dimen/space_6"
-            android:src="@mipmap/slide_user" />
+            android:src="@mipmap/slide_user"
+            android:visibility="gone" />
 
     </android.support.v7.widget.Toolbar>
 

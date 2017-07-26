@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chatBottomLayout"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/tool_bar_size"
+    android:background="@color/color_b_60"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <include
+        android:id="@+id/bottomEditLayout"
+        layout="@layout/activity_chat_room_bottom_edit_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:visibility="visible" />
+
+    <include
+        android:id="@+id/bottomVoiceLayout"
+        layout="@layout/activity_chat_room_bottom_voice_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/chatRoomImgPlus"
+        android:layout_width="46dp"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:paddingLeft="@dimen/space_11"
+        android:paddingRight="@dimen/space_11"
+        android:src="@mipmap/plus"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/chatRoomSend"
+        android:layout_width="46dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="@dimen/space_11"
+        android:layout_marginRight="@dimen/space_11"
+        android:background="@drawable/chat_send_selector"
+        android:text="@string/send"
+        android:textColor="@color/color_f"
+        android:textSize="@dimen/text_size_13"
+        android:visibility="gone" />
+
+</LinearLayout>

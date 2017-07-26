@@ -23,129 +23,137 @@
         app:cardElevation="3dp"
         app:cardUseCompatPadding="true">
 
-        <LinearLayout
+        <com.common.widget.BounceScrollView
+            android:id="@+id/registerScrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="10dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:background="#2fa881" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="10dp">
+
+                    <View
+                        android:layout_width="8dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:background="#2fa881" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="30dp"
+                        android:text="@string/login"
+                        android:textColor="#FFCC00"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingEnd="30dp"
+                    android:paddingStart="30dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="#c5c5c5">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/mAccountView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/selector_bg_edit"
+                            android:hint="@string/prompt_account"
+                            android:imeOptions="actionNext"
+                            android:inputType="textPersonName"
+                            android:paddingBottom="2dp"
+                            android:textColor="#2fa881"
+                            android:textCursorDrawable="@drawable/bg_input_cursor"
+                            android:textSize="13sp" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:paddingEnd="30dp"
+                    android:paddingStart="30dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="#c5c5c5">
+
+                        <EditText
+                            android:id="@+id/mPasswordView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/selector_bg_edit"
+                            android:hint="@string/prompt_password"
+                            android:imeOptions="actionDone"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:paddingBottom="2dp"
+                            android:textColor="#2fa881"
+                            android:textCursorDrawable="@drawable/bg_input_cursor"
+                            android:textSize="13sp" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp">
+
+                    <Button
+                        android:id="@+id/mLoginFormView"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/bt_shape"
+                        android:stateListAnimator="@drawable/state_list_animator_z"
+                        android:text="@string/login"
+                        android:textColor="@color/color_w"
+                        android:textSize="@dimen/text_size_13"
+                        android:visibility="visible" />
+
+                    <storn.github.io.loadingview.CircleLoadingView
+                        android:id="@+id/mProgressView"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:visibility="gone"
+                        app:loading_circle_color="@color/colorPrimary"
+                        app:loading_duration="1500"
+                        app:loading_fail_color="@color/color_r"
+                        app:loading_stroke_width="3dp"
+                        app:loading_style="stroke_loading"
+                        app:loading_success_color="@color/colorPrimary" />
+
+                </RelativeLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="30dp"
-                    android:text="@string/login"
-                    android:textColor="#FFCC00"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:paddingEnd="30dp"
-                android:paddingStart="30dp">
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="#c5c5c5">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/mAccountView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/selector_bg_edit"
-                        android:hint="@string/prompt_account"
-                        android:imeOptions="actionNext"
-                        android:inputType="textPersonName"
-                        android:paddingBottom="2dp"
-                        android:textColor="#2fa881"
-                        android:textCursorDrawable="@drawable/bg_input_cursor"
-                        android:textSize="13sp" />
-                </android.support.design.widget.TextInputLayout>
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/forgot_password"
+                    android:textColor="#9a9a9a"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal"
-                android:paddingEnd="30dp"
-                android:paddingStart="30dp">
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="#c5c5c5">
-
-                    <EditText
-                        android:id="@+id/mPasswordView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/selector_bg_edit"
-                        android:hint="@string/prompt_password"
-                        android:imeOptions="actionDone"
-                        android:inputType="textPassword"
-                        android:maxLines="1"
-                        android:paddingBottom="2dp"
-                        android:textColor="#2fa881"
-                        android:textCursorDrawable="@drawable/bg_input_cursor"
-                        android:textSize="13sp" />
-                </android.support.design.widget.TextInputLayout>
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="20dp"
-                android:gravity="center">
-
-                <Button
-                    android:id="@+id/mLoginFormView"
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/bt_shape"
-                    android:stateListAnimator="@drawable/state_list_animator_z"
-                    android:text="@string/login"
-                    android:textColor="@color/color_b_51"
-                    android:textSize="@dimen/text_size_13"
-                    android:visibility="visible" />
-
-                <storn.github.io.loadingview.CircleLoadingView
-                    android:id="@+id/mProgressView"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:visibility="gone"
-                    app:loading_circle_color="@color/colorPrimary"
-                    app:loading_duration="1500"
-                    app:loading_fail_color="@color/color_r"
-                    app:loading_stroke_width="3dp"
-                    app:loading_style="stroke_loading"
-                    app:loading_success_color="@color/colorPrimary" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp"
-                android:text="@string/forgot_password"
-                android:textColor="#9a9a9a"
-                android:textSize="12sp" />
-        </LinearLayout>
+        </com.common.widget.BounceScrollView>
     </android.support.v7.widget.CardView>
 
     <android.support.design.widget.FloatingActionButton

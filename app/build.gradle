@@ -3,14 +3,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
     defaultConfig {
         applicationId "com.storn.freechat"
-        minSdkVersion 21
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+        versionCode Integer.parseInt(project.VERSION_CODE)
+        versionName project.VERSION_NAME
 //        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -45,34 +45,28 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':common-lib')
     compile project(':recyclerview-swipe')
-
     //test
     testCompile 'junit:junit:4.12'
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     //android support
     compile "com.android.support:design:${supportLibVersion}"
     compile "com.android.support:cardview-v7:${supportLibVersion}"
     compile "com.android.support:appcompat-v7:${supportLibVersion}"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-
     //    compile "com.google.guava:guava:21.0"
-
     //    compile 'com.android.support:multidex:1.0.1'
-
     //statusBar
     compile 'com.jaeger.statusbaruitl:library:1.3.1'
-
     //refresh view
-
     //    compile 'com.yalantis:phoenix:1.2.3'
     compile 'com.lcodecorex:tkrefreshlayout:1.0.7'
 
     //image view
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'am.widget:shapeimageview:2.0.0'
+    compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
     compile 'com.github.bumptech.glide:glide:3.7.0'
 
     //FloatingActionButton
@@ -80,24 +74,21 @@ dependencies {
     compile('konifar:fab-transformation:1.0.0') {
         exclude group: 'com.nineoldandroids', module: 'library'
     }
-
     //loading view
     compile 'storn.github.io.loadingview:CircleLoadingView:1.1'
-
     //For XMPP
     compile 'org.igniterealtime.smack:smack-android-extensions:4.1.3'
     compile 'org.igniterealtime.smack:smack-tcp:4.1.3'
     compile 'org.igniterealtime.smack:smack-im:4.1.3'
-
     //rxJava rxAndroid
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'io.reactivex.rxjava2:rxjava:2.0.5'
-
     //mvp框架
     compile 'com.jude:beam:3.0.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-
     compile 'me.wangyuwei:FlipShare:1.0.2'
+    compile 'com.cuboid:cuboidcirclebutton:1.0.3'
+    compile 'com.github.iwgang:countdownview:2.1.6'
 }
 repositories {
     mavenCentral()

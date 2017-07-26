@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -20,10 +21,6 @@ import java.util.Locale;
 public class FileUtil {
 
     public static final String APP_FOLDER_NAME = "free_chat";
-
-    public static final String APP_IMAGE_FOLDER_NAME = "image";
-    public static final String APP_IMAGE_FOLDER_PATH = APP_FOLDER_NAME
-            + File.separator + APP_IMAGE_FOLDER_NAME;
 
     public static final String APP_TEMP_FOLDER_NAME = "temp";
     public static final String APP_TEMP_FOLDER_PATH = APP_FOLDER_NAME
@@ -52,7 +49,7 @@ public class FileUtil {
     public static File getAppExternalCacheDir(String dirName) {
         final String cacheDir = File.separator + APP_FOLDER_NAME
                 + File.separator + dirName + File.separator;
-        String path = null;
+        String path;
         boolean sdCardExist = Environment.getExternalStorageState().equals(
                 android.os.Environment.MEDIA_MOUNTED);
         if (sdCardExist) {
@@ -87,6 +84,44 @@ public class FileUtil {
     }
 
     /**
+     * 检测文件目录
+     *
+     * @param dir
+     * @return
+     */
+    public static String checkAndMkdirs(String dir) {
+        File file = new File(dir);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        return dir;
+    }
+
+    public static String getChatFileDir() {
+        String dir = getAppExternalCacheDir("files").getAbsolutePath();
+        return checkAndMkdirs(dir);
+    }
+
+    /**
+     * 获取录音文件路径
+     *
+     * @return
+     */
+    public static String getRecordTmpPath() {
+        String recordPath = getChatFileDir();
+        File file = new File(recordPath, "record_" + TimeUtil.getCurrentTime() + ".amr");
+        try {
+            if (file.exists()) {
+                file.delete();
+            }
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return file.getAbsolutePath();
+    }
+
+    /**
      * 以时间戳作为文件名
      *
      * @param strFormat String 时间戳格式
@@ -95,26 +130,6 @@ public class FileUtil {
     public static String getFileNameByTimeStamp(String strFormat) {
         SimpleDateFormat format = new SimpleDateFormat(strFormat, Locale.getDefault());
         return format.format(new Date(System.currentTimeMillis()));
-    }
-
-    /**
-     * 获取App目录下Image文件绝对路径
-     *
-     * @param fileName 图片文件名
-     * @return file
-     */
-    public static File getAppImageFile(String fileName) {
-        return getDiskFile(APP_IMAGE_FOLDER_PATH, fileName);
-    }
-
-    /**
-     * 获取App目录下Data文件绝对路径
-     *
-     * @param fileName 文件名
-     * @return file
-     */
-    public static File getAppDataFile(String fileName) {
-        return getDiskFile(APP_DATA_FOLDER_PATH, fileName);
     }
 
     /**
@@ -147,6 +162,7 @@ public class FileUtil {
 
     /**
      * 获取contentUri
+     *
      * @param context
      * @param imageFile
      * @return
@@ -176,4 +192,128 @@ public class FileUtil {
             }
         }
     }
+
+    /**
+     * 获取缓存大小
+     *
+     * @return
+     */
+    public static double getCacheFileSize(Context context) {
+        return calculateCacheFileSize(getAppExternalCacheDir(APP_TEMP_FOLDER_NAME)) + calculateCacheFileSize(context.getCacheDir());
+    }
+
+    /**
+     * 递归缓存总大小
+     *
+     * @param file
+     * @return
+     */
+    private static double calculateCacheFileSize(File file) {
+        double size = 0;
+        try {
+            if (file.isDirectory()) {
+                java.io.File[] fileList = file.listFiles();
+                if (fileList != null && fileList.length > 0) {
+                    for (File f : fileList) {
+                        if (f.isDirectory()) {
+                            size = size + calculateCacheFileSize(f);
+                        } else {
+                            size = size + f.length();
+                        }
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return size;
+    }
+
+    /**
+     * 清除所有缓存
+     *
+     * @param context
+     * @return
+     */
+    public static boolean clearAllCache(Context context) {
+        return cleanInnerCache(context) && cleanExternalCache();
+    }
+
+    /**
+     * 清除应用内部缓存
+     *
+     * @param context
+     * @return
+     */
+    private static boolean cleanInnerCache(Context context) {
+        return recursionDeleteFile(context.getCacheDir());
+    }
+
+    /**
+     * 清除应用外部缓存
+     */
+    private static boolean cleanExternalCache() {
+        File cacheFile = getAppExternalCacheDir(APP_TEMP_FOLDER_NAME);
+        return cacheFile.exists() && recursionDeleteFile(cacheFile);
+    }
+
+    /**
+     * 递归删除文件
+     *
+     * @param file
+     */
+    private static boolean recursionDeleteFile(File file) {
+        if (file.isFile()) {
+            file.delete();
+            return true;
+        }
+        if (file.isDirectory()) {
+            File[] childFiles = file.listFiles();
+            if (childFiles == null || childFiles.length == 0) {
+                return true;
+            }
+            for (File f : childFiles) {
+                recursionDeleteFile(f);
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 格式化单位
+     *
+     * @param size
+     */
+    public static String getFormatSize(double size) {
+        double kiloByte = size / 1024;
+        if (kiloByte < 1) {
+            return size + "Byte";
+        }
+
+        double megaByte = kiloByte / 1024;
+        if (megaByte < 1) {
+            BigDecimal result1 = new BigDecimal(Double.toString(kiloByte));
+            return result1.setScale(2, BigDecimal.ROUND_HALF_UP)
+                    .toPlainString() + "KB";
+        }
+
+        double gigaByte = megaByte / 1024;
+        if (gigaByte < 1) {
+            BigDecimal result2 = new BigDecimal(Double.toString(megaByte));
+            return result2.setScale(2, BigDecimal.ROUND_HALF_UP)
+                    .toPlainString() + "MB";
+        }
+
+        double teraBytes = gigaByte / 1024;
+        if (teraBytes < 1) {
+            BigDecimal result3 = new BigDecimal(Double.toString(gigaByte));
+            return result3.setScale(2, BigDecimal.ROUND_HALF_UP)
+                    .toPlainString() + "GB";
+        }
+        BigDecimal result4 = new BigDecimal(teraBytes);
+        return result4.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString()
+                + "TB";
+    }
+
 }

@@ -252,6 +252,29 @@ public class TimeUtil {
     }
 
     /**
+     * 是否在一分钟内
+     *
+     * @param timestamp
+     * @return
+     */
+    public static boolean isInOneMinute(long timestamp) {
+        long currentSeconds = System.currentTimeMillis();
+        long timeGap = (currentSeconds - timestamp) / 1000;// 与现在时间相差秒数
+        return timeGap < 60;
+    }
+
+    /**
+     * 剩余十秒钟
+     * @param timestamp
+     * @return
+     */
+    public static boolean remainTenSeconds(long timestamp) {
+        long currentSeconds = System.currentTimeMillis();
+        long timeGap = (currentSeconds - timestamp) / 1000;// 与现在时间相差秒数
+        return timeGap == 49;
+    }
+
+    /**
      * 格式化时间显示为今天、昨天、前天样式
      *
      * @param timestamp long
@@ -296,6 +319,7 @@ public class TimeUtil {
 
     /**
      * 格式化聊天时间
+     *
      * @param timestamp
      * @return
      */
@@ -306,18 +330,28 @@ public class TimeUtil {
         long timeGap = (currentStart - timestamp) / 1000;// 与当前凌晨时间相差秒数
         String timeStr = "";
         if (timeGap > 365 * 24 * 3600) {// 1年以前
-            timeStr = getFormatTimeFromLong(timestamp, "yy-MM-dd KK:mm");
+            timeStr = getFormatTimeFromLong(timestamp, "yy-MM-dd HH:mm");
         } else if (timeGap > 7 * 24 * 3600) {//今年之内 7天以前 显示月份
-            timeStr = getFormatTimeFromLong(timestamp, "MM-dd KK:mm");
+            timeStr = getFormatTimeFromLong(timestamp, "MM-dd HH:mm");
         } else if (timeGap > 24 * 3600) {//昨天之前 7天之内 显示星期
-            timeStr = getWeek(timestamp) + " " + getFormatTimeFromLong(timestamp, "KK:mm");
+            timeStr = getWeek(timestamp) + " " + getFormatTimeFromLong(timestamp, "HH:mm");
         } else if (timeGap > 0 && timeGap <= 24 * 60 * 60) {
-            timeStr = "昨天" + " " + getFormatTimeFromLong(timestamp, "KK:mm");
+            timeStr = "昨天" + " " + getFormatTimeFromLong(timestamp, "HH:mm");
         } else if (timeGap <= 0) {
-            timeStr = getFormatTimeFromLong(timestamp, "KK:mm");
+            timeStr = getFormatTimeFromLong(timestamp, "HH:mm");
         }
 
         return timeStr;
+    }
+
+    /**
+     * 格式为秒
+     *
+     * @param timestamp
+     * @return
+     */
+    public static long convertToSec(long timestamp) {
+        return new Date(timestamp).getTime() / 1000;
     }
 
 }

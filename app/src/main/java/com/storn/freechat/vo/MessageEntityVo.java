@@ -28,7 +28,8 @@ public class MessageEntityVo implements Serializable{
 
     public int type;//消息类型 0: 单人聊天 1:多人聊天 2:其他
 
-    public MessageEntityVo() {
-    }
+    public int messageType;//消息类型 0:文本 1:语音 2:图片
+
+    public int status;//发送状态 0:失败 1:成功
 
 }

@@ -17,6 +17,25 @@
         android:paddingBottom="@dimen/space_8"
         android:paddingTop="@dimen/space_8">
 
+        <ImageView
+            android:id="@+id/chat_error_view"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/space_8"
+            android:contentDescription="@null"
+            android:src="@mipmap/chat_fail_resend_normal"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/chat_progress"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/space_8"
+            android:theme="@android:style/Widget.Holo.ProgressBar.Small"
+            android:visibility="gone" />
+
         <LinearLayout
             android:id="@+id/chat_room_content_layout"
             android:layout_width="wrap_content"
@@ -24,7 +43,8 @@
             android:background="@mipmap/bg_chat_item_right_blue"
             android:gravity="center"
             android:minHeight="@dimen/chat_bg_style_size"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/chat_room_tv_content"
@@ -38,24 +58,65 @@
                 android:textSize="@dimen/text_size_13"
                 android:visibility="visible" />
 
-            <am.widget.shapeimageview.ShapeImageView
-                android:id="@+id/chat_room_shape_view"
+            <!-- audio -->
+            <LinearLayout
+                android:id="@+id/chat_room_audio_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:maxWidth="@dimen/chat_content_max_width"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/bg_shapeimageview"
-                android:visibility="gone"
-                custom:sivBorderColor="@color/colorAccent"
-                custom:sivBorderWidth="2dp"
-                custom:sivForeground="@drawable/bg_common_press_dark"
-                custom:sivHeightScale="1"
-                custom:sivScaleTarget="height"
-                custom:sivShape="Circle"
-                custom:sivWidthScale="1" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/space_8"
+                android:paddingStart="@dimen/space_8"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/chat_audio_img"
+                    android:layout_width="@dimen/image_size_20dp"
+                    android:layout_height="@dimen/image_size_20dp"
+                    android:contentDescription="@null"
+                    android:src="@mipmap/ic_audio_play_white" />
+
+                <ImageView
+                    android:id="@+id/chat_audio_line"
+                    android:layout_width="wrap_content"
+                    android:minWidth="@dimen/image_size_40dp"
+                    android:layout_height="@dimen/space_1"
+                    android:background="@color/color_w"
+                    android:contentDescription="@null" />
+
+                <cn.iwgang.countdownview.CountdownView
+                    android:id="@+id/chat_audio_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chat_time_white_bg"
+                    android:paddingBottom="@dimen/space_2"
+                    android:paddingEnd="@dimen/space_6"
+                    android:paddingStart="@dimen/space_6"
+                    android:paddingTop="@dimen/space_2"
+                    custom:isHideTimeBackground="true"
+                    custom:isShowDay="false"
+                    custom:isShowHour="false"
+                    custom:isShowMillisecond="false"
+                    custom:isShowMinute="true"
+                    custom:isShowSecond="true"
+                    custom:suffixTextColor="#1296db"
+                    custom:suffixTextSize="@dimen/text_size_10"
+                    custom:timeTextColor="#1296db"
+                    custom:timeTextSize="@dimen/text_size_10" />
+
+            </LinearLayout>
 
         </LinearLayout>
+
+        <!-- pic -->
+        <com.github.siyamed.shapeimageview.mask.PorterShapeImageView
+            android:id="@+id/chat_room_shape_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/bg"
+            android:visibility="gone"
+            custom:siShape="@drawable/img_round_shape" />
 
         <com.common.widget.SurroundImageView
             android:id="@+id/chat_room_head_view"
@@ -64,8 +125,8 @@
             android:layout_marginStart="@dimen/space_8"
             android:contentDescription="@null"
             android:scaleType="centerCrop"
-            android:transitionName="@string/profile_head"
-            android:src="@mipmap/default_head_2" />
+            android:src="@mipmap/default_head_2"
+            android:transitionName="@string/profile_head" />
 
     </LinearLayout>
 

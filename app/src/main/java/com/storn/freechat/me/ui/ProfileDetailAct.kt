@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.os.Message
 import android.support.v4.content.ContextCompat
 import com.common.common.Constants
 import com.common.util.CommonUtil
@@ -17,6 +18,7 @@ import com.jaeger.library.StatusBarUtil
 import com.jude.beam.bijection.RequiresPresenter
 import com.jude.beam.expansion.BeamBaseActivity
 import com.storn.freechat.R
+import com.storn.freechat.main.ui.HomeActivity
 import com.storn.freechat.manager.UserManager
 import com.storn.freechat.me.presenter.ProfileContract
 import com.storn.freechat.me.presenter.ProfilePresenter
@@ -128,6 +130,12 @@ class ProfileDetailAct : BeamBaseActivity<ProfilePresenter>(), ProfileContract.V
                         }
                         nickText.text.toString() -> {
                             nickView.text = data.getStringExtra(Constants.PROFILE_INFO)
+                            if (HomeActivity.homeHandler != null) {
+                                val message = Message.obtain()
+                                message.what = Constants.UPDATE_NICKNAME
+                                message.obj = data.getStringExtra(Constants.PROFILE_INFO)
+                                HomeActivity.homeHandler?.sendMessage(message)
+                            }
                         }
                         telephoneText.text.toString() -> {
                             telephoneView.text = data.getStringExtra(Constants.PROFILE_INFO)

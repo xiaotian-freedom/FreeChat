@@ -1,11 +1,14 @@
 package com.storn.freechat.adapter
 
 import android.content.Context
+import android.graphics.drawable.AnimationDrawable
 import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.common.common.Constants
 import com.common.util.AnimationUtil
@@ -23,7 +26,7 @@ import de.hdodenhof.circleimageview.CircleImageView
  * Created by tianshutong on 2016/12/15.
  */
 
-class MainMessageAdapter(val mContext: Context, var mList: List<MessageEntityVo>,var isFirstAnim: Boolean)
+class MainMessageAdapter(val mContext: Context, var mList: MutableList<MessageEntityVo>,var isFirstAnim: Boolean)
     : SwipeMenuAdapter<MainMessageAdapter.MainMessageViewHolder>() {
     private var mOnItemClickListener: OnItemClickListener? = null
 
@@ -31,7 +34,7 @@ class MainMessageAdapter(val mContext: Context, var mList: List<MessageEntityVo>
         mOnItemClickListener = onItemClickListener
     }
 
-    fun setRefreshData(list: List<MessageEntityVo>, isFirstAnim: Boolean) {
+    fun setRefreshData(list: MutableList<MessageEntityVo>, isFirstAnim: Boolean) {
         if (list.isNotEmpty()) {
             this.mList = list
             this.isFirstAnim = isFirstAnim
@@ -39,9 +42,9 @@ class MainMessageAdapter(val mContext: Context, var mList: List<MessageEntityVo>
         }
     }
 
-    fun deleteData(list: List<MessageEntityVo>, position: Int) {
+    fun deleteData(list: MutableList<MessageEntityVo>, position: Int) {
         if (list.isNotEmpty()) {
-            this.mList = list
+            this.mList.removeAt(position)
             notifyItemRemoved(position)
         }
     }
@@ -83,7 +86,17 @@ class MainMessageAdapter(val mContext: Context, var mList: List<MessageEntityVo>
                     holder.tvHeadName.text = ""
                 }
 
-                holder.tvContent.text = messageEntity.content
+                when(messageEntity.messageType) {
+                    Constants.CHAT_MESSAGE_TXT -> {
+                        holder.tvContent.text = messageEntity.content
+                    }
+                    Constants.CHAT_MESSAGE_AUDIO -> {
+                        holder.tvContent.text = "[语音]"
+                    }
+                    Constants.CHAT_MESSAGE_PIC -> {
+                        holder.tvContent.text = "[图片]"
+                    }
+                }
 
             }
             1 -> {
@@ -125,6 +138,33 @@ class MainMessageAdapter(val mContext: Context, var mList: List<MessageEntityVo>
             holder.tvTip.visibility = View.INVISIBLE
         }
 
+        when (messageEntity.status) {
+            Constants.CHAT_SEND_ING -> {
+                holder.progressView.visibility = View.VISIBLE
+                holder.progressView.setImageDrawable(mContext.resources.getDrawable(R.drawable.anim_loading_view))
+                val animDrawable = holder.progressView.drawable as AnimationDrawable
+                animDrawable.start()
+
+                val lp = holder.progressView.layoutParams as LinearLayout.LayoutParams
+                lp.width = 50
+                lp.height = 50
+                holder.progressView.layoutParams = lp
+            }
+            Constants.CHAT_SEND_SUCCESS -> {
+                holder.progressView.visibility = View.GONE
+            }
+            Constants.CHAT_SEND_FAIL -> {
+                holder.progressView.clearAnimation()
+                holder.progressView.visibility = View.VISIBLE
+                holder.progressView.setImageDrawable(mContext.getDrawable(R.mipmap.chat_fail_resend_normal))
+
+                val lp = holder.progressView.layoutParams as LinearLayout.LayoutParams
+                lp.width = 40
+                lp.height = 40
+                holder.progressView.layoutParams = lp
+            }
+        }
+
         holder.setOnItemClickListener(mOnItemClickListener)
     }
 
@@ -140,6 +180,7 @@ class MainMessageAdapter(val mContext: Context, var mList: List<MessageEntityVo>
         var tvTime: TextView
         var tvContent: TextView
         var tvTip: TextView
+        var progressView: ImageView
         var mOnItemClickListener: OnItemClickListener? = null
 
         init {
@@ -150,6 +191,7 @@ class MainMessageAdapter(val mContext: Context, var mList: List<MessageEntityVo>
             tvContent = itemView.findViewById(R.id.message_list_item_tv_content) as TextView
             headView = itemView.findViewById(R.id.message_list_item_head_view) as CircleImageView
             tvTip = itemView.findViewById(R.id.message_tip) as DragIndicatorView
+            progressView = itemView.findViewById(R.id.message_progress) as ImageView
         }
 
         fun setOnItemClickListener(onItemClickListener: OnItemClickListener?) {

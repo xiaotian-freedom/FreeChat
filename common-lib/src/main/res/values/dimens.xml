@@ -60,9 +60,20 @@
     <dimen name="divider_size_half">0.5dp</dimen>
     <dimen name="divider_size_1dp">1.0dp</dimen>
     <dimen name="MaxDialogHeight">450.0dp</dimen>
+    <dimen name="content_panel_width">240dp</dimen>
     <dimen name="content_panel_height">128.0dp</dimen>
-    <dimen name="image_height">250dp</dimen>
-    <dimen name="image_wall_height_150">150dp</dimen>
+    <dimen name="content_panel_min_height">88.0dp</dimen>
+    <dimen name="content_panel_middle_height">150.0dp</dimen>
+    <dimen name="content_panel_max_height">200dp</dimen>
+
+    <dimen name="image_size_20dp">20dp</dimen>
+    <dimen name="image_size_30dp">30dp</dimen>
+    <dimen name="image_size_40dp">40dp</dimen>
+    <dimen name="image_size_75dp">75dp</dimen>
+    <dimen name="image_size_85dp">85dp</dimen>
+    <dimen name="image_size_100dp">100dp</dimen>
+    <dimen name="image_size_150dp">150dp</dimen>
+    <dimen name="grid_view_height">184dp</dimen>
 
     <!-- MMProgressDialog -->
     <dimen name="mm_progress_dialog_padding">12.0dp</dimen>

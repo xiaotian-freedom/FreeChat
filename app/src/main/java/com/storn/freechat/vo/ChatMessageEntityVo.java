@@ -6,7 +6,7 @@ import java.io.Serializable;
  * 聊天实体类
  * Created by tianshutong on 2017/1/9.
  */
-public class ChatMessageEntityVo implements Serializable{
+public class ChatMessageEntityVo implements Serializable {
 
     //主键
     public int cId;
@@ -19,9 +19,22 @@ public class ChatMessageEntityVo implements Serializable{
 
     public String content;
 
+    public String audioPath;
+
+    public String imgPath;
+
+    public long audioTime;
+
     public long time;
 
+    //发送、接收类型
     public int type;
+
+    //消息类型 0:文本 1:语音 2:图片
+    public int messageType;
+
+    //发送状态 0:失败 1:成功
+    public int status;
 
     @Override
     public String toString() {
@@ -30,8 +43,13 @@ public class ChatMessageEntityVo implements Serializable{
                 ", fromJid='" + fromJid + '\'' +
                 ", myJid='" + myJid + '\'' +
                 ", content='" + content + '\'' +
+                ", audioPath='" + audioPath + '\'' +
+                ", imgPath='" + imgPath + '\'' +
+                ", audioTime=" + audioTime +
                 ", time=" + time +
                 ", type=" + type +
+                ", messageType=" + messageType +
+                ", status=" + status +
                 '}';
     }
 }
